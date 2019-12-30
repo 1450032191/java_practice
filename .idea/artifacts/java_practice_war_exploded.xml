@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="java_practice:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/java_practice_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="java_practice/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="java_practice" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="fastjson-1.1.24-20120814.043343-7" />
+          <element id="library" level="project" name="mysql-connector-java-5.1.7-bin" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
