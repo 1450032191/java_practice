@@ -14,26 +14,20 @@ import java.util.List;
  * @Description:
  */
 public class ResultSetUtil {
-    public static <T> List<T> getArray(ResultSet resultSet,Class<T> clazz) throws Exception {
+    public static <T> List<T> getArray(ResultSet resultSet, Class<T> clazz) throws Exception {
         ArrayList<T> list = new ArrayList<>();
-        while (resultSet!=null && resultSet.next()){
+        while (resultSet != null && resultSet.next()) {
             Object ob = clazz.newInstance();
 
-            Field fieldArr[]=clazz.getDeclaredFields();
+            Field fieldArr[] = clazz.getDeclaredFields();
             for (int i = 0; i < fieldArr.length; i++) {
                 Field field = fieldArr[i];
                 field.setAccessible(true);
                 ZnSqlField znSqlField = field.getAnnotation(ZnSqlField.class);
                 String sqlFieldName = znSqlField.name();
                 String sqlFieldValue = resultSet.getString(sqlFieldName);
-                if(!StringUtil.isNull(sqlFieldValue)){
-//                    if(isString(field)){
-//
-//                    }else{
-//                        Double dd = Double.valueOf(sqlFieldValue);
-//                        field.set(ob,sqlFieldValue);
-//                    }
-                    field.set(ob,sqlFieldValue);
+                if (!StringUtil.isNull(sqlFieldValue)) {
+                    field.set(ob, sqlFieldValue);
                 }
             }
             list.add((T) ob);
@@ -41,7 +35,7 @@ public class ResultSetUtil {
         return list;
     }
 
-    private static boolean isString(Field field){
+    private static boolean isString(Field field) {
         return ("class java.lang.String".equals(field.getGenericType().toString()));
     }
 }

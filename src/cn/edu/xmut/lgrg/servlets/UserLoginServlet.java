@@ -27,9 +27,9 @@ public class UserLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Map<String,String>> res = new ArrayList<>();
         String userId = UserUtil.getUserId(request);
+        String userName = request.getParameter("userName");
+        String userPass = request.getParameter("userPass");
         try {
-            String userName = "17759993196";
-            String userPass = "123456";
             SysUser sysUser = sysUserImpl.login(request,userName,userPass);
             ResultUtil.outSuccess(response,sysUser);
         } catch (Exception e) {
