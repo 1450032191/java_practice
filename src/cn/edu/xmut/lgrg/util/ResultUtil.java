@@ -50,6 +50,9 @@ public class ResultUtil {
     public static void outError(ServletResponse hresponse,String errmsg){
         out(hresponse,error(errmsg));
     }
+    public static void outError(ServletResponse hresponse){
+        out(hresponse,error("错误请求~"));
+    }
 
     public static void out(ServletResponse hresponse){
         outError(hresponse,"请登陆!");

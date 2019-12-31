@@ -3,10 +3,7 @@ package cn.edu.xmut.lgrg.dao.impl;
 import cn.edu.xmut.lgrg.annotation.ZnService;
 import cn.edu.xmut.lgrg.dao.SysUserDao;
 import cn.edu.xmut.lgrg.entity.SysUser;
-import cn.edu.xmut.lgrg.util.Md5;
-import cn.edu.xmut.lgrg.util.MySqlUtil;
-import cn.edu.xmut.lgrg.util.ResultSetUtil;
-import cn.edu.xmut.lgrg.util.StringUtil;
+import cn.edu.xmut.lgrg.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
@@ -21,17 +18,23 @@ import java.util.List;
  */
 @ZnService
 public class SysUserImpl implements SysUserDao {
-    public SysUser login(HttpServletRequest request,String userName, String userPass) throws Exception {
-        if(StringUtil.isNull(userName)||StringUtil.isNull(userPass)){
+    public SysUser login(HttpServletRequest request,String userName, String userPass,String checkCode) throws Exception {
+        if(StringUtil.isNull(userName)||StringUtil.isNull(userPass)||StringUtil.isNull(checkCode)){
             throw new Exception("参数不完整~");
         }
+        if(!CodeUtil.checkCode(request,checkCode)){
+            throw new Exception("验证码错误~");
+        }
         userPass = getUserPass(userPass);
-
         SysUser sysUser = null;
-
         //如果是用户手机号
         sysUser = loginByPhoneAndPass(userName,userPass);
-
+        if(sysUser == null){
+            sysUser = loginByUserIdAndPass(userName,userPass);
+        }
+        if(sysUser == null){
+            sysUser = loginByPhoneAndPass(userName,userPass);
+        }
         return sysUser;
     }
 
@@ -66,7 +69,6 @@ public class SysUserImpl implements SysUserDao {
         }
         return null;
     }
-
 
     private static String getUserPass(String str){
         return Md5.string2MD5(Md5.string2MD5(str)+"1912114103");
