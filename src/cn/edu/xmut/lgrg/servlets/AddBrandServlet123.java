@@ -21,21 +21,26 @@ import java.util.List;
 import java.util.Map;
 
 @WebServlet("/add")
-public class AddBrandServlet extends HttpServlet {
+public class AddBrandServlet123 extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Map<String, String>> res = new ArrayList<>();
-        String userId = UserUtil.getUserId(request);
+        request.setCharacterEncoding("UTF-8");
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String createTime = request.getParameter("createTime");
+        String img = request.getParameter("img");
         try {
             Connection con = MySqlUtil.getCon();
-            String sql = "select * from sys_order";
+            String sql = "select * from brand where id=";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
-            List<Brand> brandList = ResultSetUtil.getArray(resultSet,Brand.class);
+            List<Brand> brandList = ResultSetUtil.getArray(resultSet, Brand.class);
             ResultUtil.outSuccess(response, brandList);
         } catch (Exception e) {
             e.printStackTrace();
             ResultUtil.outError(response, e.getMessage());
         }
+        ResultUtil.outSuccess(response, "插入成功");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

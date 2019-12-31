@@ -35,7 +35,6 @@ public class DetailBrandServlet extends HttpServlet {
             e.printStackTrace();
             ResultUtil.outError(resp, e.getMessage());
         }
-
     }
 
     @Override
