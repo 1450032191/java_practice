@@ -6,4 +6,5 @@ package cn.edu.xmut.lgrg.dao;
  * @Description:
  */
 public interface SysUserDao {
+
 }

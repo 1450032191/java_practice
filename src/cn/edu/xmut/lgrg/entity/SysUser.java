@@ -1,18 +1,28 @@
 package cn.edu.xmut.lgrg.entity;
 
+import cn.edu.xmut.lgrg.annotation.ZnSqlField;
+
 /**
  * @Auther: ZiNan
  * @Date: 2019/12/30 11:17
  * @Description:
  */
 public class SysUser {
+    @ZnSqlField(name = "user_id")
     private String userId;
+    @ZnSqlField(name = "user_name")
     private String userName;
+    @ZnSqlField(name = "user_pass")
     private String userPass;
+    @ZnSqlField(name = "user_email")
     private String userEmail;
+    @ZnSqlField(name = "user_phone")
     private String userPhone;
+    @ZnSqlField(name = "status")
     private String status;
+    @ZnSqlField(name = "user_image")
     private String userImage;
+    @ZnSqlField(name = "user_is_admin")
     private String userIsAdmin;
 
     public String getUserId() {

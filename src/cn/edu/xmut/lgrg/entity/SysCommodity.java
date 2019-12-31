@@ -6,6 +6,7 @@ package cn.edu.xmut.lgrg.entity;
  * @Description:
  */
 public class SysCommodity {
+
     private String comId;
     private String comName;
     private double comPrice;
