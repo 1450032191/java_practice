@@ -19,8 +19,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.321" level="application_server_libraries" />
-    <orderEntry type="library" name="fastjson-1.1.24-20120814.043343-7" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-5.1.7-bin" level="project" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 8.5.321" level="application_server_libraries" />
+    <orderEntry type="library" exported="" name="fastjson-1.1.24-20120814.043343-7" level="project" />
+    <orderEntry type="library" exported="" name="mysql-connector-java-5.1.7-bin" level="project" />
+    <orderEntry type="library" exported="" name="Java EE 6-Java EE 6" level="project" />
   </component>
 </module>
