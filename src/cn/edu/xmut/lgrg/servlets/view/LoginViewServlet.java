@@ -1,4 +1,4 @@
-package cn.edu.xmut.lgrg.entity.view;
+package cn.edu.xmut.lgrg.servlets.view;
 
 import cn.edu.xmut.lgrg.util.ResultUtil;
 
