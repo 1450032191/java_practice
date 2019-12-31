@@ -1,22 +1,43 @@
 package cn.edu.xmut.lgrg.entity;
 
+import cn.edu.xmut.lgrg.annotation.ZnSqlField;
+
 /**
  * @Auther: ZiNan
  * @Date: 2019/12/30 10:59
  * @Description:
  */
 public class SysCommodity {
-
+    @ZnSqlField(name = "com_id")
     private String comId;
+    @ZnSqlField(name = "com_name")
     private String comName;
+    @ZnSqlField(name = "com_price")
     private double comPrice;
+    @ZnSqlField(name = "com_op")
     private double comOp;
+    @ZnSqlField(name = "com_create_time")
     private String comCreateTime;
+    @ZnSqlField(name = "com_brand_id")
     private String comBrandId;
+    @ZnSqlField(name = "com_category_id")
     private String comCategoryId;
+    @ZnSqlField(name = "detail_info")
     private String detailInfo;
+    @ZnSqlField(name = "status")
     private String status;
+    @ZnSqlField(name = "is_vip")
     private String isVip;
+    @ZnSqlField(name = "com_img")
+    private String comImg;
+
+    public String getComImg() {
+        return comImg;
+    }
+
+    public void setComImg(String comImg) {
+        this.comImg = comImg;
+    }
 
     public String getComId() {
         return comId;

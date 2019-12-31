@@ -1,6 +1,8 @@
 package cn.edu.xmut.lgrg.servlets;
 
+import cn.edu.xmut.lgrg.entity.Brand;
 import cn.edu.xmut.lgrg.util.MySqlUtil;
+import cn.edu.xmut.lgrg.util.ResultSetUtil;
 import cn.edu.xmut.lgrg.util.ResultUtil;
 
 import javax.servlet.ServletException;
@@ -26,15 +28,9 @@ public class DetailBrandServlet extends HttpServlet {
             Connection con = MySqlUtil.getCon();
             String sql = "select * from brand";
             PreparedStatement pre = con.prepareStatement(sql);
-            ResultSet rs = pre.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt(1);
-                String name = rs.getString(2);
-                Map<Integer, String> map = new HashMap<>();
-                map.put(id, name);
-                res.add(map);
-            }
-            ResultUtil.outSuccess(resp, res);
+            ResultSet resultSet = pre.executeQuery();
+            List<Brand> brandList = ResultSetUtil.getArray(resultSet,Brand.class);
+            ResultUtil.outSuccess(resp, brandList);
         } catch (Exception e) {
             e.printStackTrace();
             ResultUtil.outError(resp, e.getMessage());

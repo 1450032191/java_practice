@@ -1,15 +1,22 @@
 package cn.edu.xmut.lgrg.entity;
 
+import cn.edu.xmut.lgrg.annotation.ZnSqlField;
+
 /**
  * @Auther: ZiNan
  * @Date: 2019/12/30 11:19
  * @Description:
  */
 public class SysUserAddr {
+    @ZnSqlField(name = "ua_id")
     private String uaId;
+    @ZnSqlField(name = "ua_name")
     private String uaName;
+    @ZnSqlField(name = "ua_phone")
     private String uaPhone;
+    @ZnSqlField(name = "ua_detail_addr")
     private String uaDetailAddr;
+    @ZnSqlField(name = "ua_addr")
     private String uaAddr;
 
     public String getUaId() {

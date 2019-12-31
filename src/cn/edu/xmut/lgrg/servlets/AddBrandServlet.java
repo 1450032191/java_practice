@@ -1,10 +1,13 @@
 package cn.edu.xmut.lgrg.servlets;
 
+import cn.edu.xmut.lgrg.entity.Brand;
 import cn.edu.xmut.lgrg.util.MySqlUtil;
+import cn.edu.xmut.lgrg.util.ResultSetUtil;
 import cn.edu.xmut.lgrg.util.ResultUtil;
 import cn.edu.xmut.lgrg.util.UserUtil;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@WebServlet("/add")
 public class AddBrandServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Map<String, String>> res = new ArrayList<>();
@@ -26,12 +30,8 @@ public class AddBrandServlet extends HttpServlet {
             String sql = "select * from sys_order";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                Map<String, String> map = new HashMap<>();
-                map.put("test", null);
-                res.add(map);
-            }
-            ResultUtil.outSuccess(response, res);
+            List<Brand> brandList = ResultSetUtil.getArray(resultSet,Brand.class);
+            ResultUtil.outSuccess(response, brandList);
         } catch (Exception e) {
             e.printStackTrace();
             ResultUtil.outError(response, e.getMessage());

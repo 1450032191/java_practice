@@ -1,18 +1,28 @@
 package cn.edu.xmut.lgrg.entity;
 
+import cn.edu.xmut.lgrg.annotation.ZnSqlField;
+
 /**
  * @Auther: ZiNan
  * @Date: 2019/12/30 11:13
  * @Description:
  */
 public class SysOrder {
+    @ZnSqlField(name = "order_no")
     private String orderNo;
+    @ZnSqlField(name = "order_id")
     private String orderId;
+    @ZnSqlField(name = "create_time")
     private String createTime;
+    @ZnSqlField(name = "user_id")
     private String userId;
+    @ZnSqlField(name = "addr_id")
     private String addrId;
+    @ZnSqlField(name = "order_price")
     private String orderPrice;
+    @ZnSqlField(name = "order_paymethod")
     private String orderPaymethod;
+    @ZnSqlField(name = "order_status")
     private String orderStatus;
 
     public String getOrderNo() {
