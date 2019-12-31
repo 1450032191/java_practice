@@ -1,0 +1,21 @@
+.card{
+    border: solid 1px #dcdee2;
+    margin-bottom: 15px;
+}
+.card .head{
+    height: 45px;
+    line-height: 27px;
+    background-color: #f8f8f9;
+}
+.card .con .form-inline{
+    padding: 27px;
+}
+.mybody{
+    padding: 10px;
+}
+.myhead{
+    margin-bottom: 15px;
+}
+.col-sm-8 {
+    padding-left: 0;
+}

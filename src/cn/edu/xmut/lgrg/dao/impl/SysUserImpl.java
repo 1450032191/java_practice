@@ -35,8 +35,19 @@ public class SysUserImpl implements SysUserDao {
         if(sysUser == null){
             sysUser = loginByPhoneAndPass(userName,userPass);
         }
+        if(sysUser == null){
+            throw new Exception("请检查账号密码是否正确~");
+        }
+
+
+
         return sysUser;
     }
+
+    private void saveUserLoginStatus(HttpServletRequest request,SysUser sysUser){
+        request.setAttribute("user",sysUser);
+    }
+
 
     private SysUser loginByPhoneAndPass(String phone,String pass) throws Exception {
         String[] params = {phone,pass};

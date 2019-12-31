@@ -1,0 +1,513 @@
+
+#confrim-order .banner_x {
+    height: 100px;
+}
+
+
+#confrim-order .banner_x .wdgwc {
+    height: 100px;
+    line-height: 100px;
+    font-weight: bold;
+    font-size: 24px;
+}
+#confrim-order .banner_x .wxts {
+    height: 90px;
+    line-height: 105px;
+    font-size: 12px;
+    color: #777777;
+}
+
+.fl {
+    float: left;
+}
+.ml20 {
+    margin-left: 20px;
+}
+
+.fr{
+    float: right;
+}
+
+.orderInfo-tip{
+    line-height: 30px;
+    margin-bottom: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(237, 212, 145);
+    border-image: initial;
+    background: rgb(255, 253, 238);
+    padding: 0px 20px;
+}
+
+.orderInfo-tip .wicon {
+    margin-right: 5px;
+    width: 12px;
+    height: 16px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    top: -1px;
+    overflow: hidden;
+}
+
+.orderInfo-tip .wtext{
+    color: rgb(153, 153, 153);
+}
+
+.checkout-tit{
+    height: 42px;
+    line-height: 42px;
+    font-size: 20px;
+    overflow: hidden;
+}
+
+.checkout-tit .tit-txt{
+    float: left;
+}
+
+.checkout-steps{
+    background-color: #fff;
+    padding: 0 20px;
+    border: 1px solid #f0f0f0;
+}
+
+.step-tit{
+    line-height: 40px;
+    height: 40px;
+    color: rgb(51, 51, 51);
+}
+
+.step-tit h3{
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    margin: 0;
+    font-weight: bold;
+}
+
+.checkout-steps .extra-r{
+    float: right;
+    line-height: 40px;
+}
+
+.checkout-steps .extra-r a{
+    color: rgb(0, 94, 167);
+}
+
+#consignee-addr{
+    overflow: hidden;
+    max-height: 168px;
+    margin-bottom: 10px;
+}
+
+.ui-scrollbar-wrap{
+    position: relative;
+    overflow: hidden;
+    height: 168px;
+    z-index: 10;
+    overflow-y: auto;
+}
+
+.consignee-scrollbar{
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+
+.ui-scrollbar-main{
+    position: relative;
+    zoom: 1;
+    margin: 0 10px 0 20px;
+    overflow: hidden;
+    height: 100%;
+}
+
+.ui-scrollbar-main li{
+    list-style: none;
+    height: 30px;
+    margin: 6px 0;
+    float: left;
+    display: list-item;
+    width: 100%;
+}
+
+.ui-scrollbar-main li .consignee-item{
+    float: left;
+    list-style: none;
+    position: relative;
+    border: 1px solid #ddd;
+    line-height: 18px;
+    padding: 5px 10px;
+    width: 142px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.ui-scrollbar-main li .addr-detail{
+    float: left;
+    height: 30px;
+    line-height: 30px;
+}
+
+.ui-scrollbar-main li .addr-detail span{
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.ui-scrollbar-main ul li:hover,.ui-scrollbar-main ul li:focus{
+    background-color: #fff3f3;
+}
+
+.ui-scrollbar-main ul li:hover .addr-info,.ui-scrollbar-main ul li:focus .addr-info{
+    background-color: #fff3f3;
+}
+
+.consignee-cont li.li-hover {
+    background-color: #fff3f3;
+}
+
+li.li-hover .addr-info {
+    max-width: 322px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ui-scrollbar-main .consignee-item:hover,.item-selected{
+    border: 2px solid #e4393c !important;
+}
+
+.consignee-item.item-selected b {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 12px;
+    height: 12px;
+    overflow: hidden;
+    background: url(http://misc.360buyimg.com/user/purchase/2.0.0/css/i/selected-icon.png) no-repeat;
+}
+
+.pay-list,.commodity-list{
+    margin-bottom: 10px;
+    padding: 0 20px 10px;
+}
+
+.pay-list ul{
+    overflow: hidden;
+}
+
+.pay-list li{
+    float: left;
+    margin-right: 9px;
+    cursor: pointer;
+}
+.pay-list .payment-item{
+    float: left;
+    position: relative;
+    border: 1px solid #ddd;
+    line-height: 18px;
+    padding: 5px 24px;
+    cursor: pointer;
+}
+
+.payment-item.item-selected b ,.mode-tab-nav li.item-selected b{
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 12px;
+    height: 12px;
+    overflow: hidden;
+    background: url(http://misc.360buyimg.com/user/purchase/2.0.0/css/i/selected-icon-new.png) no-repeat;
+}
+
+.commodity-list {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.commodity-list table{
+    width: 100%;
+}
+
+.commodity-list .dis-modes{
+    width: 40%;
+    background-color: #f7f7f7;
+    margin-bottom: 50px;
+    padding: 10px 10px 10px 20px;
+    vertical-align: baseline;
+}
+
+.commodity-list .goods-list{
+    width: 60%;
+    background-color: #f3fbfe;
+    padding: 10px 0;
+}
+
+.goods-tit{
+    height: 24px;
+    padding: 0 20px;
+}
+
+.goods-list h4{
+    font-weight: bold;
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.goods-item{
+    border: none;
+    margin-bottom: 0;
+    padding: 10px 20px;
+    color: #666;
+    overflow: hidden;
+}
+
+.p-detail, .p-img, .p-market, .p-name, .p-price {
+    overflow: hidden;
+}
+
+.goods-item .p-img{
+    float: left;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    background-color: #fff;
+}
+
+.goods-item .p-img img{
+    width: 80px;
+    height: 80px;
+}
+
+.goods-msg {
+    float: left;
+    width: 484px;
+    overflow: hidden;
+}
+.p-name{
+    float: left;
+    width: 49.8%;
+    height: 3em;
+    line-height: 1.5em;
+    overflow: hidden;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.p-price {
+    float: right;
+    width: 48.8%;
+    margin: 0 0 5px;
+    font-size: 13px;
+}
+
+.goods-item .p-price .price {
+    width: 100px;
+    text-align: right;
+    color: #e4393c;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.p-price span{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.p-price .p-num {
+    width: 70px;
+    text-align: right;
+}
+
+.p-price .p-state {
+    width: 58px;
+    text-align: right;
+}
+
+.p-extra-continer{
+    width: 49.8%;
+    display: inline-block;
+}
+
+.p-extra-line {
+    max-width: 240px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 12px;
+}
+
+.p-extra-line .fl{
+    min-width: 120px;
+    max-width: 120px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    float: left;
+    margin-bottom: 5px;
+}
+.dis-modes .mode-item-tit {
+    height: 20px;
+    line-height: 20px;
+    padding: 2px 0;
+}
+.mode-item-tit h4{
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.dis-modes .mode-tab-nav {
+    margin: 10px 0 20px;
+}
+
+.mode-tab-nav ul {
+    display: block;
+    width: 310px;
+    overflow: hidden;
+}
+
+.mode-tab-nav li {
+    float: left;
+    line-height: 18px;
+    padding: 5px 0;
+    width: 143px;
+    text-align: center;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.mode-tab-nav li.item-selected b{
+    background-color: #f7f7f7;
+}
+
+.mode-tab-nav li .m-txt {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.mode-tab-con .tab-con-item{
+    display: block;
+    padding: 5px 0;
+    line-height: 22px;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.fore1 {
+    float: left;
+    font-size: 14px;
+}
+
+.fore1 span{
+    color: #999;
+}
+
+.order-summary{
+    overflow: hidden;
+}
+
+.order-summary .statistic{
+    width: 300px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    float: right;
+    margin-top: 20px;
+}
+
+.order-summary .statistic .list {
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    zoom: 1;
+}
+
+.order-summary .statistic span {
+    width: 180px;
+    margin-right: 20px;
+    float: left;
+    text-align: right;
+}
+
+.order-summary .statistic em {
+    color: #e4393c;
+}
+
+.order-summary .statistic .price {
+    color: #333;
+    float: left;
+    width: 100px;
+    text-align: right;
+    font-family: verdana;
+}
+
+.trade-foot{
+
+}
+
+.trade-foot .trade-foot-detail-com{
+    padding: 15px 10px 15px 0;
+    line-height: 20px;
+    text-align: right;
+    border-top: 1px solid #e6e6e6;
+    color: #999;
+    background-color: #f4f4f4;
+}
+
+.fc-price-info,.fc-consignee-info{
+    margin-right: 10px;
+    line-height: 25px;
+}
+
+.price-num {
+    color: #e4393c;
+    font-family: Verdana;
+    font-weight: 700;
+    font-size: 18px;
+    min-width: 122px;
+    _width: 122px;
+    float: right;
+    text-align: right;
+}
+
+#checkout-floatbar {
+    clear: both;
+    margin-bottom: 20px;
+    position: relative;
+    height: 50px;
+}
+
+.checkout-submit {
+    float: right;
+    position: relative;
+    width: 135px;
+    height: 36px;
+    line-height: 36px;
+    margin: 8px 10px 0 0;
+    padding: 0;
+    background-color: #e00;
+    overflow: hidden;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: arial,"Microsoft YaHei";
+    display: inline-block;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 0;
+}
+

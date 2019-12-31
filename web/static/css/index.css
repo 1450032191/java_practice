@@ -1,0 +1,647 @@
+body{
+    background-color: #f4f4f4;
+}
+
+.center-swiper {
+    width: 800px;
+    height: 500px;
+}
+
+/* 轮播图宽高设置 end */
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+/*轮播图结束*/
+
+
+
+
+
+/*品牌和轮播图*/
+#band-banner{
+    position: relative;
+    margin-bottom: 10px;
+}
+
+#band-banner .band-banner-panel{
+    z-index: 1;
+    height: 480px;
+    position: relative;
+    margin: 0 auto;
+}
+.band-banner-panel .col1{
+    float: left;
+    height: 450px;
+    margin-right: 10px;
+    width: 19%;
+}
+
+.cate-menu{
+    overflow: hidden;
+    padding: 10px 0;
+    height: 450px;
+    background-color: #fefefe;
+    color: #636363;
+    margin-top: 10px;
+}
+
+.cate-menu li{
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+    padding-left: 18px;
+    height: 27px;
+    line-height: 27px;
+    font-size: 0;
+    -webkit-transition: background-color .2s ease;
+    transition: background-color .2s ease;
+    list-style: none;
+}
+
+.cate-menu li:hover{
+    background-color: #d9d9d9;
+}
+
+.cate-menu li a{
+    font-size: 14px;
+    color: #333;
+    -webkit-transition: color .2s ease;
+    transition: color .2s ease;
+}
+
+.band-banner-panel .col2{
+    width: 79%;
+    float: left;
+    position: relative;
+    height: 450px;
+    margin-top: 10px;
+    overflow: hidden;
+    background-color: #fefefe;
+}
+
+#miaosha{
+    height: 260px;
+    margin-bottom: 20px;
+    margin: 0 auto;
+}
+
+.miaosha-countdown {
+    position: relative;
+    float: left;
+    width: 19%;
+    height: 100%;
+    color: #fff;
+    background-color: #e83632;
+    background-image: url("http://misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/img/4a15d8883775742e3efbb850ae14def7.png");
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.countdown-title{
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 31px;
+}
+
+.countdown-desc{
+    margin-top: 90px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.countdown-desc strong{
+    font-size: 18px;
+    padding-right: 2px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: -1px;
+}
+
+.countdown-main{
+    margin-left: auto;
+    margin-right: auto;
+    width: 130px;
+    height: 30px;
+    margin-top: 10px;
+    display: block;
+}
+
+.timmer{
+    color: #333;
+    font-weight: 700;
+}
+
+.timmer-util:not(:last-child):after{
+    content: ":";
+    display: block;
+    position: absolute;
+    right: -20px;
+    font-weight: bolder;
+    font-size: 18px;
+    width: 20px;
+    height: 100%;
+    top: 0;
+}
+
+.timmer-util{
+    position: relative;
+    float: left;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background-color: #2f3430;
+    color: white;
+    font-size: 20px;
+}
+
+.timmer-util:not(:last-child){
+    margin-right: 20px;
+}
+
+
+.slider_list{
+    overflow: hidden;
+    width: 80%;
+    height: 260px;
+    background-color: #fff;
+}
+
+.slider_item{
+    float: left;
+    width: 24%;
+    position: relative;
+    height: 260px;
+    display: inline-block;
+    min-height: 1px;
+}
+
+.slider_item:not(:last-child):after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 1px;
+    height: 200px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background: -webkit-gradient(linear,left top,left bottom,from(white),color-stop(#eeeeee),to(white));
+    background: linear-gradient(180deg,white,#eeeeee,white);
+}
+
+.slider_item_img{
+    width: 140px;
+    height: 140px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider_item_img img{
+    width: 140px;
+    height: 140px;
+    opacity: 1;
+}
+
+.slider_item_name{
+    font-size: 12px;
+    font-weight: 400;
+    color: #333;
+    -webkit-transition: color .2s ease;
+    transition: color .2s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 13px;
+}
+
+.slider_item_price{
+    border: 1px solid #e1251b;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 24px;
+    overflow: hidden;
+    background-color: #e1251b;
+    width: 161px;
+    height: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7px;
+}
+
+.slider_item_price .miaosha-price{
+
+}
+
+.miaosha-price i{
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 400;
+    padding-right: 2px;
+    text-align: center;
+    color: #fff;
+    line-height: 22px;
+    float: left;
+    margin-left: 6px;
+}
+
+.miaosha-price span{
+    /*width: 92px;*/
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    float: left;
+}
+
+.slider_item_price .miaosha-price:before{
+    content: " ";
+    width: 0;
+    height: 0;
+    border-color: transparent white transparent transparent;
+    border-style: solid;
+    border-width: 22px 8px 0 0;
+    position: absolute;
+    top: 0;
+    left: 84px;
+}
+
+.origin-price{
+    height: 100%;
+    width: 67px;
+    float: right;
+    background: #fff;
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    line-height: 22px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-decoration: line-through;
+    vertical-align: top;
+}
+
+
+#core{
+    height: 305px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+#left-core,#right-core{
+    height: 305px;
+    float: left;
+    width: 49%;
+    margin: 0 10px 0 0;
+    background-color: #fff;
+}
+
+#right-core{
+    margin-right: 0;
+}
+
+.box-hd{
+    height: 60px;
+    padding: 0 20px;
+    font-size: 0;
+    line-height: 0;
+}
+.box-hd h3{
+    display: inline-block;
+    position: relative;
+    height: 32px;
+    margin: 12px 0 0;
+    color: #666;
+    float: left;
+}
+.box_hd_arrow{
+    background-image: url(http://misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/tit_arrow/sprite.png);
+    background-position: -16px 0;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    float: left;
+    top: 19px;
+    left: 10px;
+}
+
+.box-content{
+    height: 245px;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+.box-rank-item{
+    width: 50%;
+    height: 70px;
+    float: left;
+    margin-bottom: 15px;
+    position: relative;
+    display: block;
+}
+
+.box-rank-item .title{
+    position: absolute;
+    width: 30px;
+    height: 40px;
+    font-weight: 700;
+    color: #fff;
+    top: 50%;
+    left: 0;
+    margin-top: -20px;
+    background-color: #eb2a20;
+}
+
+.box-rank-item .title span{
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: Helvetica,Arial,sans-serif;
+}
+.box-rank-item .commodity-img{
+    width: 60px;
+    height: 60px;
+    transition: background .2s linear,opacity .2s linear!important;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    margin-left: 40px;
+    display: block;
+}
+.box-rank-item .commodity-img img{
+    height: 60px;
+}
+.box-rank-item .commodity-name{
+    left: 110px;
+    width: 110px;
+    position: absolute;
+    top: 50%;
+    max-height: 32px;
+    line-height: 16px;
+    font-size: 12px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #333;
+    overflow: hidden;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+}
+
+.box-content .brand-item{
+    width: 33%;
+    height: 88px;
+    float: left;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    position: relative;
+    display: block;
+}
+
+.box-content .brand-logo{
+    width: 100px;
+    height: 55px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.brand-logo img{
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.brand-name{
+    color: #666;
+    margin-top: 6px;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 16px;
+    line-height: 16px;
+}
+
+.brand-item:not(:nth-child(3n)):after{
+    position: absolute;
+    width: 1px;
+    height: 60px;
+    right: 0;
+    top: 50%;
+    margin-top: -30px;
+    background: -webkit-gradient(linear,left top,left bottom,from(white),color-stop(#eeeeee),color-stop(#eeeeee),to(white));
+    background: linear-gradient(180deg,white,#eeeeee,#eeeeee,white);
+    content: "";
+    height: 80px;
+    margin-top: -55px;
+}
+
+#recommend{
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.recommend-hd{
+    height: 65px;
+    margin: 0 auto;
+}
+
+.recommend-hd h3{
+    position: relative;
+    width: 220px;
+    height: 45px;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 45px;
+    padding: 0 30px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    color: #333;
+    display: block;
+}
+
+.recommend-hd h3:before {
+    background-image: url(//misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/floor_hd/sprite.png);
+    background-position: 0 0;
+    width: 25px;
+    height: 20px;
+    left: 0;
+}
+
+.recommend-hd h3:after {
+    background-image: url(//misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/floor_hd/sprite.png);
+    background-position: -25px 0;
+    width: 25px;
+    height: 20px;
+    right: 0;
+}
+
+.recommend-hd h3:after, .recommend-hd h3:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+}
+
+#commodity-list{
+    overflow: hidden;
+}
+
+.commodity-item{
+    float: left;
+    width: 19%;
+    background: #fff;
+    position: relative;
+    height: 322px;
+    margin: 0 5px 10px;
+}
+
+.commodity-item>a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+#commodity-list .commodity-img{
+    transition: background .2s linear,opacity .2s linear!important;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    margin: 30px auto 40px;
+}
+
+#commodity-list .commodity-img>img{
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+}
+
+#commodity-list .commodity-info{
+    clear: both;
+    line-height: 24px;
+    padding: 0 20px;
+}
+
+.commodity-item .commodity-info-name{
+    height: 48px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: left;
+    color: #666;
+    -webkit-transition: color .2s ease;
+    transition: color .2s ease;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
+    cursor: pointer;
+}
+
+.commodity-info-other{
+    overflow: hidden;
+    margin-top: 10px;
+    position: relative;
+    height: 24px;
+}
+
+.commodity-info-other .commodity-price{
+    width: 100%;
+    text-align: left;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 18px;
+    height: 18px;
+    color: #e1251b;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.commodity-info-other .commodity-price i{
+    vertical-align: middle;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: MicrosoftYahei-regular,Arial,Helvetica,sans-serif;
+    margin-right: 3px;
+}
+
+.commodity-info-other .commodity-price span{
+    font-size: 20px;
+    font-weight: 700;
+    font-family: arial,sans-serif;
+}
+
+.commodity-info-other .commodity-other-discount{
+    width: 100%;
+    text-align: right;
+    height: 18px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.commodity-info-other .commodity-other-discount-item{
+    font-size: 12px;
+    color: #e1251b;
+    height: 16px;
+    padding: 0 6px;
+    border: 1px solid #e1251b;
+    line-height: 14px;
+    border-radius: 2px;
+    text-align: center;
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: 1px;
+}
+

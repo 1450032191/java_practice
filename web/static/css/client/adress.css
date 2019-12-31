@@ -1,0 +1,235 @@
+body{
+    background-color: #f5f5f5;
+}
+
+#adress .banner_x {
+    height: 100px;
+}
+
+
+#adress .banner_x .wdgwc {
+    height: 100px;
+    line-height: 100px;
+    font-weight: bold;
+    font-size: 24px;
+}
+#adress .banner_x .wxts {
+    height: 90px;
+    line-height: 105px;
+    font-size: 12px;
+    color: #777777;
+}
+
+.fl {
+    float: left;
+}
+.ml20 {
+    margin-left: 20px;
+}
+
+.fr{
+    float: right;
+}
+
+.not-adress{
+    height: 220px;
+    font-size: 30px;
+    line-height: 220px !important;
+    text-align: center;
+}
+
+
+.addAdress{
+    height: 90px;
+    line-height: 90px;
+    position: relative;
+    width: 130px;
+}
+
+a.add-btn{
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 700;
+    padding: 0 14px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 14px;
+    margin: 0 10px 0 0;
+    background-color: #f5fbef;
+    background-image: linear-gradient(to bottom,#f5fbef 0,#eaf6e2 100%);
+    border-radius: 2px;
+    border: 1px solid #bfd6af;
+}
+
+.addAdress .add-btn{
+    position: absolute;
+    bottom: 0;
+}
+
+.add-btn:hover,.add-btn:focus{
+    color: #666 !important;
+}
+
+.adress-list{
+    line-height: 20px;
+    overflow: visible;
+    background-color: #fff;
+    padding: 10px 20px 20px;
+    margin-bottom: 20px;
+}
+
+.adress-list .adress-item{
+    border: 2px solid #e6e6e6;
+    margin: 0 0 10px;
+    overflow: hidden;
+    zoom: 1;
+    line-height: 20px;
+}
+
+.adress-list .adress-item .item-t{
+    padding-left: 10px;
+    line-height: 35px;
+    height: 35px;
+    position: relative;
+    display: block;
+    overflow: visible;
+    line-height: 35px;
+}
+
+.adress-item .item-t h3{
+    float: left;
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 35px;
+}
+
+.default-address{
+    margin: 0 0 0 10px;
+    font-size: 12px;
+    background: #ffaa45;
+    padding: 2px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.adress-item .item-body{
+    padding: 10px;
+    line-height: 22px;
+    overflow: hidden;
+    zoom: 1;
+}
+
+.adress-item .extra{
+    float: right;
+    margin: 0 10px 0 0;
+}
+
+.adress-item .extra i{
+    margin-top: 10px;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    overflow: hidden;
+    vertical-align: middle;
+    color: #ccc;
+    font-size: 18px;
+}
+
+.item-body .items{
+    position: relative;
+    overflow: hidden;
+}
+
+.item-body .items .lcol{
+    float: left;
+    width: 49%;
+}
+
+.item-body .items .rcol{
+    float: right;
+    width: 49%;
+}
+
+.item-body .item{
+
+}
+
+.item-body .item span{
+    float: left;
+    width: 70px;
+    color: #999;
+    text-align: right;
+}
+
+.item-body .items .rcol .extra{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.item-body .items .rcol .extra a{
+    color: #005ea7;
+    margin-left: 10px;
+}
+
+.adress-bottom{
+    padding: 10px 0;
+}
+
+.thickcon{
+    padding: 10px;
+    overflow: auto;
+    background: #fff;
+    border: solid #C4C4C4;
+    border-width: 1px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.thickcon .body{
+    overflow: hidden;
+
+}
+
+.thickcon .body .item{
+    margin: 0 0 5px;
+    line-height: 22px;
+    clear: both;
+    overflow: hidden;
+}
+
+.thickcon .body .item .lable{
+    float: none;
+    display: block;
+    vertical-align: middle;
+    color: #999;
+    text-align: left;
+    height: 30px;
+    line-height: 18px;
+    padding: 6px 0;
+    width: 100px;
+}
+
+.err-msg{
+    color: #c00;
+    line-height: 32px;
+}
+
+#selectArea {
+    margin-left: -5px;
+    padding: 0 15px;
+    height: 26px;
+    margin-top: -3px;
+}
+
+.thickcon .item input{
+    height: 30px;
+    line-height: 18px;
+    padding: 6px;
+    width: 220px;
+    margin-right: 5px;
+    vertical-align: middle;
+}

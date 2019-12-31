@@ -1,0 +1,21 @@
+#img{
+    height: 80px;
+    text-align: center;
+}
+#img>img{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    margin: 0 auto;
+    border: solid #dcdee2 2px;
+}
+#img input {
+    display: none;
+}
+.datepicker {
+    width: 100% !important;
+}
+.notyf-container .notyf-wrapper {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}

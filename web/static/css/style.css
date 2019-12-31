@@ -1,0 +1,63 @@
+﻿@charset "utf-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+/*清除浮动*/
+.clear-float::after{
+    content:"";
+    display:block;
+    height:0;
+    clear:both;
+}
+.clear-float {
+    zoom:1;
+}
+input,button,a {
+    outline:0 none !important; blr:expression(this.onFocus=this.blur());
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+.mainindex{
+    padding: 0 20px;
+    overflow: hidden;
+}
+.head{
+    height: 60px;
+    padding: 10px;
+}
+.head>div{
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    border-left: solid 9px #19be6b;
+    padding-left: 15px;
+    font-weight: 700;
+    background-color: #f8f8f9;
+}
+.card{
+    border: solid 1px #dcdee2;
+    margin-bottom: 15px;
+}
+.card .head{
+    height: 45px;
+    line-height: 27px;
+    background-color: #f8f8f9;
+}
+.card .con .form-inline{
+    padding: 27px;
+}
+.mybody{
+    padding: 10px;
+}
+.myhead{
+    margin-bottom: 15px;
+}
+.col-sm-8 {
+    padding-left: 0;
+}
+.table > tbody > tr > td{
+    vertical-align: middle;
+}

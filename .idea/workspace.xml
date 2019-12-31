@@ -6,51 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6713b00b-fcab-41a7-aae4-abff3f196589" name="Default Changelist" comment="增加bean，classUtil">
-      <change afterPath="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/entity/view/LoginViewServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/UpImgServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/ValicodeServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/CodeUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/DateUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/UuidUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/commons-fileupload-1.2.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/commons-io-2.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/commons-lang-2.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/b1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/b2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/b3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/b4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/b5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/b6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/base/index-back.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/base/logo-64.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/base/logo-admin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/feel3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/feel4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/index_tab_l.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/index_tab_r.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/s1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/s2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/s3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/s4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/s5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/images/s6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/upload/1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/view/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/java_practice_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/java_practice_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/fastjson_1_1_24_20120814_043343_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/fastjson_1_1_24_20120814_043343_7.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_7_bin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_7_bin.xml" afterDir="false" />
+    <list default="true" id="6713b00b-fcab-41a7-aae4-abff3f196589" name="Default Changelist" comment="1.修改依赖包的位置&#10;2.增加图片验证码&#10;3.增加图片上传&#10;4.增加登陆页面&#10;5.增加登陆操作">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java_practice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java_practice.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/java_practice_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/java_practice_war_exploded/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/dao/impl/SysUserImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/dao/impl/SysUserImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/UserLoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/UserLoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/ResultUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/ResultUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/lib/fastjson-1.1.24-20120814.043343-7.jar" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/fastjson-1.1.24-20120814.043343-7.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/lib/mysql-connector-java-5.1.7-bin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-5.1.7-bin.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/UserUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/UserUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,14 +22,44 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/web/view/login.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="262">
-                  <caret line="130" column="23" lean-forward="true" selection-start-line="130" selection-start-column="23" selection-end-line="130" selection-end-column="23" />
+                <state relative-caret-position="314">
+                  <caret line="155" column="29" lean-forward="true" selection-start-line="155" selection-start-column="29" selection-end-line="155" selection-end-column="29" />
                   <folding>
                     <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/AddBrandServlet.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="338">
+                  <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="67" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/DetailBrandServlet.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="390">
+                  <caret line="32" column="49" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/UpImgServlet.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="117">
+                  <caret line="39" column="26" lean-forward="true" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
                 </state>
               </provider>
             </entry>
@@ -79,13 +68,53 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/UserLoginServlet.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="468">
-                  <caret line="27" column="49" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
+                <state relative-caret-position="335">
+                  <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/ValicodeServlet.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="338">
+                  <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/dao/impl/SysUserImpl.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="371">
+                  <caret line="47" column="43" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="method#loginByPhoneAndPass#0;class#SysUserImpl#0" />
+                    <element signature="method#loginByEmailAndPass#0;class#SysUserImpl#0" />
+                    <element signature="method#loginByUserIdAndPass#0;class#SysUserImpl#0" />
+                    <element signature="method#login#1;class#SysUserImpl#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/UserUtil.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="154">
+                  <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#778#779#0" expanded="true" />
+                    <element signature="e#803#804#0" expanded="true" />
+                    <element signature="method#idMask#0;class#UserUtil#0" />
                   </folding>
                 </state>
               </provider>
@@ -109,7 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/UserUtil.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/MySqlUtil.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/ClasstUtils.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/StringUtil.java" />
@@ -130,7 +158,6 @@
         <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/annotation/ZnInjection.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/dao/SysUserDao.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/CodeUtil.java" />
-        <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/dao/impl/SysUserImpl.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/UuidUtil.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/DateUtil.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/ValicodeServlet.java" />
@@ -138,8 +165,10 @@
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/ResultUtil.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/entity/view/LoginViewServlet.java" />
-        <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/UserLoginServlet.java" />
         <option value="$PROJECT_DIR$/web/view/login.jsp" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/UserLoginServlet.java" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/dao/impl/SysUserImpl.java" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/UserUtil.java" />
       </list>
     </option>
   </component>
@@ -197,32 +226,14 @@
             <path>
               <item name="java_practice" type="b2602c69:ProjectViewProjectNode" />
               <item name="java_practice" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lgrg" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="java_practice" type="b2602c69:ProjectViewProjectNode" />
               <item name="java_practice" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java_practice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_practice" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java_practice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_practice" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java_practice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_practice" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="java_practice" type="b2602c69:ProjectViewProjectNode" />
@@ -237,7 +248,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577785138627" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577785565842" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -442,7 +453,7 @@
       <workItem from="1577674677205" duration="1987000" />
       <workItem from="1577701331831" duration="1574000" />
       <workItem from="1577751897153" duration="10471000" />
-      <workItem from="1577781693789" duration="3415000" />
+      <workItem from="1577781693789" duration="3857000" />
     </task>
     <task id="LOCAL-00001" summary="lib包提交">
       <created>1577701624986</created>
@@ -486,11 +497,25 @@
       <option name="project" value="LOCAL" />
       <updated>1577782043009</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="1.修改依赖包的位置&#10;2.增加图片验证码&#10;3.增加图片上传&#10;4.增加登陆页面&#10;5.增加登陆操作">
+      <created>1577785233203</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1577785233203</updated>
+    </task>
+    <task id="LOCAL-00008" summary="1.修改依赖包的位置&#10;2.增加图片验证码&#10;3.增加图片上传&#10;4.增加登陆页面&#10;5.增加登陆操作">
+      <created>1577785303590</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1577785303590</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20470000" />
+    <option name="totallyTimeSpent" value="20912000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -509,12 +534,12 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989059" weight="0.5292842" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.19197397" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.64859" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.4171181" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989339" weight="0.4078091" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989339" visible="true" weight="0.26898047" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
@@ -542,7 +567,8 @@
     <MESSAGE value="dao包提交" />
     <MESSAGE value="增加bean，classUtil" />
     <MESSAGE value="修改参数的获取方式" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改参数的获取方式" />
+    <MESSAGE value="1.修改依赖包的位置&#10;2.增加图片验证码&#10;3.增加图片上传&#10;4.增加登陆页面&#10;5.增加登陆操作" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.修改依赖包的位置&#10;2.增加图片验证码&#10;3.增加图片上传&#10;4.增加登陆页面&#10;5.增加登陆操作" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/lang/String.java">
@@ -550,20 +576,6 @@
         <state relative-caret-position="279">
           <caret line="115" column="26" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
           <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/UserUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
-          <folding>
-            <element signature="e#234#235#0" expanded="true" />
-            <element signature="e#260#261#0" expanded="true" />
-            <element signature="e#778#779#0" expanded="true" />
-            <element signature="e#802#803#0" expanded="true" />
-            <element signature="method#idMask#0;class#UserUtil#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -635,23 +647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/AddBrandServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/DetailBrandServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="32" column="49" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -749,28 +744,6 @@
     <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/UuidUtil.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/ValicodeServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/dao/impl/SysUserImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#login#0;class#SysUserImpl#0" />
-            <element signature="method#loginByPhoneAndPass#0;class#SysUserImpl#0" />
-            <element signature="method#loginByEmailAndPass#0;class#SysUserImpl#0" />
-            <element signature="method#loginByUserIdAndPass#0;class#SysUserImpl#0" />
-            <element signature="method#login#1;class#SysUserImpl#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/CodeUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
@@ -803,13 +776,6 @@
     <entry file="file://$PROJECT_DIR$/web/upload/1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/UpImgServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -824,7 +790,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/entity/view/LoginViewServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/view/LoginViewServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
@@ -854,22 +820,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/UserLoginServlet.java">
+    <entry file="file://$PROJECT_DIR$/web/view/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="27" column="49" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
+        <state relative-caret-position="314">
+          <caret line="155" column="29" lean-forward="true" selection-start-line="155" selection-start-column="29" selection-end-line="155" selection-end-column="29" />
+          <folding>
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/AddBrandServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/view/login.jsp">
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/DetailBrandServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="130" column="23" lean-forward="true" selection-start-line="130" selection-start-column="23" selection-end-line="130" selection-end-column="23" />
+        <state relative-caret-position="390">
+          <caret line="32" column="49" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/ValicodeServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/UpImgServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="39" column="26" lean-forward="true" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/servlets/UserLoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
           <folding>
-            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/dao/impl/SysUserImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="47" column="43" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#loginByPhoneAndPass#0;class#SysUserImpl#0" />
+            <element signature="method#loginByEmailAndPass#0;class#SysUserImpl#0" />
+            <element signature="method#loginByUserIdAndPass#0;class#SysUserImpl#0" />
+            <element signature="method#login#1;class#SysUserImpl#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xmut/lgrg/util/UserUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#778#779#0" expanded="true" />
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="method#idMask#0;class#UserUtil#0" />
           </folding>
         </state>
       </provider>

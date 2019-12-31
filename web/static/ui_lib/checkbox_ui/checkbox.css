@@ -1,0 +1,136 @@
+/*
+ * author:evanliu2968
+ * github:https://github.com/EvanLiu2968/el-checkbox
+ * lincense:MIT
+ */
+/*checkbox radio component*/
+.el-radio,
+.el-checkbox {
+  position: relative;
+  font-size: 100%;
+}
+label.el-radio,
+label.el-checkbox {
+  display: block;
+  cursor: pointer;
+}
+.el-radio > input[type="radio"],
+.el-checkbox > input[type="checkbox"] {
+  display: none;
+}
+.el-radio > input[type="radio"][disabled],
+.el-checkbox > input[type="checkbox"][disabled] {
+  cursor: not-allowed;
+}
+.el-radio > input[type="radio"] + .el-radio-style,
+.el-checkbox > input[type="checkbox"] + .el-checkbox-style {
+  position: relative;
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.el-radio > input[type="radio"] + .el-radio-style:hover:before,
+.el-checkbox > input[type="checkbox"] + .el-checkbox-style:hover:before {
+  border-color: #20a0ff;
+}
+.el-radio > input[type="radio"] + .el-radio-style:before,
+.el-checkbox > input[type="checkbox"] + .el-checkbox-style:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  content: '';
+  border: 1px solid #C0CCDA;
+}
+.el-radio > input[type="radio"] + .el-radio-style:after,
+.el-checkbox > input[type="checkbox"] + .el-checkbox-style:after {
+  position: absolute;
+  display: none;
+  content: '';
+}
+.el-radio > input[type="radio"][disabled] + .el-radio-style,
+.el-checkbox > input[type="checkbox"][disabled] + .el-checkbox-style {
+  cursor: not-allowed;
+  color: #D3DCE6;
+}
+.el-radio > input[type="radio"][disabled] + .el-radio-style:hover,
+.el-radio > input[type="radio"][disabled] + .el-radio-style:before,
+.el-radio > input[type="radio"][disabled] + .el-radio-style:after,
+.el-checkbox > input[type="checkbox"][disabled] + .el-checkbox-style:hover,
+.el-checkbox > input[type="checkbox"][disabled] + .el-checkbox-style:before,
+.el-checkbox > input[type="checkbox"][disabled] + .el-checkbox-style:after {
+  cursor: not-allowed;
+}
+.el-radio > input[type="radio"][disabled] + .el-radio-style:hover:before,
+.el-checkbox > input[type="checkbox"][disabled] + .el-checkbox-style:hover:before {
+  border: 1px solid #D3DCE6;
+  animation-name: none;
+}
+.el-radio > input[type="radio"][disabled] + .el-radio-style:before,
+.el-checkbox > input[type="checkbox"][disabled] + .el-checkbox-style:before {
+  border-color: #D3DCE6;
+}
+.el-radio > input[type="radio"]:checked + .el-radio-style:before,
+.el-checkbox > input[type="checkbox"]:checked + .el-checkbox-style:before {
+  animation-name: none;
+}
+.el-radio > input[type="radio"]:checked + .el-radio-style:after,
+.el-checkbox > input[type="checkbox"]:checked + .el-checkbox-style:after {
+  display: block;
+}
+.el-radio > input[type="radio"] + .el-radio-style:before {
+  border-radius: 50%;
+}
+.el-radio > input[type="radio"] + .el-radio-style:after {
+  top: 0.4em;
+  left: 0.4em;
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  background: #20a0ff;
+}
+.el-radio > input[type="radio"]:checked + .el-radio-style:before {
+  border: 1px solid #20a0ff;
+}
+.el-radio > input[type="radio"]:checked[disabled] + .el-radio-style:before {
+  border: 1px solid #b0d7f5;
+}
+.el-radio > input[type="radio"]:checked[disabled] + .el-radio-style:after {
+  background: #b0d7f5;
+}
+.el-checkbox > input[type="checkbox"] + .el-checkbox-style:before {
+  border-radius: 3px;
+}
+.el-checkbox > input[type="checkbox"] + .el-checkbox-style:after {
+  top: 0.15em;
+  left: 0.5em;
+  box-sizing: border-box;
+  width: 0.4em;
+  height: 0.85em;
+  transform: rotate(45deg);
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+.el-checkbox > input[type="checkbox"]:checked + .el-checkbox-style:before {
+  border: #20a0ff;
+  background: #20a0ff;
+}
+.el-checkbox > input[type="checkbox"]:checked[disabled] + .el-checkbox-style:before {
+  border: #b0d7f5;
+  background: #b0d7f5;
+}
+/*blue theme*/
+.el-radio.el-radio-blue > input[type="radio"] + label:hover:before,
+.el-checkbox.el-checkbox-blue > input[type="checkbox"] + label:hover:before,
+.el-radio.el-radio-blue > input[type="radio"]:checked + label:before,
+.el-checkbox.el-checkbox-blue > input[type="checkbox"]:checked + label:before {
+  border-color: #20a0ff;
+}
+.el-checkbox.el-checkbox-blue > input[type="checkbox"]:checked + label:before,
+.el-radio.el-radio-blue > input[type="radio"] + label:after {
+  background: #20a0ff;
+}

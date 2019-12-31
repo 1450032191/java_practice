@@ -1,5 +1,7 @@
 package cn.edu.xmut.lgrg.util;
 
+import cn.edu.xmut.lgrg.entity.SysUser;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -9,6 +11,12 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class UserUtil {
     public static String getUserId(HttpServletRequest request){
+//        开发环境下直接返回
+        //        Object ob = request.getAttribute("user");
+//        if(ob!=null && ob instanceof SysUser){
+//            SysUser sysUser = (SysUser) ob;
+//            return sysUser.getUserId();
+//        }
         return "1";
     }
 

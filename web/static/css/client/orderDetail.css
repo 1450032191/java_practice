@@ -1,0 +1,595 @@
+body {
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    font: 12px/150% tahoma, arial, Microsoft YaHei, Hiragino Sans GB, "\u5b8b\u4f53", sans-serif;
+    color: #666;
+}
+#adress .banner_x {
+    height: 100px;
+}
+
+.banner_x .wdgwc {
+    height: 100px;
+    line-height: 100px;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.banner_x .wxts {
+    height: 90px;
+    line-height: 105px;
+    font-size: 12px;
+    color: #777777;
+}
+
+.fl {
+    float: left;
+}
+.ml20 {
+    margin-left: 20px;
+}
+
+.fr{
+    float: right;
+}
+li {
+    list-style: none;
+}
+
+a,
+a:active,
+a:hover,
+a:visited,
+a:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e4393c;
+    text-decoration: none;
+}
+
+.color-red {
+    color: #e4393c;
+}
+
+.order-page {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.green-line {
+    height: 3px;
+    background-color: #71b247;
+}
+
+.flower-line {
+    height: 4px;
+    background: url('../imgs/order-icons.png') repeat-x;
+    background-position: 0 -117px;
+}
+
+.order-part {
+    margin-bottom: 20px;
+}
+
+.order-state {
+    height: 330px;
+    text-align: center;
+    padding: 0 0 7px 0;
+    background-color: #fff;
+}
+
+.state-inner {
+    padding: 20px;
+}
+
+.state-top {
+    font-size: 12px;
+    margin-bottom: 30px;
+    color: #999;
+}
+
+.state-left {
+    float: left;
+    width: 26%;
+    height: 100%;
+}
+
+.state-left .left-content {
+    padding-top: 40px;
+}
+
+.state-left .state-txt {
+    font: 700 24px/34px "Microsoft YaHei";
+    color: #71b247;
+}
+
+/* 订单状态右边 */
+
+.state-right {
+    float: right;
+    width: 74%;
+    height: 100%;
+    border-left: 1px solid #f1f1f1;
+}
+
+.state-right .state-top {
+    text-align: left;
+    margin-bottom: 70px;
+}
+
+.right-content {
+    background-color: rgb(87, 161, 214);
+    overflow: hidden;
+}
+
+.state-item {
+    position: relative;
+    float: left;
+    width: 20%;
+    background-color: #fff;
+    color: #333;
+}
+
+.state-item .state-icon {
+    width: 43px;
+    height: 43px;
+    background: url('../imgs/proce-icon.png');
+    margin: 0 auto;
+}
+
+.state-item.sub-order .state-icon {
+    background-position: 0 -108px;
+}
+
+.state-item.order-paid .state-icon {
+    background-position: -54px -108px;
+}
+
+.state-item.goods-shipped .state-icon {
+    background-position: -108px -108px;
+}
+
+.state-item.goods-delivered .state-icon {
+    background-position: -270px -108px;
+}
+
+.state-item.order-finished .state-icon {
+    background-position: -216px -54px;
+}
+
+.state-process {
+    position: relative;
+}
+
+.state-process .process-line {
+    position: absolute;
+    width: 60%;
+    height: 15px;
+    /* background-color: rgb(191, 26, 26); */
+    top: 20px;
+    left: 70%;
+    z-index: 1000;
+    background: url('../imgs/process-lines.png') no-repeat;
+    background-size: 100%;
+    background-position-y: -30px;
+}
+
+.state-detail {
+    padding-top: 20px;
+}
+
+.state-detail .state-title {
+    line-height: 30px;
+    font: 14px tahoma, arial, Microsoft YaHei, Hiragino Sans GB, "\u5b8b\u4f53", sans-serif;
+}
+
+.state-detail .state-time {
+    padding-top: 5px;
+    line-height: 18px;
+    font: 12px tahoma, arial, Microsoft YaHei, Hiragino Sans GB, "\u5b8b\u4f53", sans-serif;
+}
+
+/*
+    修改流程的进度颜色:
+    改变
+     .state-process .process-line {
+         background-position-y: 0px;  // 以15px为一个单位
+     }
+ */
+/* 物流详情 */
+
+.order-logistics {
+    height: 256px;
+    background-color: #fff;
+    overflow: hidden;
+    color: #333;
+}
+
+.logistics-inner {
+    overflow: hidden;
+    padding: 30px 20px 20px 20px;
+}
+
+/* 物流左 */
+.logistics-left {
+    float: left;
+    width: 26%;
+    height: 100%;
+}
+
+.logistics-left .product-img {
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+.logistics-left .product-img img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.product-info {
+    float: left;
+    padding: 0px 0 0 15px;
+}
+
+.product-info {
+    height: 100%;
+
+}
+
+.product-info ul li {
+    line-height: 25px;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+/* 物流右详情 */
+.logistics-right {
+    height: 100%;
+    float: right;
+    width: 74%;
+    border-left: 1px solid #f1f1f1;
+}
+
+.logistics-right ul,
+.logistics-right li {
+    width: 100%;
+    overflow: hidden;
+}
+
+.logistics-right ul {
+    height: 200px;
+    overflow-y: scroll;
+
+}
+
+.logistics-item {
+    width: 100%;
+    /* padding-top: 10px; */
+}
+
+.logistics-item .logistics-times {
+    float: left;
+    width: 180px;
+    text-align: right;
+    margin-right: 15px;
+}
+
+.logistics-times .logis-date {
+    display: inline-block;
+    width: 110px;
+    display: none;
+}
+
+/* 当有after-date类时, 才显示几月几号 */
+.after-date .logistics-times .logis-date {
+    display: inline-block;
+}
+
+.logistics-times .logis-time {
+    display: inline-block;
+    width: 65px;
+}
+
+.logistics-item .logis-process-line {
+    width: 20px;
+    /*height: 100%;*/
+    float: left;
+    position: relative;
+
+}
+
+.logis-process-line .proce-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.proce-icon .icon-img {
+    position: absolute;
+    left: 10px;
+    top: .logistics-item.receipted .proce-icon .icon-imgpx;
+    width: 20px;
+    height: 20px;
+    background: url('../imgs/logis-icon.png') no-repeat;
+}
+
+.logistics-item.ordered .proce-icon .icon-img {
+    background-position: -175px -25px;
+}
+
+.logistics-item.disposing .proce-icon .icon-img {
+    background-position: -125px -25px;
+}
+
+.logistics-item.collected .proce-icon .icon-img {
+    background-position: -50px -25px;
+}
+
+.logistics-item.shipping .proce-icon .icon-img {
+    background-position: -75px -25px;
+}
+
+.logistics-item.delivering .proce-icon .icon-img {
+    background-position: -50px -25px;
+}
+
+.logistics-item.receipted .proce-icon .icon-img {
+    background-position: -25px 0;
+}
+
+.logistics-item.procing .proce-icon .icon-img {
+    background: url('../imgs/track-icon.png');
+    background-position: -60px 0;
+}
+
+/*
+    订单状态图标样式:
+    以25px为一个单位, 可展示不同状态.
+ */
+
+.logis-state {
+    float: left;
+    border-left: 1px solid #f1f1f1;
+    padding-left: 20px;
+    width: calc(100% - 270px);
+}
+
+.logis-state .logis-detail {
+    padding-bottom: 10px;
+}
+
+
+.logis-state .logis-title {
+    line-height: 22px;
+    font-weight: 600;
+}
+
+.logis-state .logis-detail {
+    line-height: 22px;
+}
+
+/* 付款信息 */
+
+.payment-info {
+    height: 288px;
+    overflow: hidden;
+    padding: 15px 0;
+    background-color: #fff;
+    color: #333;
+}
+
+.payment-info .info-items {
+    height: 100%;
+}
+
+.payment-info .info-items>li {
+    float: left;
+    width: calc(25% - 1px);
+    height: 100%;
+    border-right: 1px solid #f1f1f1;
+}
+
+.payment-info .info-items>li .infor-inner {
+    padding: 0 10px 0 30px;
+    height: 100%;
+}
+
+.payment-info .pay-info-title {
+    line-height: 24px;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.pay-info-content .pay-items>li {
+    line-height: 24px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.pay-items .pay-item-title {
+    float: left;
+    width: 84px;
+}
+
+.pay-items .pay-item-detail {
+    float: right;
+    width: calc(100% - 85px);
+}
+
+.shop-name {
+    margin-bottom: 20px;
+}
+
+/* 商品列表 */
+.goods-list {
+    background-color: #fff;
+}
+
+.goods-list table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.goods-list table tr .grap {
+    width: 20px;
+}
+
+.goods-list table tr th {
+    background-color: #f9f9f9;
+    text-align: center;
+    line-height: 34px;
+    font-weight: 500;
+}
+
+.goods-list table tr th:nth-child(2) {
+    width: 42%;
+}
+
+.goods-list table tr td {
+    padding: 17px 0 20px;
+    vertical-align: top;
+    border-top: 1px solid #eee;
+}
+
+.goods-list table tr:nth-child(2) td,
+.goods-list table tr td.grap {
+    border: none;
+}
+
+.goods-list-item {
+    overflow: hidden;
+}
+
+.goods-list-item .goods-img {
+    float: left;
+    width: 58px;
+    height: 58px;
+}
+
+.goods-list-item .goods-img img {
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid #e4e4e4;
+}
+
+.goods-list-item .goods-info {
+    float: right;
+    width: calc(100% - 65px);
+    text-align: left;
+}
+
+.goods-list-item .goods-info .goods-info-detail {
+    display: inline-block;
+    min-height: 40px;
+}
+
+.goods-list-item .goods-info .goods-info-more {
+    color: #999;
+    /* vertical-align: bottom; */
+}
+
+.goods-list table .goods-operate {
+    vertical-align: middle;
+}
+
+.goods-operate .op-btn {
+    margin-bottom: 10px;
+}
+
+.goods-operate .op-btn .grey-btn {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    padding: 2px 0 3px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    color: #333;
+    border-radius: 2px;
+    width: 85px;
+    text-align: center;
+}
+
+.goods-operate .op-btn .grey-btn:hover {
+    background: #fff;
+    border-color: #e4393c;
+    color: #e4393c;
+}
+
+.goods-operate .op-btn .grey-btn:hover .ico {
+    background-position: -24px -182px;
+
+}
+
+.goods-operate .op-btn .ico {
+    display: inline-block;
+    width: 10px;
+    height: 17px;
+    background: url('../imgs/order-icons.png') no-repeat;
+    background-position: -24px -156px;
+    vertical-align: middle;
+}
+
+.payment-total {
+    border-top: 1px solid #eee;
+}
+
+.payment-total-inner {
+    padding: 20px;
+}
+
+.payment-total-inner .pay-details {
+    text-align: right;
+    overflow: hidden;
+}
+
+.payment-total-inner .pay-details ul {
+    width: 60%;
+    float: right;
+}
+
+.payment-total-inner .pay-details ul li {
+    line-height: 28px;
+}
+
+.pay-details .pay-label {
+    display: inline-block;
+    width: 60%;
+    background-color: #fff;
+
+}
+
+.pay-details .pay-txt {
+    display: inline-block;
+    width: 130px;
+}
+
+.pay-details .total-fare {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+.goods-inner tr:not(:first-child){
+    font-size: 12px;
+}
+
+
+#pay-btn{
+    width: 98px;
+    padding: 4px 0 5px;
+    font-weight: 700;
+    display: block;
+    margin: 10px auto 0;
+    line-height: 18px;
+    border-radius: 2px;
+    color: #e4393c;
+    background: #fff;
+    border: 1px solid #e4393c;
+}
