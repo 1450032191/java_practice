@@ -7,6 +7,10 @@
 # BlueJ files
 *.ctxt
 
+
+# 配置文件不上上传
+java_practice.iml
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
