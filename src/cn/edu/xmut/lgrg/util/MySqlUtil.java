@@ -1,7 +1,10 @@
 package cn.edu.xmut.lgrg.util;
 
+import cn.edu.xmut.lgrg.entity.PageData;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 
 /**
  * @Auther: ZiNan

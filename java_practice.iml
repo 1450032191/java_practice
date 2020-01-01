@@ -32,7 +32,8 @@
         <jarDirectory url="file://$MODULE_DIR$/web/WEB-INF/lib" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 9.0.29" level="application_server_libraries" />
-    <orderEntry type="library" name="Java EE 6-Java EE 6 (2)" level="project" />
+    <orderEntry type="library" name="jsp-api" level="project" />
+    <orderEntry type="library" name="servlet-api" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.321" level="application_server_libraries" />
   </component>
 </module>
