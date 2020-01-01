@@ -20,30 +20,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/add")
-public class AddBrandServlet123 extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Map<String, String>> res = new ArrayList<>();
+@WebServlet("/brand/add.do")
+public class AddBrandServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
-        String id = request.getParameter("id");
         String name = request.getParameter("name");
         String createTime = request.getParameter("createTime");
         String img = request.getParameter("img");
         try {
             Connection con = MySqlUtil.getCon();
-            String sql = "select * from brand where id=";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            List<Brand> brandList = ResultSetUtil.getArray(resultSet, Brand.class);
-            ResultUtil.outSuccess(response, brandList);
+            String sql = "INSERT INTO brand(`name`,create_time,img) values(?,?,?)";
+            PreparedStatement pstm = con.prepareStatement(sql);
+            pstm.setString(1, name);
+            pstm.setString(2, createTime);
+            pstm.setString(3, img);
+            int rs = pstm.executeUpdate();
+            ResultUtil.outSuccess(response, "插入成功！");
         } catch (Exception e) {
             e.printStackTrace();
             ResultUtil.outError(response, e.getMessage());
         }
-        ResultUtil.outSuccess(response, "插入成功");
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         ResultUtil.outError(response, "错误请求~");
     }
 }
