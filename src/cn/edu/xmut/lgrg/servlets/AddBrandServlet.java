@@ -23,7 +23,6 @@ import java.util.Map;
 @WebServlet("/brand/add.do")
 public class AddBrandServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<Map<String, String>> res = new ArrayList<>();
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         String createTime = request.getParameter("createTime");

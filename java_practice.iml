@@ -30,5 +30,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" exported="" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6 (2)" level="project" />
   </component>
 </module>
