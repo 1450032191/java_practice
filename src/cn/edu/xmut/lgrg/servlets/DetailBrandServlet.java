@@ -29,7 +29,7 @@ public class DetailBrandServlet extends HttpServlet {
             String sql = "select * from brand";
             PreparedStatement pre = con.prepareStatement(sql);
             ResultSet resultSet = pre.executeQuery();
-            List<Brand> brandList = ResultSetUtil.getArray(resultSet,Brand.class);
+            List<Brand> brandList = ResultSetUtil.getArray(resultSet, Brand.class);
             ResultUtil.outSuccess(resp, brandList);
         } catch (Exception e) {
             e.printStackTrace();
