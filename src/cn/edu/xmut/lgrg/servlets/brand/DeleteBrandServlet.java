@@ -1,4 +1,4 @@
-package cn.edu.xmut.lgrg.servlets;
+package cn.edu.xmut.lgrg.servlets.brand;
 
 import cn.edu.xmut.lgrg.util.MySqlUtil;
 import cn.edu.xmut.lgrg.util.ResultUtil;
