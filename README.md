@@ -16,16 +16,16 @@
 2. 提交代码到本地仓库：
   `git commit -m "提交备注信息"` *注意, -m 后面备注信息必填，否则无法提交*
 3. 将代码提交到远程仓库：
-  1. 第一次提交： `git push -u origin master`
-  2. 第二次开始： `git push`
+  * 第一次提交： `git push -u origin master`
+  * 第二次开始： `git push`
 
 # git 其他常用命令
 1. 在本地克隆远程已存在的代码：`git clone xxxx` 其中， xxx为仓库地址
 
 2. 新建空仓库后，将本地代码直接上传到空仓库：
-  1. 在本地代码根目录, 创建本地git仓库： `git init`
-  2. 将本地仓库与远程仓库关联： `git remote add origin xxxx` ， 其中，`xxxx`表示远程仓库地址
-  3. 执行上述常用提交命令。
+  * 在本地代码根目录, 创建本地git仓库： `git init`
+  * 将本地仓库与远程仓库关联： `git remote add origin xxxx` ， 其中，`xxxx`表示远程仓库地址
+  * 执行上述常用提交命令。
   即： 
   `git add .`
   `git commit -m "备注信息"
