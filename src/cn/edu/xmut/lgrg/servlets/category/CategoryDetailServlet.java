@@ -1,4 +1,4 @@
-package cn.edu.xmut.lgrg.servlets;
+package cn.edu.xmut.lgrg.servlets.category;
 
 import cn.edu.xmut.lgrg.entity.Brand;
 import cn.edu.xmut.lgrg.util.MySqlUtil;
@@ -15,18 +15,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/brand/detail.do")
-public class DetailBrandServlet extends HttpServlet {
+@WebServlet("/category/detail.do")
+public class CategoryDetailServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Map<Integer, String>> res = new ArrayList<>();
         try {
             Connection con = MySqlUtil.getCon();
-            String sql = "select * from brand";
+            String sql = "select * from commodity_category";
             PreparedStatement pre = con.prepareStatement(sql);
             ResultSet resultSet = pre.executeQuery();
             List<Brand> brandList = ResultSetUtil.getArray(resultSet, Brand.class);
@@ -35,10 +39,5 @@ public class DetailBrandServlet extends HttpServlet {
             e.printStackTrace();
             ResultUtil.outError(resp, e.getMessage());
         }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        ResultUtil.outError(resp, "错误请求~");
     }
 }
