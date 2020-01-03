@@ -31,7 +31,26 @@
   `git commit -m "备注信息"
   `git push`
  
-3. 常见问题解决:
-  
+## 常见问题解决:
+1. 报错：
+```
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/1450032191/java_practice.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+```
+
+解决：`git pull` 大法解决。 
+
+*由于远程仓库的代码比本地代码新，需要进行拉取后才能push*
+
+*因此建议每次提交代码前先拉取*
+
+
+2. 待续：
 
 
