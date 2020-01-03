@@ -34,7 +34,11 @@
     </orderEntry>
     <orderEntry type="library" name="jsp-api" level="project" />
     <orderEntry type="library" name="servlet-api" level="project" />
+<<<<<<< HEAD
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.321" level="application_server_libraries" />
     <orderEntry type="library" name="jstl-1.2" level="project" />
+=======
+    <orderEntry type="library" exported="" scope="PROVIDED" name="tomcat-9.0.29" level="application_server_libraries" />
+>>>>>>> 1e99fb29864d6e98b2d2ec1d732911cfcd4b0088
   </component>
 </module>
