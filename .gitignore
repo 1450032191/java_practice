@@ -15,7 +15,7 @@ java_practice.iml
 .mtj.tmp/
 
 ##ignore this file##
-/idea/
+/.idea/
 /out/
 
 # Package Files #

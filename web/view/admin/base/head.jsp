@@ -426,7 +426,6 @@
                 $("#addName").val(),
                 $("#addPosition").val(),
                 $("#addOffice").val(),
-                action
             ]);
             $('#addRowModal').modal('hide');
 
