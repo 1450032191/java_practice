@@ -30,6 +30,16 @@ public class SysCommodity {
     private String isVip;
     @ZnSqlField(name = "com_img")
     private String comImg;
+    @ZnSqlField(name = "com_stock")
+    private String comStock;
+
+    public String getComStock() {
+        return comStock;
+    }
+
+    public void setComStock(String comStock) {
+        this.comStock = comStock;
+    }
 
     public String getComImg() {
         return comImg;
