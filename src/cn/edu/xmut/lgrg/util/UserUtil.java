@@ -10,34 +10,75 @@ import javax.servlet.http.HttpServletRequest;
  * @Description:
  */
 public class UserUtil {
-    public static String getUserId(HttpServletRequest request){
+    public static String getUserId(HttpServletRequest request) {
 //        开发环境下直接返回
-        //        Object ob = request.getAttribute("user");
-//        if(ob!=null && ob instanceof SysUser){
-//            SysUser sysUser = (SysUser) ob;
-//            return sysUser.getUserId();
-//        }
-        return "1";
+        SysUser sysUser = getSysUser(request);
+        if(sysUser == null){
+            return null;
+        }
+        return sysUser.getUserId();
+//        return "1";
     }
 
-    public static String getImgBaseUrl(){
+    public static String getUserName(HttpServletRequest request) {
+        SysUser sysUser = getSysUser(request);
+        if (sysUser == null) {
+            return null;
+        }
+        return sysUser.getUserName();
+    }
+
+    public static String getUserEmail(HttpServletRequest request) {
+        SysUser sysUser = getSysUser(request);
+        if (sysUser == null) {
+            return null;
+        }
+        return sysUser.getUserEmail();
+    }
+
+    public static String getUserPhone(HttpServletRequest request) {
+        SysUser sysUser = getSysUser(request);
+        if (sysUser == null) {
+            return null;
+        }
+        return sysUser.getUserPhone();
+    }
+
+    public static String getUserImage(HttpServletRequest request) {
+        SysUser sysUser = getSysUser(request);
+        if (sysUser == null) {
+            return null;
+        }
+        return sysUser.getUserImage();
+    }
+
+    private static String getUserItem(HttpServletRequest request, String itemKey) {
         return "";
     }
 
-    public static String getUserName(HttpServletRequest request){
-        return getUserItem(request,"userName");
+    static SysUser sysUser = new SysUser();
+    static {
+        sysUser.setUserId("1");
+        sysUser.setStatus("1");
+        sysUser.setUserPhone("13055699880");
+        sysUser.setUserEmail("1450032191@qq.com");
+        sysUser.setUserImage("images/base/profile.jpg");
+        sysUser.setUserName("测试用户");
+        sysUser.setUserIsAdmin("1");
     }
 
-    public static String getUserEmail(HttpServletRequest request){
-        return getUserItem(request,"userEmail");
-    }
+    public static SysUser getSysUser(HttpServletRequest request) {
+        //        开发环境下直接返回
+        Object ob = request.getAttribute("user");
+        if (ob != null && ob instanceof SysUser) {
+            SysUser sysUser = (SysUser) ob;
+            return sysUser;
+        }
 
-    public static String getUserPhone(HttpServletRequest request){
-        return getUserItem(request,"userPhone");
-    }
+        //本地开发
+        return sysUser;
 
-    private static String getUserItem(HttpServletRequest request,String itemKey){
-        return "";
+//        return null;
     }
 
     /**
@@ -52,7 +93,7 @@ public class UserUtil {
      */
     public static String idMask(String idCardNum, int front, int end) {
         //身份证不能为空
-        if (idCardNum==null || "".equals(idCardNum)) {
+        if (idCardNum == null || "".equals(idCardNum)) {
             return null;
         }
         //需要截取的长度不能大于身份证号长度

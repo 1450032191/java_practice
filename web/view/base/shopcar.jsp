@@ -171,7 +171,7 @@
     <div class="w">
         <div id="shop_title" onclick="location.href='${basePath}'">
             <div>
-                一&nbsp;点&nbsp;商&nbsp;城
+                安&nbsp;福&nbsp;鞋&nbsp;城
             </div>
         </div>
         <div id="serach">
