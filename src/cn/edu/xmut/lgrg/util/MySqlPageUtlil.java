@@ -65,6 +65,17 @@ public class MySqlPageUtlil {
         init();
     }
 
+    public MySqlPageUtlil(String baseSql) throws Exception {
+        this.baseSql = baseSql;
+        init();
+    }
+
+    public MySqlPageUtlil(String baseSql,Integer pageSize) throws Exception {
+        this.baseSql = baseSql;
+        this.pageSize = pageSize;
+        init();
+    }
+
     public void init() throws Exception {
         try {
             String countSql = "select count(*) from (" + baseSql + ") as t";
@@ -116,9 +127,6 @@ public class MySqlPageUtlil {
             throw new Exception("初始化异常，请联系管理员~");
         }
     }
-
-
-
 
     public String getBaseSql() {
         return baseSql;

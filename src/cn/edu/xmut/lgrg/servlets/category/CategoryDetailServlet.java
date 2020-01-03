@@ -20,6 +20,7 @@ import java.util.Map;
 
 @WebServlet("/category/detail.do")
 public class CategoryDetailServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(req, resp);
@@ -40,4 +41,5 @@ public class CategoryDetailServlet extends HttpServlet {
             ResultUtil.outError(resp, e.getMessage());
         }
     }
+
 }

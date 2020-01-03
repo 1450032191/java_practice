@@ -1,4 +1,4 @@
-<%--
+<%@ page import="cn.edu.xmut.lgrg.config.SysConfig" %><%--
   Created by IntelliJ IDEA.
   User: ZiNan
   Date: 2019/12/5
@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title> [一点商城] 登陆</title>
+    <title> [ <%=SysConfig.sysName%> ] 登陆</title>
     <jsp:include page="/view/base/base.jsp"></jsp:include>
     <link rel="stylesheet" href="static/css/login.css">
     <style>
