@@ -10,7 +10,7 @@ import java.util.Map;
  * @author azx
  * @create 2019-12-31-9:20
  */
-public interface SysCommodityDAO {
+public interface SysCarDAO {
     //获取所有购物车的信息
    List<Map<String,String>> getAllShoes(HttpServletRequest request) throws Exception;
 
@@ -21,6 +21,6 @@ public interface SysCommodityDAO {
     boolean deleteById(HttpServletRequest request ,int comId) throws Exception;
 
     //改变商品数量
-   boolean changeQuantity(HttpServletRequest request,int comId,String quantity) throws Exception;
+   boolean changeQuantity(HttpServletRequest request,int comId,int quantity) throws Exception;
 
 }

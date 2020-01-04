@@ -1,11 +1,8 @@
 package cn.edu.xmut.lgrg.dao.impl;
 
-import cn.edu.xmut.lgrg.dao.SysCommodityDAO;
-import cn.edu.xmut.lgrg.entity.SysCommodity;
+import cn.edu.xmut.lgrg.dao.SysCarDAO;
 import cn.edu.xmut.lgrg.util.MySqlUtil;
-import cn.edu.xmut.lgrg.util.ResultUtil;
 import cn.edu.xmut.lgrg.util.UserUtil;
-import com.sun.deploy.net.HttpRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
@@ -21,7 +18,7 @@ import java.util.Map;
  * @author azx
  * @create 2019-12-31-9:35
  */
-public class SysCommdityImpl implements SysCommodityDAO {
+public class SysCarImpl implements SysCarDAO {
     private Connection conn = null;
 
     @Override
@@ -83,7 +80,7 @@ public class SysCommdityImpl implements SysCommodityDAO {
         conn = MySqlUtil.getCon();
 
         //删除该用户某样商品语句
-        String sql = "delete  from sys_car where user_id=" + userId +"and com_id="+comId;
+        String sql = "delete  from sys_car where user_id="+userId+" and com_id="+comId;
 
         PreparedStatement ps = conn.prepareStatement(sql);
         int result = ps.executeUpdate();
@@ -96,32 +93,32 @@ public class SysCommdityImpl implements SysCommodityDAO {
     }
 
     @Override
-    public boolean changeQuantity(HttpServletRequest request ,int comId, String quantity) throws Exception {
+    public boolean changeQuantity(HttpServletRequest request ,int comId, int quantity) throws Exception {
         //获取用户
         String userId = UserUtil.getUserId(request);
 
         conn = MySqlUtil.getCon();
 
-        int quantitys = Integer.parseInt(quantity);
-        int result=-1;
 
-        if (quantitys==0){
-            //删除该用户某样商品语句
-            String delsql = "delete  from sys_car where user_id=" + userId +"and com_id="+comId;
+        int result=0;
+
+        if (quantity==0){
+            //删除该用户某样商品
+            String delsql = "delete  from sys_car where user_id=" + userId +" and com_id="+comId;
 
             PreparedStatement ps = conn.prepareStatement(delsql);
             result = ps.executeUpdate();
         }else{
             //更新该商品的数量
             String updatesql="update sys_car set com_quantity="+quantity+
-                    "where user_id=" + userId +"and com_id="+comId;
+                    " where user_id=" + userId +" and com_id="+comId;
 
             PreparedStatement ps=conn.prepareStatement(updatesql);
 
             result = ps.executeUpdate();
         }
 
-        if (result!=-1){
+        if (result!=0){
             return true;
         }else{
             return false;

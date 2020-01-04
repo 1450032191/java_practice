@@ -1,9 +1,8 @@
-package cn.edu.xmut.lgrg.servlets.commodity;
+package cn.edu.xmut.lgrg.servlets.car;
 
-import cn.edu.xmut.lgrg.dao.impl.SysCommdityImpl;
+import cn.edu.xmut.lgrg.dao.impl.SysCarImpl;
 import cn.edu.xmut.lgrg.util.ResultUtil;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +15,7 @@ import java.util.Map;
  * @author azx
  * @create 2019-12-31-11:20
  */
-@WebServlet("/commodity/purchaseCarServlet")
+@WebServlet("/car/purchaseCarServlet")
 public class PurchaseCarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws  IOException {
         request.setCharacterEncoding("utf-8");
@@ -24,7 +23,7 @@ public class PurchaseCarServlet extends HttpServlet {
 
         try {
             //点击购物车展示所有商品
-            List<Map<String, String>> allShoes = new SysCommdityImpl().getAllShoes(request);
+            List<Map<String, String>> allShoes = new SysCarImpl().getAllShoes(request);
 
             if(allShoes.size()==0){
                 ResultUtil.outError(response,"商品为零");
