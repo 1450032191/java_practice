@@ -1,4 +1,4 @@
-# Compiled class file
+﻿# Compiled class file
 *.class
 
 # Log file
@@ -7,7 +7,7 @@
 # BlueJ files
 *.ctxt
 
-
+*.iml
 # 配置文件不上上传
 java_practice.iml
 
