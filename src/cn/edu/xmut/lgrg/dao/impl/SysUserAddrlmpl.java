@@ -1,5 +1,6 @@
 package cn.edu.xmut.lgrg.dao.impl;
 
+import cn.edu.xmut.lgrg.dao.SysUserAddrDao;
 import cn.edu.xmut.lgrg.dao.SysUserDao;
 import cn.edu.xmut.lgrg.entity.SysCommodity;
 import cn.edu.xmut.lgrg.entity.SysUserAddr;
@@ -10,9 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SysUserAddrlmpl implements SysUserDao {
-
-
+public class SysUserAddrlmpl implements SysUserAddrDao {
     @Override
     public boolean addAddr(SysUserAddr addr) throws Exception {
         String sql = "insert into sys_user_addr(ua_name,ua_phone,ua_detail_addr,ua_addr) value(?,?,?,?)";
@@ -147,9 +146,6 @@ public class SysUserAddrlmpl implements SysUserDao {
             connDB.closeConn();
         }
         return ListAll;
-
-
-
     }
 }
 
