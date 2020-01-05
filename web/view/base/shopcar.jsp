@@ -1,5 +1,4 @@
-<%@ page import="xin.zznzzn.web.service.CartService" %>
-<%@ page import="xin.zznzzn.web.util.SpringUtil" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: ZiNan
   Date: 2019/11/18
@@ -186,21 +185,7 @@
                 <div>
                     <i class="glyphicon glyphicon-shopping-cart"></i>
                     <a href="cart/list.html" class="styly-red">我的购物车</a>
-
-                    <%
-                        CartService cartService = SpringUtil.getBean(CartService.class);
-                        Integer cartCount = cartService.getCartCount(request);
-
-                    %>
-
-
-                    <i class="ci-count" style="<%
-                        if(cartCount<=0){
-                            out.print("display:none");
-                        }
-                    %>"><%=cartCount%></i>
-
-
+                    <i class="ci-count" style="">12</i>
                 </div>
             </div>
         </div>

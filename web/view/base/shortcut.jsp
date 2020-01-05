@@ -1,6 +1,6 @@
+<%@ page import="cn.edu.xmut.lgrg.util.UserUtil" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
-<%@ page import="xin.zznzzn.web.util.UserUtil" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: ZiNan
   Date: 2019/11/18
@@ -120,12 +120,10 @@
             <li class="right-item">
                 <a href="user/addr/list.html">地址管理</a>
             </li>
-            <shiro:hasRole name="admin">
-                <li class="spacer"></li>
-                <li class="right-item">
-                    <a href="admin/index.html">管理后台</a>
-                </li>
-            </shiro:hasRole>
+            <li class="spacer"></li>
+            <li class="right-item">
+                <a href="admin/index.html">管理后台</a>
+            </li>
             <c:if test="${not empty userName}">
                 <li class="spacer"></li>
                 <li class="right-item">

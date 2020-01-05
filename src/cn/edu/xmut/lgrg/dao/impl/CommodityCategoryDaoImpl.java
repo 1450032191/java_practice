@@ -1,5 +1,6 @@
 package cn.edu.xmut.lgrg.dao.impl;
 
+import cn.edu.xmut.lgrg.annotation.ZnService;
 import cn.edu.xmut.lgrg.dao.CommodityCategoryDao;
 import cn.edu.xmut.lgrg.entity.CommodityCategory;
 import cn.edu.xmut.lgrg.entity.PageData;
@@ -15,6 +16,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+@ZnService
 public class CommodityCategoryDaoImpl implements CommodityCategoryDao {
     @Override
     public void addCategory(CommodityCategory category) throws Exception {

@@ -1,16 +1,23 @@
 package cn.edu.xmut.lgrg.dao.impl;
 
+import cn.edu.xmut.lgrg.annotation.ZnService;
 import cn.edu.xmut.lgrg.dao.SysCommodityDao;
+import cn.edu.xmut.lgrg.entity.PageData;
 import cn.edu.xmut.lgrg.entity.SysCommodity;
+import cn.edu.xmut.lgrg.entity.SysUser;
 import cn.edu.xmut.lgrg.util.ConnDBUtil;
+import cn.edu.xmut.lgrg.util.MySqlPageUtlil;
 import cn.edu.xmut.lgrg.util.MySqlUtil;
+import cn.edu.xmut.lgrg.util.StringUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+@ZnService
 public class SysCommodityImpl implements SysCommodityDao {
 
     @Override
@@ -102,6 +109,28 @@ public class SysCommodityImpl implements SysCommodityDao {
             throw new Exception("id查询错误！");
         }
         return comm;
+    }
+
+    public List<SysCommodity> getComList(Integer pageSize) throws Exception {
+        MySqlPageUtlil pageUtlil = new MySqlPageUtlil("select * from sys_commodity",pageSize);
+        return pageUtlil.getArray(SysCommodity.class);
+    }
+
+    public PageData list(PageData params) throws Exception {
+        String key = params.getString("key");
+        String baseSql = "select * from sys_commodity where (1=1)";
+        if(!StringUtil.isNull(key)){
+            baseSql += "and com_name LIKE CONCAT(CONCAT('%','"+key+"'),'%')";
+        }
+        MySqlPageUtlil pageUtlil = new MySqlPageUtlil(baseSql,params);
+        Map<String,Object> page = new PageData();
+        page.put("total",pageUtlil.getTotal());
+        page.put("pageSize",pageUtlil.getPageSize());
+        page.put("pageIndex",pageUtlil.getPageIndex());
+        PageData res = new PageData();
+        res.put("page",page);
+        res.put("list",pageUtlil.getArray(SysUser.class));
+        return res;
     }
 
     @Override

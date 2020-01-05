@@ -1,5 +1,6 @@
 package cn.edu.xmut.lgrg.dao.impl;
 
+import cn.edu.xmut.lgrg.annotation.ZnService;
 import cn.edu.xmut.lgrg.dao.SysCarDAO;
 import cn.edu.xmut.lgrg.util.MySqlUtil;
 import cn.edu.xmut.lgrg.util.UserUtil;
@@ -18,6 +19,7 @@ import java.util.Map;
  * @author azx
  * @create 2019-12-31-9:35
  */
+@ZnService
 public class SysCarImpl implements SysCarDAO {
     private Connection conn = null;
 

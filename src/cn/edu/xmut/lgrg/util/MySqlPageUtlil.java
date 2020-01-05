@@ -76,12 +76,16 @@ public class MySqlPageUtlil {
         init();
     }
 
+    // ku
+
+
+
     public void init() throws Exception {
         try {
             String countSql = "select count(*) from (" + baseSql + ") as t";
             Connection connection = MySqlUtil.getCon();
             PreparedStatement pre = connection.prepareStatement(countSql);
-            for (int i = 0; i < arr.length; i++) {
+            for (int i = 0; arr!=null&&i < arr.length; i++) {
                 pre.setString(i+1,arr[i]);
             }
             resultSet = pre.executeQuery();
@@ -92,16 +96,18 @@ public class MySqlPageUtlil {
                 if(total%pageSize != 0){
                     totalPage++;
                 }
-                if(totalPage-1<pageIndex){
+                if(totalPage-1<pageIndex&&totalPage!=0){
                     pageIndex = totalPage-1;
                 }
 
                 //查询数量
                 String sql = baseSql + " limit "+pageIndex*pageSize + ","+pageSize;
                 pre = connection.prepareStatement(sql);
-                for (int i = 0; i < arr.length; i++) {
+                for (int i = 0; arr!=null&&i < arr.length; i++) {
                     pre.setString(i+1,arr[i]);
                 }
+
+                //开始你的表演
 
                 resultSet = pre.executeQuery();
                 ResultSetMetaData rsmd = resultSet.getMetaData();

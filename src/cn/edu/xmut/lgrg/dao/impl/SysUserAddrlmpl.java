@@ -1,5 +1,6 @@
 package cn.edu.xmut.lgrg.dao.impl;
 
+import cn.edu.xmut.lgrg.annotation.ZnService;
 import cn.edu.xmut.lgrg.dao.SysUserAddrDao;
 import cn.edu.xmut.lgrg.dao.SysUserDao;
 import cn.edu.xmut.lgrg.entity.SysCommodity;
@@ -11,6 +12,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+@ZnService
 public class SysUserAddrlmpl implements SysUserAddrDao {
     @Override
     public boolean addAddr(SysUserAddr addr) throws Exception {
