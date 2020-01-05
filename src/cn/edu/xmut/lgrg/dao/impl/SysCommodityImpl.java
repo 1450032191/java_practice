@@ -22,21 +22,22 @@ public class SysCommodityImpl implements SysCommodityDao {
 
     @Override
     public void addComm(SysCommodity comm) throws Exception {
-        String sql = "insert into sys_commodity(com_name,com_price,com_op,com_create_time,com_brand_id,com_category_id,detail_info,status,is_vip,com_img,com_stock) values(?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into sys_commodity(com_id,com_name,com_price,com_op,com_create_time,com_brand_id,com_category_id,detail_info,`status`,is_vip,com_img,com_stock) values(?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             Connection con = MySqlUtil.getCon();
             PreparedStatement pstm = con.prepareStatement(sql);
-            pstm.setString(1, comm.getComName());
-            pstm.setDouble(2, comm.getComPrice());
-            pstm.setDouble(3, comm.getComOp());
-            pstm.setString(4, comm.getComCreateTime());
-            pstm.setString(5, comm.getComBrandId());
-            pstm.setString(6, comm.getComCategoryId());
-            pstm.setString(7, comm.getDetailInfo());
-            pstm.setString(8, comm.getStatus());
-            pstm.setString(9, comm.getIsVip());
-            pstm.setString(10, comm.getComImg());
-            pstm.setString(11, comm.getComStock());
+            pstm.setString(1, comm.getComId());
+            pstm.setString(2, comm.getComName());
+            pstm.setDouble(3, comm.getComPrice());
+            pstm.setDouble(4, comm.getComOp());
+            pstm.setString(5, comm.getComCreateTime());
+            pstm.setString(6, comm.getComBrandId());
+            pstm.setString(7, comm.getComCategoryId());
+            pstm.setString(8, comm.getDetailInfo());
+            pstm.setString(9, comm.getStatus());
+            pstm.setString(10, comm.getIsVip());
+            pstm.setString(11, comm.getComImg());
+            pstm.setString(12, comm.getComStock());
             pstm.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
