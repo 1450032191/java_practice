@@ -38,6 +38,7 @@ public class ResultUtil {
             out.println(JSON.toJSONString(res));
             out.flush();
         } catch (Exception e) {
+            e.printStackTrace();
             System.err.println("KickoutSessionFilter.class 输出JSON异常，可以忽略。");
         }
     }

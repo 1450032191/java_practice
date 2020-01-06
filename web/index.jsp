@@ -210,19 +210,19 @@
                 var skuList = result.data.skuList;
                 for (let i = 0; i < skuList.length; i++) {
                     html += "      <li class=\"commodity-item\">\n" +
-                        "        <a href=\"view/client/commodity.jsp?comId="+miao[i].comId+"\">\n" +
+                        "        <a href=\"view/client/commodity.jsp?comId="+skuList[i].comId+"\">\n" +
                         "          <div class=\"commodity-img\">\n" +
-                        "            <img src=\""+miao[i].comImg+"\" alt=\"\">\n" +
+                        "            <img src=\""+skuList[i].comImg+"\" alt=\"\">\n" +
                         "          </div>\n" +
                         "          <div class=\"commodity-info\">\n" +
                         "            <p class=\"commodity-info-name\">\n" +
                         "              <i class=\"commodity-just\">正版</i>\n" +
-                        "                "+miao[i].comName+"\n" +
+                        "                "+skuList[i].comName+"\n" +
                         "            </p>\n" +
                         "            <div class=\"commodity-info-other\">\n" +
                         "              <div class=\"commodity-price\">\n" +
                         "                <i>¥</i>\n" +
-                        "                <span>"+miao[i].comPrice+"</span>\n" +
+                        "                <span>"+skuList[i].comPrice+"</span>\n" +
                         "              </div>\n" +
                         "              <div class=\"commodity-other-discount\">\n" +
                         "                <div class=\"commodity-other-discount-item\">券</div>\n" +
@@ -237,16 +237,16 @@
                 html="";
                 var paiList = result.data.paiList;
                 for (let i = 0; i < paiList.length; i++) {
-                    html+="<a class=\"box-rank-item\" href=\"view/client/commodity.jsp?comId="+miao[i].comId+"\">\n" +
+                    html+="<a class=\"box-rank-item\" href=\"view/client/commodity.jsp?comId="+paiList[i].comId+"\">\n" +
                         "          <div class=\"title\">\n" +
                         "            <span>TOP</span>\n" +
                         "            <span>0"+(i+1)+"</span>\n" +
                         "          </div>\n" +
                         "          <div class=\"commodity-img\">\n" +
-                        "            <img src=\""+miao[i].comImg+"\" alt=\"\">\n" +
+                        "            <img src=\""+paiList[i].comImg+"\" alt=\"\">\n" +
                         "          </div>\n" +
                         "          <span class=\"commodity-name\">\n" +
-                        "              "+miao[i].comName+"\n" +
+                        "              "+paiList[i].comName+"\n" +
                         "          </span>\n" +
                         "        </a>";
                 }

@@ -1,5 +1,6 @@
 package cn.edu.xmut.lgrg.servlets.commodity;
 
+import cn.edu.xmut.lgrg.dao.impl.SysCarImpl;
 import cn.edu.xmut.lgrg.dao.impl.SysCommodityImpl;
 import cn.edu.xmut.lgrg.entity.PageData;
 import cn.edu.xmut.lgrg.entity.SysCommodity;
@@ -22,6 +23,7 @@ import java.io.IOException;
 @WebServlet("/item.do")
 public class CommodityOnlyServlet extends HttpServlet {
     SysCommodityImpl sysCommodity = BeanUtil.getInstance(SysCommodityImpl.class);
+    SysCarImpl catService = BeanUtil.getInstance(SysCarImpl.class);
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
@@ -31,6 +33,8 @@ public class CommodityOnlyServlet extends HttpServlet {
                 resp.sendRedirect("/");
             }else{
                 SysCommodity commodity = sysCommodity.selectComm(Integer.parseInt(comId));
+                Integer count = catService.getCommodityCount(req,commodity.getComId());
+                commodity.setCarCouont(count);
                 ResultUtil.outSuccess(resp,commodity);
             }
         }catch (Exception e){

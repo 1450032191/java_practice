@@ -13,9 +13,9 @@ public class SysCommodity {
     @ZnSqlField(name = "com_name")
     private String comName;
     @ZnSqlField(name = "com_price")
-    private double comPrice;
+    private Double comPrice;
     @ZnSqlField(name = "com_op")
-    private double comOp;
+    private Double comOp;
     @ZnSqlField(name = "com_create_time")
     private String comCreateTime;
     @ZnSqlField(name = "com_brand_id")
@@ -32,6 +32,45 @@ public class SysCommodity {
     private String comImg;
     @ZnSqlField(name = "com_stock")
     private String comStock;
+    @ZnSqlField(name = "brand_name")
+    private String brandName;
+    @ZnSqlField(name = "category_name")
+    private String categoryName;
+
+    private Integer carCouont;
+
+    public Integer getCarCouont() {
+        return carCouont;
+    }
+
+    public void setCarCouont(Integer carCouont) {
+        this.carCouont = carCouont;
+    }
+
+    public SysCommodity(){
+        comPrice = 0.0;
+        comOp = 0.0;
+    }
+
+    public void setComPrice(Double comPrice) {
+        this.comPrice = comPrice;
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
     public String getComStock() {
         return comStock;
@@ -73,11 +112,11 @@ public class SysCommodity {
         this.comPrice = comPrice;
     }
 
-    public double getComOp() {
+    public Double getComOp() {
         return comOp;
     }
 
-    public void setComOp(double comOp) {
+    public void setComOp(Double comOp) {
         this.comOp = comOp;
     }
 

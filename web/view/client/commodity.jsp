@@ -16,7 +16,14 @@
     <link rel="stylesheet" href="static/css/client/commodity.css">
     <link rel="stylesheet" href="static/ui_lib/swiper/css/swiper.css">
     <script src="static/ui_lib/swiper/js/swiper.min.js"></script>
-
+    <style>
+        .previews {
+            text-align: center;
+        }
+        .previews img{
+            width: 300px;
+        }
+    </style>
 </head>
 <body>
 
@@ -29,6 +36,10 @@
     <div class="w">
         <div class="crumb-fl">
             <div class="crumb-fl-item"><a>一点商城</a></div>
+            <div class="crumb-fl-item sep">/</div>
+            <div class="crumb-fl-item"><a id="brand_name"></a></div>
+            <div class="crumb-fl-item sep">/</div>
+            <div class="crumb-fl-item"><a id="category_name"></a></div>
         </div>
         <div class="crumb-fr">
             <div class="help">
@@ -42,7 +53,7 @@
 
     <div class="commodity-preview">
         <div class="previews">
-            <img src="https://img12.360buyimg.com/jdcms/s150x150_jfs/t1/104250/16/4381/186022/5de6faa0E09d72f29/2caa2532e24d0471.jpg.webp" alt="">
+            <img id="com-img" src="https://img12.360buyimg.com/jdcms/s150x150_jfs/t1/104250/16/4381/186022/5de6faa0E09d72f29/2caa2532e24d0471.jpg.webp" alt="">
         </div>
 
     </div>
@@ -159,22 +170,34 @@
     }
     
     $(function () {
-        $.get("/item.do?comId=<%=request.getAttribute("comId")%>",function (result) {
+        var comId = getQueryVariable("comId");
+        $.get("/item.do?comId="+comId,function (result) {
             if(result.code){
                 var data = result.data;
                 $("#commodity-intro").data("id",data.comId);
                 $("#sku-price").text(data.comPrice);
+                $("#sku-name").text(data.comName);
                 $("#sku-op").text(data.comOp);
-                $("#detail-content").text(data.detailInfo);
+                $("#brand_name").text(data.brandName);
+                $("#category_name").text(data.categoryName);
+                $("#buy-count").val(data.carCouont);
+                $("#com-img").attr("src",data.comImg);
+                $("#detail-content").html(data.detailInfo);
                 if(data.isVip){
                     $("#is_vip").append("<i>|</i>" +
                         "                <a href=\"\">Vip商品</a>")
                 }
+                $("#detail-content img").each(function () {
+                    console.log($(this).attr("data-lazyload"));
+                    $(this).attr("src",$(this).attr("data-lazyload"));
+                });
             }else {
                 error(result.errmsg);
             }
         })
     })
+
+
 </script>
 </body>
 </html>

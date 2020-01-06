@@ -24,10 +24,16 @@ public class ResultSetUtil {
                 Field field = fieldArr[i];
                 field.setAccessible(true);
                 ZnSqlField znSqlField = field.getAnnotation(ZnSqlField.class);
-                String sqlFieldName = znSqlField.name();
-                String sqlFieldValue = resultSet.getString(sqlFieldName);
-                if (!StringUtil.isNull(sqlFieldValue)) {
-                    field.set(ob, sqlFieldValue);
+                if(znSqlField != null){
+                    String sqlFieldName = znSqlField.name();
+                    String sqlFieldValue = resultSet.getString(sqlFieldName);
+                    if (!StringUtil.isNull(sqlFieldValue)) {
+                        if(ResultSetUtil.isDouble(field)){
+                            field.set(ob, Double.valueOf(sqlFieldValue));
+                        }else {
+                            field.set(ob, sqlFieldValue);
+                        }
+                    }
                 }
             }
             list.add((T) ob);
@@ -35,7 +41,11 @@ public class ResultSetUtil {
         return list;
     }
 
-    private static boolean isString(Field field) {
+    public static boolean isString(Field field) {
         return ("class java.lang.String".equals(field.getGenericType().toString()));
+    }
+
+    public static boolean isDouble(Field field) {
+        return ("class java.lang.Double".equals(field.getGenericType().toString()));
     }
 }

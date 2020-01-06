@@ -85,11 +85,14 @@ public class SysCommodityImpl implements SysCommodityDao {
     @Override
     public SysCommodity selectComm(int comId) throws Exception {
         SysCommodity comm = null;
-        String sql = "Select com_id,com_name,com_price,com_create_time,com_brand_id,com_category_id,detail_info,is_vip from sys_commodity where com_id=?";
+        String sql = "Select com_id,com_name,com_price,com_create_time,com_brand_id,com_category_id,detail_info,is_vip," +
+                "com_img,b.name as brand_name,cc.name as category_name,com_op,com_stock" +
+                " from sys_commodity c " +
+                "left join brand b on b.id = c.com_brand_id left join commodity_category cc on c.com_category_id = cc.id where com_id=?";
         try {
             Connection con = MySqlUtil.getCon();
             PreparedStatement pstm = con.prepareStatement(sql);
-            pstm.setString(1, comm.getComId());
+            pstm.setInt(1, comId);
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
                 comm = new SysCommodity();
@@ -101,6 +104,12 @@ public class SysCommodityImpl implements SysCommodityDao {
                 comm.setComCategoryId(rs.getString(6));
                 comm.setDetailInfo(rs.getString(7));
                 comm.setIsVip(rs.getString(8));
+
+                comm.setComImg(rs.getString("com_img"));
+                comm.setBrandName(rs.getString("brand_name"));
+                comm.setCategoryName(rs.getString("category_name"));
+                comm.setComOp(rs.getDouble("com_op"));
+                comm.setComStock(rs.getString("com_stock"));
             }
             rs.close();
             pstm.close();

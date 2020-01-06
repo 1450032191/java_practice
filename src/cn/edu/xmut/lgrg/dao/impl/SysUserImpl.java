@@ -61,6 +61,23 @@ public class SysUserImpl implements SysUserDao {
         updataUserInfo(opUser);
     }
 
+    public void setUserAdmin(PageData params) throws Exception {
+        String opUserId = params.getString("userId");
+        SysUser opSysUser = getUserByUserId(opUserId);
+        if(opSysUser == null){
+            throw new Exception("操作对象不存在~");
+        }
+        String fromStatus = opSysUser.getUserIsAdmin();
+        String toStatus = "1";
+        if("1".equals(fromStatus)){
+            toStatus = "0";
+        }
+        SysUser opUser = new SysUser();
+        opUser.setUserId(opUserId);
+        opUser.setUserIsAdmin(toStatus);
+        updataUserInfo(opUser);
+    }
+
     public void updataUserInfo(SysUser opUser) throws Exception {
         String opUserId = opUser.getUserId();
         if(StringUtil.isNull(opUserId)){

@@ -2,9 +2,11 @@ package cn.edu.xmut.lgrg.dao.impl;
 
 import cn.edu.xmut.lgrg.annotation.ZnService;
 import cn.edu.xmut.lgrg.dao.SysCarDAO;
-import cn.edu.xmut.lgrg.util.MySqlUtil;
-import cn.edu.xmut.lgrg.util.UserUtil;
+import cn.edu.xmut.lgrg.entity.SysCar;
+import cn.edu.xmut.lgrg.entity.SysCommodity;
+import cn.edu.xmut.lgrg.util.*;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,6 +24,42 @@ import java.util.Map;
 @ZnService
 public class SysCarImpl implements SysCarDAO {
     private Connection conn = null;
+
+    public Integer getCommodityCount(HttpServletRequest request,String comId) throws Exception {
+        String userId = UserUtil.getUserId(request);
+        String sql = "select * from sys_car where user_id=" + userId + " and com_id = ?";
+        Connection connection = MySqlUtil.getCon();
+        PreparedStatement pre = connection.prepareStatement(sql);
+        pre.setString(1,comId);
+        ResultSet resultSet = pre.executeQuery();
+        List<SysCar> sysCars= ResultSetUtil.getArray(resultSet,SysCar.class);
+        if(sysCars.size()>0){
+            try {
+                return Integer.valueOf(sysCars.get(0).getComCount());
+            }catch (Exception e){
+                return 0;
+            }
+        }
+        return 0;
+    }
+
+    public Integer getCarCount(HttpServletRequest request) throws Exception {
+        String userId = UserUtil.getUserId(request);
+        conn = MySqlUtil.getCon();
+        String sql = "select * from sys_car where user_id=" + userId;
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        List<SysCar> cars = ResultSetUtil.getArray(rs,SysCar.class);
+        Integer allCount = 0;
+        for (int i = 0; i < cars.size(); i++) {
+            try {
+                Integer count = Integer.valueOf(cars.get(i).getComCount());
+                allCount=allCount+count;
+            }catch (Exception e){}
+        }
+        return allCount;
+    }
 
     @Override
     public List<Map<String, String>> getAllShoes(HttpServletRequest request) throws Exception {
@@ -123,7 +161,34 @@ public class SysCarImpl implements SysCarDAO {
         if (result!=0){
             return true;
         }else{
-            return false;
+            String sel = "insert into sys_car(user_id,com_price,com_id,com_quantity) values(?,?,?,?)";
+            SysCommodityImpl commodityService = BeanUtil.getInstance(SysCommodityImpl.class);
+            SysCommodity sysCommodity = commodityService.selectComm(Integer.valueOf(comId));
+            if(sysCommodity == null){
+                throw new Exception("商品不存在~");
+            }
+            try {
+                String s = sysCommodity.getComStock();
+                Integer stock = Integer.valueOf(s);
+                if(stock<quantity){
+                    throw new Exception("库存不足~");
+                }
+                Connection connection = MySqlUtil.getCon();
+                PreparedStatement pre = connection.prepareStatement(sel);
+                pre.setString(1,userId);
+                pre.setString(2,String.valueOf(sysCommodity.getComPrice()));
+                pre.setString(3,String.valueOf(comId));
+                pre.setString(4,String.valueOf(quantity));
+                if(pre.executeUpdate()>0){
+                    return true;
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+                throw new Exception(e.getMessage());
+            }
         }
+        return false;
     }
+
+
 }

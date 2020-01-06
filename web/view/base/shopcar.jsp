@@ -1,4 +1,5 @@
-<%--
+<%@ page import="cn.edu.xmut.lgrg.dao.impl.SysCarImpl" %>
+<%@ page import="cn.edu.xmut.lgrg.util.BeanUtil" %><%--
   Created by IntelliJ IDEA.
   User: ZiNan
   Date: 2019/11/18
@@ -183,9 +184,17 @@
 
             <div id="settleup">
                 <div>
+                    <%
+                        SysCarImpl cartService = BeanUtil.getInstance(SysCarImpl.class);
+                        Integer cartCount = cartService.getCarCount(request);
+                    %>
                     <i class="glyphicon glyphicon-shopping-cart"></i>
                     <a href="cart/list.html" class="styly-red">我的购物车</a>
-                    <i class="ci-count" style="">12</i>
+                    <i class="ci-count" style="<%
+                        if(cartCount<=0){
+                            out.print("display:none");
+                        }
+                    %>"><%=cartCount%></i>
                 </div>
             </div>
         </div>

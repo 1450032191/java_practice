@@ -168,10 +168,16 @@ public class MySqlPageUtlil {
                 Field field = fieldArr[j];
                 field.setAccessible(true);
                 ZnSqlField znSqlField = field.getAnnotation(ZnSqlField.class);
-                String sqlFieldName = znSqlField.name();
-                String sqlFieldValue = result.getString(sqlFieldName);
-                if (!StringUtil.isNull(sqlFieldValue)) {
-                    field.set(ob, sqlFieldValue);
+                if(znSqlField != null){
+                    String sqlFieldName = znSqlField.name();
+                    String sqlFieldValue = result.getString(sqlFieldName);
+                    if (!StringUtil.isNull(sqlFieldValue)) {
+                        if(ResultSetUtil.isDouble(field)){
+                            field.set(ob, Double.valueOf(sqlFieldValue));
+                        }else {
+                            field.set(ob, sqlFieldValue);
+                        }
+                    }
                 }
             }
             list.add((T) ob);
