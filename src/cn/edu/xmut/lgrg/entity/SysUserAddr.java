@@ -8,6 +8,7 @@ import cn.edu.xmut.lgrg.annotation.ZnSqlField;
  * @Description:
  */
 public class SysUserAddr {
+
     @ZnSqlField(name = "ua_id")
     private String uaId;
     @ZnSqlField(name = "ua_name")
@@ -18,6 +19,36 @@ public class SysUserAddr {
     private String uaDetailAddr;
     @ZnSqlField(name = "ua_addr")
     private String uaAddr;
+    @ZnSqlField(name = "user_id")
+    private String userId;
+    @ZnSqlField(name = "status")
+    private String status;
+    @ZnSqlField(name = "is_default")
+    private String isDefault;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getIsDefault() {
+        return isDefault;
+    }
+
+    public void setIsDefault(String isDefault) {
+        this.isDefault = isDefault;
+    }
 
     public String getUaId() {
         return uaId;

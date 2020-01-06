@@ -20,10 +20,10 @@ public class DeleteBrandServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
-        int id = Integer.parseInt(req.getParameter("id"));
+        int id = Integer.parseInt(req.getParameter("brandId"));
         try {
             Connection con = MySqlUtil.getCon();
-            String sql = "delete from brand where id=?";
+            String sql = "update brand set status = 0 where id=?";
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(1, id);
             pstm.executeUpdate();

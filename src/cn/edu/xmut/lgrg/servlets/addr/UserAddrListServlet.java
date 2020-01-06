@@ -1,8 +1,7 @@
-package cn.edu.xmut.lgrg.servlets.brand;
+package cn.edu.xmut.lgrg.servlets.addr;
 
-import cn.edu.xmut.lgrg.dao.impl.SysBrandDaoIml;
-import cn.edu.xmut.lgrg.entity.Brand;
-import cn.edu.xmut.lgrg.entity.PageData;
+import cn.edu.xmut.lgrg.dao.impl.SysUserAddrlmpl;
+import cn.edu.xmut.lgrg.entity.SysUserAddr;
 import cn.edu.xmut.lgrg.util.BeanUtil;
 import cn.edu.xmut.lgrg.util.ResultUtil;
 
@@ -16,16 +15,16 @@ import java.util.List;
 
 /**
  * @Auther: ZiNan
- * @Date: 2020/1/6 20:15
+ * @Date: 2020/1/6 21:25
  * @Description:
  */
-@WebServlet("/brand/list.do")
-public class BrandListServlet extends HttpServlet {
+@WebServlet("/user/ua/list.do")
+public class UserAddrListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        SysUserAddrlmpl addrService = BeanUtil.getInstance(SysUserAddrlmpl.class);
         try {
-            SysBrandDaoIml brandService = BeanUtil.getInstance(SysBrandDaoIml.class);
-            List<Brand> list = brandService.list();
+            List<SysUserAddr> list = addrService.selectAllAddr(req);
             ResultUtil.outSuccess(resp,list);
         }catch (Exception e){
             e.printStackTrace();

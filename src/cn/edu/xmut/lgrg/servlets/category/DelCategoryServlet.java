@@ -18,7 +18,7 @@ import java.io.IOException;
  * @Description:
  */
 @WebServlet("/category/del.do")
-public class delCategoryServlet extends HttpServlet {
+public class DelCategoryServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {

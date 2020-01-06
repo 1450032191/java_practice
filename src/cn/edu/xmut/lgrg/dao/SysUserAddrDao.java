@@ -10,13 +10,5 @@ import java.util.List;
  * @Description:
  */
 public interface SysUserAddrDao {
-    public boolean addAddr(SysUserAddr addr) throws Exception;
 
-    public boolean deleteAddr(SysUserAddr addr) throws Exception;
-
-    public boolean updateAddr(SysUserAddr addr) throws Exception;
-
-    public SysUserAddr selectAddr(int addrId) throws Exception;
-
-    public List selectAllAddr(int addrId) throws Exception;
 }
