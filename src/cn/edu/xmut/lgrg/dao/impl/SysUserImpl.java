@@ -329,29 +329,4 @@ public class SysUserImpl implements SysUserDao {
     private static String getUserPass(String str){
         return Md5.string2MD5(Md5.string2MD5(str)+"1912114103");
     }
-
-    @Override
-    public boolean addAddr(SysUserAddr addr) throws Exception {
-        return false;
-    }
-
-    @Override
-    public boolean deleteAddr(SysUserAddr addr) throws Exception {
-        return false;
-    }
-
-    @Override
-    public boolean updateAddr(SysUserAddr addr) throws Exception {
-        return false;
-    }
-
-    @Override
-    public SysUserAddr selectAddr(int addrId) throws Exception {
-        return null;
-    }
-
-    @Override
-    public List selectAllAddr(int addrId) throws Exception {
-        return null;
-    }
 }
