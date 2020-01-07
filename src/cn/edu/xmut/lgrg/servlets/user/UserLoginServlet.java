@@ -25,7 +25,7 @@ public class UserLoginServlet extends HttpServlet {
         String userId = UserUtil.getUserId(request);
         String userName = request.getParameter("name");
         String userPass = request.getParameter("pass");
-        String checkCode = request.getParameter("yangzheng");
+        String checkCode = "";
         try {
             SysUser sysUser = sysUserImpl.login(request,userName,userPass,checkCode);
             ResultUtil.outSuccess(response,sysUser);

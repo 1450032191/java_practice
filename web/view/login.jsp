@@ -11,6 +11,7 @@
     <title> [ <%=SysConfig.sysName%> ] 登陆</title>
     <jsp:include page="/view/base/base.jsp"></jsp:include>
     <link rel="stylesheet" href="static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="static/ui_lib/verifycode/css/verify.css">
     <style>
         body {
             background: url('images/base/index-back.gif');
@@ -26,7 +27,7 @@
         <div style="text-align:center">
             <a href="#"><img src="images/base/logo-admin.png" /></a>
         </div>
-        <div style="width:422px;height:409px;margin:0 auto;padding:30px;margin-top:5px;background-color:#fff;">
+        <div style="width:422px;height:575px;margin:0 auto;padding:30px;margin-top:5px;background-color:#fff;">
             <span style="font-size: 18px;color: #B2B2B2;float:left;">登陆</span>
             <div style="float:right;position: relative;left:0px;top:-16px;">
                 <img src="images/base/logo-64.ico" />
@@ -40,19 +41,17 @@
                     <label style="width:40px;height:40px;padding:8px;float:left;padding-left:13px;"><i class="glyphicon glyphicon-lock" style="font-size: 22px;" aria-hidden="true"></i></label>
                     <input class="form-control password" id="login_password" type="password" placeholder="请输入密码" style="float:right;width:320px;height:38px;border-radius:0px;outline: none;border-color: #fff;box-shadow: 0 0 5px rgba(207, 220, 0, -2.4);border-radius: 5px;"/>
                 </div>
-                <div style="width:198px;height:40px;    border: 1px solid #e6e6e6;float:left;">
-                    <label style="width:40px;height:40px;padding:8px;float:left;padding-left:13px;"><i class="glyphicon glyphicon-retweet" style="font-size: 22px;" aria-hidden="true"></i></label>
-                    <input class="form-control yangzheng" id="login_yangzheng" type="text" placeholder="请输入验证码" style="float:right;width:156px;height:38px;border-radius:0px;outline: none;border-color: #fff;box-shadow: 0 0 5px rgba(207, 220, 0, -2.4);border-radius: 5px;" maxlength="4"/>
+                <div style="width:362px;height:40px;    border: 1px solid #e6e6e6; margin-bottom:15px;">
+                    <div id="mpanel4">
+                    </div>
                 </div>
-                <div style="width:80px;height:35px;float:left;background-color:#FFB90F;margin-top:2px;margin-left:10px;">
-                    <img id="img" src="util/valicode.do" onClick="this.src=this.src+'?'+Math.random()" style="    width: 100%; height: 100%;"/>
-                </div>
-                <div style="width:362px;height:40px;margin-top:76px;">
-                    <button type="button" id="sign" class="btn btn-default btn-block" style="background-color:#42B4F2;font-size: 18px;width:362px;height:40px;color: #fff;outline:none;">登&nbsp;&nbsp;&nbsp;陆</button>
+                <div style="width:362px;height:40px;margin-top:217px;">
+                    <button type="button" id="sign" class="btn btn-default btn-block" style="
+                    background-color:#42B4F2;font-size: 18px;width:362px;height:40px;color: #fff;outline:none;">登&nbsp;&nbsp;&nbsp;陆</button>
                 </div>
             </div>
             <!-- foot -->
-            <div style="width:360px;height:20px;margin-top:16px;">
+            <div style="width:360px;height:20px;margin-top:200px;">
                 <a style="    margin-left: 220px;color: #878787;" onclick="alert('暂不开放~')">忘记密码</a>
                 <a style="    margin-left: 10px;color: #878787;" onclick="$('#register').modal('show');"> <font color="red">新用户注册</font></a>
             </div>
@@ -105,9 +104,45 @@
         </div>
     </div>
 </div>
-
-
+<script type="text/javascript" src="static/ui_lib/verifycode/js/verify.min.js" ></script>
 <script>
+    var item = 0;
+    $(function () {
+        $('#mpanel4').slideVerify({
+            type : 2,		//类型
+            vOffset : 5,	//误差量，根据需求自行调整
+            vSpace : 5,	//间隔
+            imgName : [
+                'base/vi/adidas7.jpg',
+                'base/vi/adidas8.jpg',
+                'base/vi/Nike1.jpg',
+                'base/vi/Nike12.jpg'
+            ],
+            imgSize : {
+                width: '362px',
+                height: '200px',
+            },
+            blockSize : {
+                width: '40px',
+                height: '40px',
+            },
+            barSize : {
+                width : '362px',
+                height : '40px',
+            },
+            ready : function() {
+
+            },
+            success : function() {
+                item = 1;
+            },
+            error : function() {
+                alert('验证失败！');
+            }
+
+        });
+    })
+
     $("#sign").click(function () {
         var data = {
             name: $("#login_name").val(),
@@ -120,8 +155,8 @@
             error("请输入用户名/手机号/邮箱！");
         }else if(data.pass.length == 0){
             error("请输入密码！");
-        }else if(data.yangzheng.length != 4){
-            error("请输入验证码！");
+        }else if(item != 1){
+            error("请验证！");
         }else {
             $.post("user/login.do",data,function (result) {
                 if(result.code){

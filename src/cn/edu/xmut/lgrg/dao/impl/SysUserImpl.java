@@ -21,12 +21,12 @@ import java.util.Map;
 @ZnService
 public class SysUserImpl implements SysUserDao {
     public SysUser login(HttpServletRequest request,String userName, String userPass,String checkCode) throws Exception {
-        if(StringUtil.isNull(userName)||StringUtil.isNull(userPass)||StringUtil.isNull(checkCode)){
+        if(StringUtil.isNull(userName)||StringUtil.isNull(userPass)){
             throw new Exception("参数不完整~");
         }
-        if(!CodeUtil.checkCode(request,checkCode)){
-            throw new Exception("验证码错误~");
-        }
+//        if(!CodeUtil.checkCode(request,checkCode)){
+//            throw new Exception("验证码错误~");
+//        }
         userPass = getUserPass(userPass);
         SysUser sysUser = null;
         //如果是用户手机号

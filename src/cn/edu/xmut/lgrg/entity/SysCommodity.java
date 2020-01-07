@@ -36,6 +36,16 @@ public class SysCommodity {
     private String brandName;
     @ZnSqlField(name = "category_name")
     private String categoryName;
+    @ZnSqlField(name = "sales")
+    private String sales;
+
+    public String getSales() {
+        return sales;
+    }
+
+    public void setSales(String sales) {
+        this.sales = sales;
+    }
 
     private Integer carCouont;
 

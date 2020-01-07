@@ -126,12 +126,26 @@ public class SysCommodityImpl implements SysCommodityDao {
         return pageUtlil.getArray(SysCommodity.class);
     }
 
+
+
     public PageData list(PageData params) throws Exception {
-        String key = params.getString("key");
-        String baseSql = "select * from sys_commodity where (1=1)";
+        String key = params.getString("seachKey");
+        String serachBrand = params.getString("serachBrand");
+        String stock = params.getString("stock");
+        String baseSql = "Select com_id,com_name,com_price,com_create_time,com_brand_id,com_category_id,detail_info,is_vip," +
+                "com_img,b.name as brand_name,cc.name as category_name,com_op,com_stock,'0' as sales" +
+                " from sys_commodity c " +
+                "left join brand b on b.id = c.com_brand_id left join commodity_category cc on c.com_category_id = cc.id where (1=1)";
         if(!StringUtil.isNull(key)){
             baseSql += "and com_name LIKE CONCAT(CONCAT('%','"+key+"'),'%')";
         }
+        if(!StringUtil.isNull(serachBrand)){
+            baseSql += "and com_brand_id = "+serachBrand+" ";
+        }
+        if(!StringUtil.isNull(stock)){
+            baseSql += "and com_stock <= 10 ";
+        }
+        System.out.println(baseSql);
         MySqlPageUtlil pageUtlil = new MySqlPageUtlil(baseSql,params);
         Map<String,Object> page = new PageData();
         page.put("total",pageUtlil.getTotal());
@@ -139,7 +153,7 @@ public class SysCommodityImpl implements SysCommodityDao {
         page.put("pageIndex",pageUtlil.getPageIndex());
         PageData res = new PageData();
         res.put("page",page);
-        res.put("list",pageUtlil.getArray(SysUser.class));
+        res.put("list",pageUtlil.getArray(SysCommodity.class));
         return res;
     }
 

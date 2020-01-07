@@ -37,7 +37,7 @@
     <div class="collapse" id="charts">
         <ul class="nav nav-collapse">
             <li>
-                <a href="../charts/charts.html">
+                <a href="view/admin/commodity.jsp">
                     <span class="sub-item">产品管理</span>
                 </a>
             </li>

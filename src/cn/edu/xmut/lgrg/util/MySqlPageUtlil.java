@@ -76,10 +76,6 @@ public class MySqlPageUtlil {
         init();
     }
 
-    // ku
-
-
-
     public void init() throws Exception {
         try {
             String countSql = "select count(*) from (" + baseSql + ") as t";
@@ -107,14 +103,13 @@ public class MySqlPageUtlil {
                     pre.setString(i+1,arr[i]);
                 }
 
-                //开始你的表演
-
                 resultSet = pre.executeQuery();
                 ResultSetMetaData rsmd = resultSet.getMetaData();
                 Integer columnCount=rsmd.getColumnCount();
                 List<String> columnNameList = new ArrayList<>();
                 for (int i = 1; i <= columnCount; i++) {
-                    columnNameList.add(rsmd.getColumnName(i));
+                    System.out.print(rsmd.getColumnLabel(i)+",");
+                    columnNameList.add(rsmd.getColumnLabel(i));
                 }
                 resultList = new ArrayList<>();
                 while (resultSet.next()){
