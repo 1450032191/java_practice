@@ -79,6 +79,7 @@ public class changePasswordServlet extends HttpServlet {
                 }
 
                 request.setAttribute("msg", "更新成功");
+                request.getRequestDispatcher("/ChangePassword.jsp").forward(request, response);
 
             } else {
                 request.setAttribute("msg", "旧密码错误");
