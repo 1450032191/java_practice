@@ -33,6 +33,7 @@
 
 <%
     String msg = request.getParameter("msg");
+    //先判断为不为空，为空不执行
     if (msg != null) {
 
 
