@@ -40,7 +40,7 @@
             </iframe>
         </td>
         <td width="1000px" height="480px">
-            <iframe src="custom-points.html" frameborder="0" width="900px" height="470px" scrolling="0">
+            <iframe src="combo-bar-line.html" frameborder="0" width="900px" height="470px" scrolling="0">
             </iframe>
         </td>
     </tr>
