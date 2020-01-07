@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>月订单总金额</title>
+	<script src="../../css/Chart.js"></script>
+	<script src="../../css/utils.js"></script>
+	<style>
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+
+		.chart-container {
+			width: 850px;
+			margin-left: 40px;
+			margin-right: 40px;
+			margin-bottom: 40px;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+	</style>
+</head>
+
+<body>
+<div class="container"></div>
+<script>
+	function createConfig(gridlines, title) {
+		return {
+			type: 'line',
+			data: {
+				labels: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+				datasets: [{
+					label: '月订单总金额',
+					backgroundColor: window.chartColors.red,
+					borderColor: window.chartColors.red,
+					data: [4050, 3040, 6780, 8700, 3008, 5070, 7005, 5500, 5605, 6203, 9080, 5078],
+					fill: false,
+				}]
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: title
+				},
+				scales: {
+					xAxes: [{
+						gridLines: gridlines
+					}],
+					yAxes: [{
+						gridLines: gridlines,
+						ticks: {
+							min: 0,
+							max: 10000,
+							stepSize: 1000
+						}
+					}]
+				}
+			}
+		};
+	}
+
+	window.onload = function () {
+		var container = document.querySelector('.container');
+
+		[{
+			title: '月订单总金额',
+			gridLines: {
+				display: true
+			}
+		}].forEach(function (details) {
+			var div = document.createElement('div');
+			div.classList.add('chart-container');
+
+			var canvas = document.createElement('canvas');
+			div.appendChild(canvas);
+			container.appendChild(div);
+
+			var ctx = canvas.getContext('2d');
+			var config = createConfig(details.gridLines, details.title);
+			new Chart(ctx, config);
+		});
+	};
+</script>
+</body>
+
+</html>

@@ -25,12 +25,12 @@
     <tr>
         <td width="1000px" height="480px">
             <div>
-                <iframe src="bar.html" frameborder="0" width="900px" height="470px" scrolling="0">
+                <iframe src="gridlines-display.html" frameborder="0" width="900px" height="470px" scrolling="0">
                 </iframe>
             </div>
         </td>
         <td width="1000px" height="480px">
-            <iframe src="radar.html" frameborder="0" width="900px" height="470px" scrolling="0">
+            <iframe src="combo-bar-line.html" frameborder="0" width="900px" height="470px" scrolling="0">
             </iframe>
         </td>
     </tr>
@@ -40,7 +40,7 @@
             </iframe>
         </td>
         <td width="1000px" height="480px">
-            <iframe src="combo-bar-line.html" frameborder="0" width="900px" height="470px" scrolling="0">
+            <iframe src="point-styles.html" frameborder="0" width="900px" height="470px" scrolling="0">
             </iframe>
         </td>
     </tr>
