@@ -42,11 +42,17 @@
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img class="focus-item-img" src="upload/sys_images/a0efd7b99f835407.jpg">
+                        <img class="focus-item-img" src="upload/sys_images/LiningRoll.jpg">
                     </div>
-                    <div class="swiper-slide">Slide 2</div>
-                    <div class="swiper-slide">Slide 3</div>
-                    <div class="swiper-slide">Slide 4</div>
+                    <div class="swiper-slide">
+                        <img class="focus-item-img" src="upload/sys_images/newbalanceRoll.jpg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="focus-item-img" src="upload/sys_images/NIKERoll.jpg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="focus-item-img" src="upload/sys_images/converseRoll.jpg">
+                    </div>
                     <!-- Add Arrows -->
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
