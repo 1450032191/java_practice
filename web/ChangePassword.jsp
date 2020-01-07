@@ -33,23 +33,28 @@
 
 <%
     String msg = request.getParameter("msg");
-    if (msg.equals("两次新密码不同")) {%>
+    if (msg != null) {
+
+
+        if (msg.equals("两次新密码不同")) {%>
 <script>
     alert("两次输入的新密码不同，请重新输入~")
 </script>
-<%} else if (msg.equals("旧密码错误")) {%>
+     <%}else if (msg.equals("旧密码错误")) {%>
 <script>
     alert("旧密码错误，请重新输入~")
 </script>
 
-<% } else if(msg.equals("更新成功")){%>
+     <%}else if (msg.equals("更新成功")) {%>
 <script>
     alert("更新成功~")
 </script>
 
-<%}else{
+<%
+        }else{
 
-}
+        }
+    }
 %>
 <body>
 <div class="container">
