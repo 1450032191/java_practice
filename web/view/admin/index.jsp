@@ -1,19 +1,21 @@
-<%@ page import="cn.edu.xmut.lgrg.config.SysConfig" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: ZiNan
-  Date: 2020/1/2
-  Time: 8:54
+  Date: 2020/1/6
+  Time: 8:24
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     request.setAttribute("pageName","首页");
 %>
-<html>
-<head>
-    <title> [ <%=SysConfig.sysName%> ] 后台首页 </title>
-</head>
-<body>
+<jsp:include page="base/head.jsp"></jsp:include>
 
-</body>
-</html>
+
+<script>
+    var vue = new Vue({
+    });
+</script>
+
+
+<jsp:include page="base/foot.jsp"></jsp:include>

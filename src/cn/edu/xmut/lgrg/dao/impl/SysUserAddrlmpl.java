@@ -1,155 +1,137 @@
 package cn.edu.xmut.lgrg.dao.impl;
 
+import cn.edu.xmut.lgrg.annotation.ZnService;
+import cn.edu.xmut.lgrg.dao.SysUserAddrDao;
 import cn.edu.xmut.lgrg.dao.SysUserDao;
+import cn.edu.xmut.lgrg.entity.PageData;
 import cn.edu.xmut.lgrg.entity.SysCommodity;
 import cn.edu.xmut.lgrg.entity.SysUserAddr;
-import cn.edu.xmut.lgrg.util.ConnDBUtil;
+import cn.edu.xmut.lgrg.util.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SysUserAddrlmpl implements SysUserDao {
-
-
-    @Override
-    public boolean addAddr(SysUserAddr addr) throws Exception {
-        String sql = "insert into sys_user_addr(ua_name,ua_phone,ua_detail_addr,ua_addr) value(?,?,?,?)";
+@ZnService
+public class SysUserAddrlmpl implements SysUserAddrDao {
+    public void addAddr(SysUserAddr addr,HttpServletRequest request) throws Exception {
+        String sql = "insert into sys_user_addr(ua_name,ua_phone,ua_detail_addr,ua_addr,user_id,status,is_default)" +
+                " value(?,?,?,?,?,1,?)";
         PreparedStatement pstm = null;
-        ConnDBUtil connDB = new ConnDBUtil();
-        connDB.OpenConn();
-        int i = 0;
         try {
-            pstm = connDB.createPStmt(sql);
+            SysUserAddr userAddr = getDefalutAddr(request);
+            if(userAddr == null){
+                addr.setIsDefault("1");
+            }else {
+                addr.setIsDefault("0");
+            }
+            List<SysUserAddr> count = selectAllAddr(request);
+            pstm = MySqlUtil.getCon().prepareStatement(sql);
             pstm.setString(1, addr.getUaName());
             pstm.setString(2, addr.getUaPhone());
             pstm.setString(3, addr.getUaDetailAddr());
             pstm.setString(4, addr.getUaAddr());
-            i = pstm.executeUpdate();
+            pstm.setString(5, UserUtil.getUserId(request));
+            pstm.setString(6, addr.getIsDefault());
+            pstm.executeUpdate();
             pstm.close();
         } catch (Exception e) {
             throw new Exception("数据操作错误！");
         } finally {
-            connDB.closeConn();
         }
-        if (i > 0) {
-            return true;
-        }
-        return false;
     }
 
 
-    @Override
-    public boolean deleteAddr(SysUserAddr addr) throws Exception {
-        String sql = "DELETE FROM sys_user_addr WHERE id=?";
+    public void deleteAddr(SysUserAddr addr) throws Exception {
+        String sql = "DELETE FROM sys_user_addr WHERE ua_id=?";
         PreparedStatement pstm = null;
-        ConnDBUtil connDB = new ConnDBUtil();
-        connDB.OpenConn();
+        SysUserAddr aa = selOnly(addr.getUaId());
+        if("1".equals(aa.getIsDefault())){
+            throw new Exception("默认不可删除~");
+        }
+        pstm = MySqlUtil.getCon().prepareStatement(sql);
+        pstm.setString(1, addr.getUaId());
+        pstm.executeUpdate();
+        pstm.close();
+    }
+
+    public void updateAddr(SysUserAddr addr) throws Exception {
+        String sql = "update sys_user_addr set ua_name=?,ua_phone=?,ua_detail_addr=?,ua_addr=? where ua_id=?";
+        PreparedStatement pstm = null;
         int i = 0;
-        try {
-            pstm = connDB.createPStmt(sql);
-            pstm.setString(1, addr.getUaId());
-            i = pstm.executeUpdate();
-            pstm.close();
-        } catch (Exception e) {
-            throw new Exception("数据操作错误！");
-        } finally {
-            connDB.closeConn();
-        }
-        if (i > 0) {
-            return true;
-        }
-        return false;
+        pstm = MySqlUtil.getCon().prepareStatement(sql);
+        pstm.setString(1, addr.getUaName());
+        pstm.setString(2, addr.getUaPhone());
+        pstm.setString(3, addr.getUaAddr());
+        pstm.setString(4, addr.getUaDetailAddr());
+        pstm.setString(5, addr.getUaId());
+        i = pstm.executeUpdate();
+        pstm.close();
     }
 
-    @Override
-    public boolean updateAddr(SysUserAddr addr) throws Exception {
-        String sql = "upadre sys_ua_addr set ua_name=?,ua_phone=?,ua_detail_addr=?,ua_addr=? where id=?";
-        PreparedStatement pstm = null;
-        ConnDBUtil connDB = new ConnDBUtil();
-        connDB.OpenConn();
-        int i = 0;
-        try {
-            pstm = connDB.createPStmt(sql);
-            pstm.setString(1, addr.getUaName());
-            pstm.setString(2, addr.getUaPhone());
-            pstm.setString(3, addr.getUaAddr());
-            pstm.setString(4, addr.getUaDetailAddr());
-            pstm.setString(4, addr.getUaId());
-            i = pstm.executeUpdate();
-            pstm.close();
-        } catch (Exception e) {
-            throw new Exception("数据操作错误！");
-        } finally {
-            connDB.closeConn();
-        }
-        if (i > 0) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public SysUserAddr selectAddr(int addrId) throws Exception {
-        SysUserAddr addr = null;
-        String sql = "Select ua_name,ua_phone,ua_detail_addr,ua_addr from sys_ua_addr where com_id=?";
-        PreparedStatement pstm = null;
-        ConnDBUtil connDB = new ConnDBUtil();
-        try {
-            pstm = connDB.createPStmt(sql);
-            pstm.setString(1, addr.getUaId());
-            ResultSet rs = connDB.pstmtQuery();
-            if (rs.next()) {
-                addr = new SysUserAddr();
-                addr.setUaName(rs.getString(1));
-                addr.setUaPhone(rs.getString(2));
-                addr.setUaDetailAddr(rs.getString(3));
-                addr.setUaAddr(rs.getString(4));
-
-            }
-            rs.close();
-            pstm.close();
-        } catch (Exception e) {
-            throw new Exception("操作错误！");
-        } finally {
-            connDB.closeConn();
-        }
-        return addr;
-    }
-
-    @Override
-    public List selectAllAddr(int addrId) throws Exception {
-        List ListAll = new ArrayList();
-        String sql = "Select ua_name,ua_phone,ua_detail_addr,ua_addr from sys_ua_addr where com_id=?";
+    public SysUserAddr selOnly(String uaId) throws Exception {
+        String sql = "select ua_id,ua_name,ua_phone,ua_detail_addr,ua_addr,status,is_default,user_id " +
+                " from sys_user_addr where ua_id=?";
         PreparedStatement pstmt = null;
-        ConnDBUtil connDB = null;
-        connDB = new ConnDBUtil();
-        try {
-            connDB.OpenConn();
-            pstmt = connDB.createPStmt(sql);
-            ResultSet rs = connDB.pstmtQuery();
-            while (rs.next()) {
-                SysUserAddr addr = new SysUserAddr();
-                addr.setUaName(rs.getString(1));
-                addr.setUaPhone(rs.getString(2));
-                addr.setUaDetailAddr(rs.getString(3));
-                addr.setUaAddr(rs.getString(4));
-
-                ListAll.add(addr);
-            }
-            rs.close();
-            pstmt.close();
-        } catch (Exception e) {
-            System.out.println(e);
-            throw new Exception("操作中出现错误！！！");
-        } finally {
-            connDB.closeConn();
+        pstmt = MySqlUtil.getCon().prepareStatement(sql);
+        pstmt.setString(1, uaId);
+        ResultSet rs = pstmt.executeQuery();
+        List<SysUserAddr> list = ResultSetUtil.getArray(rs,SysUserAddr.class);
+        rs.close();
+        pstmt.close();
+        if(list.size()>0){
+            return list.get(0);
         }
-        return ListAll;
+        return null;
+    }
 
+    public SysUserAddr getDefalutAddr(HttpServletRequest request) throws Exception {
+        String userId = UserUtil.getUserId(request);
+        String sql = "select ua_id,ua_name,ua_phone,ua_detail_addr,ua_addr,status,is_default,user_id from sys_user_addr " +
+                "where is_default = 1 and user_id=?";
+        PreparedStatement pstmt = null;
+        pstmt = MySqlUtil.getCon().prepareStatement(sql);
+        pstmt.setString(1, userId);
+        ResultSet rs = pstmt.executeQuery();
+        List<SysUserAddr> list =  ResultSetUtil.getArray(rs,SysUserAddr.class);
+        if(list.size()>0){
+            return list.get(0);
+        }
+        return null;
+    }
 
+    public void setDeatault(HttpServletRequest request, PageData params)throws Exception{
+        String uaId = params.getString("uaId");
+        if(StringUtil.isNull(uaId)){
+            throw new Exception("参数异常~");
+        }
+        String sql = "update sys_user_addr set is_default = 0 where user_id = ?";
+        String userId = UserUtil.getUserId(request);
+        Connection con = MySqlUtil.getCon();
+        PreparedStatement pre = con.prepareStatement(sql);
+        pre.setString(1,userId);
+        int count = pre.executeUpdate();
+        if(count>=0){
+            sql = "update sys_user_addr set is_default = 1 where ua_id = ? and user_id = ?";
+            pre = con.prepareStatement(sql);
+            pre.setString(1,uaId);
+            pre.setString(2,userId);
+            pre.execute();
+        }
+    }
 
+    public List<SysUserAddr> selectAllAddr(HttpServletRequest req) throws Exception {
+        List<SysUserAddr> ListAll = new ArrayList();
+        String sql = "Select ua_id,ua_name,ua_phone,ua_detail_addr,ua_addr,status,is_default,user_id from sys_user_addr where user_id=?";
+        PreparedStatement pstmt = null;
+        Connection connection = MySqlUtil.getCon();
+        pstmt = connection.prepareStatement(sql);
+        pstmt.setString(1, UserUtil.getUserId(req));
+        ResultSet rs = pstmt.executeQuery();
+        return ResultSetUtil.getArray(rs,SysUserAddr.class);
     }
 }
 

@@ -1,6 +1,8 @@
 package cn.edu.xmut.lgrg.servlets.car;
 
 import cn.edu.xmut.lgrg.dao.impl.SysCarImpl;
+import cn.edu.xmut.lgrg.entity.PageData;
+import cn.edu.xmut.lgrg.util.BeanUtil;
 import cn.edu.xmut.lgrg.util.ResultUtil;
 
 import javax.servlet.ServletException;
@@ -14,19 +16,18 @@ import java.io.IOException;
  * @author azx
  * @create 2020-01-03-16:25
  */
-@WebServlet("/car/changeQuantityServlet")
+@WebServlet("/cart/set.do")
 public class ChangeQuantityServlet extends HttpServlet {
+    SysCarImpl carService = BeanUtil.getInstance(SysCarImpl.class);
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
-
-        //获取商品id和 商品数量
-        int comId=1;
-        int quantity=0;
-
         //调用更改商品的数量的方法
         try {
-            boolean result = new SysCarImpl().changeQuantity(request, comId, quantity);
-
+            //获取商品id和 商品数量
+            PageData params = new PageData(request);
+            int comId=Integer.parseInt(params.getString("sku"));
+            int quantity=Integer.parseInt(params.getString("skuCount"));
+            boolean result = carService.changeQuantity(request, comId, quantity);
             if (result){
                 ResultUtil.outSuccess(response,result);
             }else{
@@ -34,6 +35,7 @@ public class ChangeQuantityServlet extends HttpServlet {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            ResultUtil.outError(response);
         }
     }
 

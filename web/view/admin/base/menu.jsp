@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <li class="nav-item">
-    <a href="../index.html">
+    <a href="view/admin/index.jsp">
         <i class="fas fa-home"></i>
         <p>首页</p>
         <%--<span class="badge badge-count">5</span>--%>
@@ -22,7 +22,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="base/head.jsp">
+    <a href="view/admin/user.jsp">
         <i class="fas fa-user-alt"></i>
         <p>用户管理</p>
     </a>
@@ -42,8 +42,13 @@
                 </a>
             </li>
             <li>
-                <a href="../charts/charts.html">
+                <a href="view/admin/category.jsp">
                     <span class="sub-item">分类管理</span>
+                </a>
+            </li>
+            <li>
+                <a href="view/admin/brand.jsp">
+                    <span class="sub-item">品牌管理</span>
                 </a>
             </li>
         </ul>
