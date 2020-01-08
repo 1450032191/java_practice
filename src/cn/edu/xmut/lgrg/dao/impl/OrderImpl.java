@@ -336,4 +336,53 @@ public class OrderImpl implements OrderDao {
         return order_status;
     }
 
+    /**
+     * 获取每天的订单数量
+     * @return
+     * @throws Exception
+     */
+    public Map<String,Integer> getOrderSumByday() throws Exception {
+
+
+        Map<String,Integer> time=new HashMap<>();
+        List<String> list=new ArrayList<String>();
+        //1.查出订单表所有的时间
+        String sql="select create_time from sys_order";
+
+        Connection conn=MySqlUtil.getCon();
+        PreparedStatement ps = conn.prepareStatement(sql);
+
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()){
+            String create_time = rs.getString("create_time");
+            String subtime = create_time.substring(0, 8);//截取年月日部分
+            list.add(subtime);
+        }
+
+
+        //2.遍历集合，查找相同的时间的数量
+        Map<String, Integer> timeMap = getTimeMap(time, list);
+
+        return timeMap;
+    }
+
+    /**
+     * 遍历集合，统计每天的订单数量
+     * @param time
+     * @param list
+     * @return
+     */
+    public Map<String, Integer> getTimeMap(Map<String, Integer> time, List<String> list) {
+        for (String str : list) {
+            if(time.containsKey(str)) {
+                time.put(str, time.get(str).intValue()+1);
+            }else {
+                time.put(str, new Integer(1));
+            }
+        }
+
+        return time;
+    }
+
 }
