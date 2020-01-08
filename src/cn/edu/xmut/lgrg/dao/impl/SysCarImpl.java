@@ -1,4 +1,4 @@
-package cn.edu.xmut.lgrg.dao.impl;
+ package cn.edu.xmut.lgrg.dao.impl;
 
 import cn.edu.xmut.lgrg.annotation.ZnService;
 import cn.edu.xmut.lgrg.dao.SysCarDAO;
