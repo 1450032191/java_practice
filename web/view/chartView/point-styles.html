@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>人流量统计</title>
+	<script src="../../css/Chart.js"></script>
+	<script src="../../css/utils.js"></script>
+	<style>
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+
+		.chart-container {
+			width: 850px;
+			margin-left: 40px;
+			margin-right: 40px;
+			margin-bottom: 40px;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+	</style>
+</head>
+
+<body>
+<div class="container">
+</div>
+<script>
+	function createConfig(pointStyle) {
+		return {
+			type: 'line',
+			data: {
+				labels: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'],
+				datasets: [{
+					label: '日人流量统计',
+					backgroundColor: window.chartColors.red,
+					borderColor: window.chartColors.red,
+					data: [10, 23, 5, 50, 67, 43, 0],
+					fill: false,
+					pointRadius: 10,
+					pointHoverRadius: 15,
+					showLine: false // no line shown
+				}]
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: '日人流量统计'
+				},
+				legend: {
+					display: false
+				},
+				elements: {
+					point: {
+						pointStyle: pointStyle
+					}
+				}
+			}
+		};
+	}
+
+	window.onload = function () {
+		var container = document.querySelector('.container');
+		[
+			'line'
+		].forEach(function (pointStyle) {
+			var div = document.createElement('div');
+			div.classList.add('chart-container');
+
+			var canvas = document.createElement('canvas');
+			div.appendChild(canvas);
+			container.appendChild(div);
+
+			var ctx = canvas.getContext('2d');
+			var config = createConfig(pointStyle);
+			new Chart(ctx, config);
+		});
+	};
+</script>
+</body>
+
+</html>

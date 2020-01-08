@@ -326,7 +326,20 @@ public class SysUserImpl implements SysUserDao {
         return null;
     }
 
-    private static String getUserPass(String str){
+    public static boolean updatePass(String sql) throws Exception {
+        Connection con = MySqlUtil.getCon();
+        PreparedStatement ps = con.prepareStatement(sql);
+        int i = ps.executeUpdate();
+
+        if (i > 0) {
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static String getUserPass(String str) {
         return Md5.string2MD5(Md5.string2MD5(str)+"1912114103");
     }
 }

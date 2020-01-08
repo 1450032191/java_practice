@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>月人流量</title>
+    <script src="../../css/Chart.min.js"></script>
+    <script src="../../css/utils.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+<div id="container" style="width: 100%;">
+    <canvas id="canvas"></canvas>
+</div>
+<!--<button id="randomizeData">Randomize Data</button>
+<button id="addDataset">Add Dataset</button>
+<button id="removeDataset">Remove Dataset</button>-->
+<!--<button id="addData">Add Data</button>
+<button id="removeData">Remove Data</button>-->
+<script>
+    var MONTHS = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+    var color = Chart.helpers.color;
+    var barChartData = {
+        labels: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        datasets: [{
+            label: '月人流量总数',
+            backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+            borderColor: window.chartColors.red,
+            borderWidth: 1,
+            data: [
+                65, 59, 80, 81, 56, 55, 40, 50, 32, 11, 140, 40
+                /* randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor()*/
+            ]
+        }]
+
+    };
+
+    window.onload = function () {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: '月人流量统计'
+                }
+            }
+        });
+
+    };
+
+    document.getElementById('randomizeData').addEventListener('click', function () {
+        var zero = Math.random() < 0.2 ? true : false;
+        barChartData.datasets.forEach(function (dataset) {
+            dataset.data = dataset.data.map(function () {
+                return zero ? 0.0 : randomScalingFactor();
+            });
+
+        });
+        window.myBar.update();
+    });
+
+    var colorNames = Object.keys(window.chartColors);
+    document.getElementById('addDataset').addEventListener('click', function () {
+        var colorName = colorNames[barChartData.datasets.length % colorNames.length];
+        var dsColor = window.chartColors[colorName];
+        var newDataset = {
+            label: '收入' + (barChartData.datasets.length + 1),
+            backgroundColor: color(dsColor).alpha(0.5).rgbString(),
+            borderColor: dsColor,
+            borderWidth: 1,
+            data: []
+        };
+
+        for (var index = 0; index < barChartData.labels.length; ++index) {
+            newDataset.data.push(randomScalingFactor());
+        }
+
+        barChartData.datasets.push(newDataset);
+        window.myBar.update();
+    });
+
+    document.getElementById('addData').addEventListener('click', function () {
+        if (barChartData.datasets.length > 0) {
+            var month = MONTHS[barChartData.labels.length % MONTHS.length];
+            barChartData.labels.push(month);
+
+            for (var index = 0; index < barChartData.datasets.length; ++index) {
+                // window.myBar.addData(randomScalingFactor(), index);
+                barChartData.datasets[index].data.push(randomScalingFactor());
+            }
+
+            window.myBar.update();
+        }
+    });
+
+    document.getElementById('removeDataset').addEventListener('click', function () {
+        barChartData.datasets.pop();
+        window.myBar.update();
+    });
+
+    document.getElementById('removeData').addEventListener('click', function () {
+        barChartData.labels.splice(-1, 1); // remove the label first
+
+        barChartData.datasets.forEach(function (dataset) {
+            dataset.data.pop();
+        });
+
+        window.myBar.update();
+    });
+</script>
+</body>
+</html>

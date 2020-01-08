@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日订单统计</title>
+    <script src="../../css/Chart.js"></script>
+    <script src="../../css/utils.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+<div style="width: 850px">
+    <canvas id="canvas"></canvas>
+</div>
+<!--<button id="randomizeData">Randomize Data</button>-->
+<script>
+    var chartData = {
+        labels: ['星期一', '星期二', '星期三', '星期四', '星期六', '星期日'],
+        datasets: [/*{
+            type: 'line',
+            label: '订单数量',
+            borderColor: window.chartColors.blue,
+            borderWidth: 2,
+            fill: false,
+            data: [1, 5, 15, 2, 0, 4, 6
+                /!*randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()*!/
+            ]
+        }, */{
+            type: 'bar',
+            label: '订单数量',
+            backgroundColor: window.chartColors.red,
+            data: [8, 25, 35, 14, 0, 6, 5
+                /* randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor()*/
+            ],
+            borderColor: 'white',
+            borderWidth: 2
+        }]
+
+    };
+    window.onload = function () {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        window.myMixedChart = new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: '日订单统计'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: true
+                }
+            }
+        });
+    };
+
+    document.getElementById('randomizeData').addEventListener('click', function () {
+        chartData.datasets.forEach(function (dataset) {
+            dataset.data = dataset.data.map(function () {
+                return randomScalingFactor();
+            });
+        });
+        window.myMixedChart.update();
+    });
+</script>
+</body>
+
+</html>
