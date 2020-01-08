@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="static/ui_lib/swiper/css/swiper.css">
 
     <style>
-        .focus-item-img{
+        .focus-item-img {
             width: 100%;
             height: 100%;
         }
@@ -122,7 +122,7 @@
             </a>
         </div>
         <div class="box-content">
-            <a href="" class="brand-item">
+            <a href="view/client/brandView.jsp?brand=1" class="brand-item">
                 <div class="brand-logo">
                     <img src="images/nike.png" alt="NIKE">
                     <h6 class="brand-name">
@@ -130,7 +130,7 @@
                     </h6>
                 </div>
             </a>
-            <a href="" class="brand-item">
+            <a href="view/client/brandView.jsp?brand=2" class="brand-item">
                 <div class="brand-logo">
                     <img src="images/adidas.jpg" alt="adidas">
                     <h6 class="brand-name">
@@ -138,7 +138,7 @@
                     </h6>
                 </div>
             </a>
-            <a href="" class="brand-item">
+            <a href="view/client/brandView.jsp?brand=3" class="brand-item">
                 <div class="brand-logo">
                     <img src="images/特步.png" alt="特步">
                     <h6 class="brand-name">
@@ -146,7 +146,7 @@
                     </h6>
                 </div>
             </a>
-            <a href="" class="brand-item">
+            <a href="view/client/brandView.jsp?brand=4" class="brand-item">
                 <div class="brand-logo">
                     <img src="images/New_Balance.png" alt="New Balance">
                     <h6 class="brand-name">
@@ -154,7 +154,7 @@
                     </h6>
                 </div>
             </a>
-            <a href="" class="brand-item">
+            <a href="view/client/brandView.jsp?brand=5" class="brand-item">
                 <div class="brand-logo">
                     <img src="images/LI-NING.png" alt="LI-NING">
                     <h6 class="brand-name">
@@ -162,7 +162,7 @@
                     </h6>
                 </div>
             </a>
-            <a href="" class="brand-item">
+            <a href="view/client/brandView.jsp?brand=6" class="brand-item">
                 <div class="brand-logo">
                     <img src="images/FILA.png" alt="FILA">
                     <h6 class="brand-name">
@@ -263,9 +263,9 @@
 
                 html = "";
                 var category = result.data.category;
-                for (let i = 0; i < category.length && i<16; i++) {
-                    html+="<li>\n" +
-                        "                    <a href=\"\">"+category[i].name+"</a>\n" +
+                for (let i = 0; i < category.length && i < 16; i++) {
+                    html += "<li>\n" +
+                        "                    <a href=\"view/client/sortView.jsp?categoryId=" + category[i].id + "\">" + category[i].name + "</a>\n" +
                         "                </li>";
                 }
                 $("#cate-menu").html(html);
