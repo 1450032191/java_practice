@@ -2,11 +2,11 @@ package cn.edu.xmut.lgrg.dao.impl;
 
 import cn.edu.xmut.lgrg.annotation.ZnService;
 import cn.edu.xmut.lgrg.dao.SysCarDAO;
+import cn.edu.xmut.lgrg.dao.SysCommodityDao;
 import cn.edu.xmut.lgrg.entity.SysCar;
 import cn.edu.xmut.lgrg.entity.SysCommodity;
 import cn.edu.xmut.lgrg.util.*;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -62,13 +62,12 @@ public class SysCarImpl implements SysCarDAO {
     }
 
     @Override
-    public List<Map<String, String>> getAllShoes(HttpServletRequest request) throws Exception {
+    public List<SysCar> getAllShoes(HttpServletRequest request) throws Exception {
 
         //创建一个存储所有购物车数据的集合
         List<Map<String, String>> res = new ArrayList<>();
         //获取用户
         String userId = UserUtil.getUserId(request);
-
 
         conn = MySqlUtil.getCon();
 
@@ -77,18 +76,20 @@ public class SysCarImpl implements SysCarDAO {
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
-        ResultSetMetaData metaData = rs.getMetaData();
 
-        while (rs.next()) {
-            Map<String, String> com_info = new HashMap<>();
-            for (int i = 0; i < metaData.getColumnCount(); i++) {
-                com_info.put(metaData.getColumnName(i + 1), rs. getString(i + 1));
-            }
 
-            res.add(com_info);
+        List<SysCar> cars = ResultSetUtil.getArray(rs,SysCar.class);
+        SysCommodityImpl commodityService = BeanUtil.getInstance(SysCommodityImpl.class);
+        for (int i = 0; i < cars.size(); i++) {
+            SysCar car = cars.get(i);
+            SysCommodity commodity = commodityService.selectComm(car.getComId());
+            car.setCommodity(commodity);
+
+            Double comPrice = Double.valueOf(commodity.getComPrice());
+            Integer comCount = Integer.valueOf(car.getComCount());
+            car.setAllComPrice(comPrice * comCount);
         }
-
-        return res;
+        return cars;
 
     }
 

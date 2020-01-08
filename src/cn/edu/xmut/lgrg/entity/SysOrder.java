@@ -2,6 +2,8 @@ package cn.edu.xmut.lgrg.entity;
 
 import cn.edu.xmut.lgrg.annotation.ZnSqlField;
 
+import java.util.List;
+
 /**
  * @Auther: ZiNan
  * @Date: 2019/12/30 11:13
@@ -24,6 +26,36 @@ public class SysOrder {
     private String orderPaymethod;
     @ZnSqlField(name = "order_status")
     private String orderStatus;
+
+    private String orderStatusText;
+
+    private Integer comCount;
+
+    List<OrderItem> orderItems;
+
+    public String getOrderStatusText() {
+        return orderStatusText;
+    }
+
+    public void setOrderStatusText(String orderStatusText) {
+        this.orderStatusText = orderStatusText;
+    }
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public Integer getComCount() {
+        return comCount;
+    }
+
+    public void setComCount(Integer comCount) {
+        this.comCount = comCount;
+    }
 
     public String getOrderNo() {
         return orderNo;

@@ -1,6 +1,7 @@
 package cn.edu.xmut.lgrg.servlets.order;
 
 import cn.edu.xmut.lgrg.dao.impl.OrderImpl;
+import cn.edu.xmut.lgrg.entity.SysOrder;
 import cn.edu.xmut.lgrg.util.ResultUtil;
 
 import javax.servlet.ServletException;
@@ -16,20 +17,14 @@ import java.util.Map;
  * @author azx
  * @create 2020-01-06-10:08
  */
-@WebServlet("/order/showOrderServlet")
+@WebServlet("/order/list.do")
 public class ShowOrderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
            request.setCharacterEncoding("utf-8");
            response.setContentType("text/html;charset=utf-8");
-
            try {
-               List<Map<String, String>> orderInfo = new OrderImpl().getOrderByUserId(request);
-
-               if (orderInfo!=null && orderInfo.size()>0){
-                   ResultUtil.outSuccess(response,orderInfo);
-               }else{
-                   ResultUtil.outError(response,"该用户没有订单");
-               }
+               List<SysOrder> orderInfo = new OrderImpl().getOrderByUserId(request);
+               ResultUtil.outSuccess(response,orderInfo);
            } catch (Exception e) {
                e.printStackTrace();
                ResultUtil.outError(response,"该用户没有订单");
@@ -38,6 +33,6 @@ public class ShowOrderServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request,response);
     }
 }

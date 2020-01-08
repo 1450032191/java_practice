@@ -1,9 +1,10 @@
 package cn.edu.xmut.lgrg.dao.impl;
 
+import cn.edu.xmut.lgrg.annotation.ZnService;
 import cn.edu.xmut.lgrg.dao.OrderDao;
-import cn.edu.xmut.lgrg.util.MySqlUtil;
-import cn.edu.xmut.lgrg.util.ResultUtil;
-import cn.edu.xmut.lgrg.util.UserUtil;
+import cn.edu.xmut.lgrg.dao.impl.sysenum.OrderStatus;
+import cn.edu.xmut.lgrg.entity.*;
+import cn.edu.xmut.lgrg.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
@@ -16,6 +17,7 @@ import java.util.Map;
  * @author azx
  * @create 2020-01-06-9:34
  */
+@ZnService
 public class OrderImpl implements OrderDao {
 
     private Connection conn = null;
@@ -28,10 +30,10 @@ public class OrderImpl implements OrderDao {
      * @throws Exception
      */
     @Override
-    public List<Map<String, String>> getOrderByUserId(HttpServletRequest request) throws Exception {
-
+    public List<SysOrder> getOrderByUserId(HttpServletRequest request) throws Exception {
         //获取用户ID
         String userId = UserUtil.getUserId(request);
+        SysCommodityImpl commodityService = BeanUtil.getInstance(SysCommodityImpl.class);
 
         //数据库查询
         conn = MySqlUtil.getCon();
@@ -39,21 +41,149 @@ public class OrderImpl implements OrderDao {
         PreparedStatement ps = conn.prepareStatement(sql);
 
         ResultSet rs = ps.executeQuery();
-        ResultSetMetaData metaData = rs.getMetaData();
-
-        //创建一个存储该用户所有订单信息的集合
-        List<Map<String, String>> res = new ArrayList<>();
-
         //遍历订单表，查找该用户订单
-        while (rs.next()){
-            Map<String, String> order_info = new HashMap<>();
+        List<SysOrder> list = ResultSetUtil.getArray(rs,SysOrder.class);
+        for (int i = 0; i < list.size(); i++) {
+            SysOrder order = list.get(i);
+            order.setOrderStatusText(OrderStatus.getOrderStatus(order.getOrderStatus()));
+            //查询订单详情
+            sql = "select * from sys_order_detail where order_no = ? and order_id = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,order.getOrderNo());
+            ps.setString(2,order.getOrderId());
+            rs = ps.executeQuery();
 
-            for (int i = 0; i <metaData.getColumnCount(); i++) {
-                order_info.put(metaData.getColumnName(i+1),rs.getString(i+1));
+            List<OrderItem> orderItems = ResultSetUtil.getArray(rs,OrderItem.class);
+            for (int j = 0; j < orderItems.size(); j++) {
+                orderItems.get(j).setCommodity(commodityService.selectComm(orderItems.get(j).getComId()));
             }
-            res.add(order_info);
+            order.setComCount(orderItems.size());
+            order.setOrderItems(orderItems);
         }
-        return res;
+        return list;
+    }
+
+    public void generateOrder(HttpServletRequest request) throws Exception {
+        String userId = UserUtil.getUserId(request);
+        PageData params = new PageData(request);
+        String payList = params.getString("payList");
+        String uaId = params.getString("uaId");
+        SysUserAddrlmpl addrService = BeanUtil.getInstance(SysUserAddrlmpl.class);
+        SysUserAddr userAddr = addrService.selOnly(uaId);
+        if(StringUtil.isNull(payList)||userAddr == null){
+            throw new Exception("参数不存在~");
+        }
+        String[] comIds = payList.split(",");
+        if(comIds.length<=0){
+            throw new Exception("参数不存在~");
+        }
+        List<OrderItem> comItem = new ArrayList<>();
+        List<SysCommodity> comList = new ArrayList<>();
+
+        SysCarImpl carService = BeanUtil.getInstance(SysCarImpl.class);
+        List<SysCar> carList = carService.getAllShoes(request);
+        Map<String,Integer> comCountMap = new HashMap<String,Integer>();
+        for (int i = 0; i < carList.size(); i++) {
+            String id = carList.get(i).getComId();
+            String count = carList.get(i).getComCount();
+            try {
+                comCountMap.put(id,Integer.valueOf(count));
+            }catch (Exception e){}
+        }
+        SysCommodityImpl commodityService = BeanUtil.getInstance(SysCommodityImpl.class);
+        Integer allCount = 0;
+        Double allPrice = 0.0;
+        for (int i = 0; i < comIds.length; i++) {
+            if(!StringUtil.isNull(comIds[i])){
+                //查询
+                SysCommodity commodityItem = commodityService.selectComm(comIds[i]);
+                if(commodityItem!=null){
+                    comList.add(commodityItem);
+                    Integer comCount = comCountMap.get(commodityItem.getComId());
+
+                    //验证库存
+                    Integer stock = Integer.parseInt(commodityItem.getComStock());
+                    if(comCount>stock){
+                        throw new Exception("商品库存不足~");
+                    }
+
+                    OrderItem orderItem = new OrderItem();
+                    Double comPrice = Double.valueOf(commodityItem.getComPrice());
+
+                    allCount+=comCount;
+                    Double allComPrice = comCount * comPrice;
+                    allPrice += allComPrice;
+
+                    orderItem.setComPrice(String.valueOf(comPrice));
+                    orderItem.setComCount(String.valueOf(comCount));
+                    orderItem.setComId(commodityItem.getComId());
+                    orderItem.setComTotalPrice(String.valueOf(allComPrice));
+                    comItem.add(orderItem);
+                }
+            }
+        }
+        if(comItem.size()<=0){
+            throw new Exception("参数不存在~");
+        }
+        //保存订单信息
+        String orderNo = OrderUtil.getOrderNoByUUID();
+        SysOrder order = new SysOrder();
+        order.setAddrId(uaId);
+        order.setOrderNo(orderNo);
+        order.setOrderPaymethod("1");
+        order.setOrderPrice(String.valueOf(allPrice));
+        order.setUserId(userId);
+
+        //开启操作数据库
+        Connection con = MySqlUtil.getCon();
+        con.setAutoCommit(false);
+
+        String sql = "insert into sys_order(order_no,create_time,user_id,addr_id,order_price,order_paymethod,order_status)" +
+                "values(?,now(),?,?,?,?,1)";
+        PreparedStatement pre = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+        pre.setString(1,orderNo);
+        pre.setString(2,userId);
+        pre.setString(3,uaId);
+        pre.setString(4,order.getOrderPrice());
+        pre.setString(5,order.getOrderPaymethod());
+        pre.executeUpdate();
+        ResultSet rs = pre.getGeneratedKeys();
+        rs.next();
+        int orderId = rs.getInt(1);
+        rs.close();
+        pre.close();
+
+        //插入item数据
+        for (int i = 0; i < comItem.size(); i++) {
+            OrderItem orderItem = comItem.get(i);
+            sql = "insert into sys_order_detail(order_no,order_id,com_id,com_price,com_count,com_total_price) values (?,?,?,?,?,?)";
+            pre = con.prepareStatement(sql);
+            pre.setString(1,orderNo);
+            pre.setInt(2,orderId);
+            pre.setString(3,orderItem.getComId());
+            pre.setString(4,orderItem.getComPrice());
+            pre.setString(5,orderItem.getComCount());
+            pre.setString(6,orderItem.getComTotalPrice());
+            pre.executeUpdate();
+
+            //删除库存
+            sql = "update sys_commodity set com_stock = com_stock - ? where com_id = ?";
+            pre = con.prepareStatement(sql);
+            pre.setInt(1,Integer.valueOf(orderItem.getComCount()));
+            pre.setString(2,orderItem.getComId());
+            pre.executeUpdate();
+
+            //删除购物
+            sql = "delete from sys_car where com_id = ? and user_id = ?";
+            pre = con.prepareStatement(sql);
+            pre.setString(1,orderItem.getComId());
+            pre.setString(2,userId);
+            pre.executeUpdate();
+
+        }
+
+        con.commit();
+        con.setAutoCommit(true);
     }
 
     /**

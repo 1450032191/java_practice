@@ -28,7 +28,7 @@
     </div>
 
     <div id="cart-main" class="w">
-        <div class="cart-thead">
+        <div class="cart-thead" id="cart-list">
             <div class="column t-checkbox">
                 <div class="car-checkbox">
                     <input type="checkbox" class="all-sel">
@@ -42,56 +42,7 @@
             <div class="column t-sum">小计</div>
             <div class="column t-action">操作</div>
         </div>
-        <c:forEach items="${list}" var="var" varStatus="vs">
-            <div class="cart-body cart-item" data-sku="${var.sku}">
-                <div class="item-from">
-                    <div class="p-checkbox cell">
-                        <input type="checkbox" class="com-check">
-                    </div>
-                    <div class="p-goods cell">
-                        <div class="goods-item">
-                            <div class="goods-img">
-                                    <%--<img src="http://img13.360buyimg.com/n1/s450x450_${var.commodityMainImg}" alt="">--%>
-                                <img src="${var.commodityMainImg}" alt="">
-                            </div>
-                            <div class="goods-name">
-                                <a href="item.html?id=">${var.skuTtile}</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cell p-props">
-                        <c:forEach items="${var.fieldList}" var="fieldList" varStatus="fieldVs">
-                            <div class="prop-text">${fieldList}</div>
-                        </c:forEach>
-                    </div>
-                    <div class="p-price cell">
-                        <p>
-                            <span class="skuPrice">${var.skuPrice}</span>
-                        </p>
-                    </div>
-                    <div class="p-quantity cell">
-                        <div class="quantiy-form">
-                            <a href="javascript:;"class="left">-</a>
-                            <input type="text" class="itxt skuCount"
-                                   onblur="setCount($(this),${var.sku},parseInt($(this).siblings('.skuCount').val()))"
-                                   value="${var.skuCount}">
-                            <a href="javascript:;"class="right">+</a>
-                        </div>
-                        <div class="quantity-txt">
-                            有货
-                        </div>
-                    </div>
-                    <div class="p-sum cell">
-                        <strong>¥<span class="skuAllPrice">${var.skuAllPrice}</span></strong>
-                    </div>
 
-                    <div class="p-ops cell">
-                        <a href="javascript:;" onclick="del(${var.sku})">删除</a>
-                            <%--<a href="javascript:;">移到我的关注</a>--%>
-                    </div>
-                </div>
-            </div>
-        </c:forEach>
 
     </div>
 
@@ -113,12 +64,12 @@
             <div class="price-sum">
                 <span class="sum-title">总价：</span>
                 <span class="price">
-                    <em>¥<span class="totalPrice">${totalPrice}</span></em>
+                    <em>¥<span class="totalPrice">0.00</span></em>
                 </span>
             </div>
             <div class="amount-sum">
                 已选择
-                <em><span class="totalCount">${totalCount}</span></em>
+                <em><span class="totalCount">0</span></em>
                 件商品
             </div>
         </div>
@@ -126,8 +77,65 @@
 </div>
 
 <script>
-
-    $("#to-buy").click(function () {
+    getCarList();
+    function getCarList(){
+        $.get("car/list.do",function (result) {
+            console.log(result);
+            if(result.code){
+                var html="";
+                var data = result.data;
+                for (let i = 0; i < data.length; i++) {
+                    html+="<div class=\"cart-body cart-item\" data-sku=\""+data[i].comId+"\">\n" +
+                        "                <div class=\"item-from\">\n" +
+                        "                    <div class=\"p-checkbox cell\">\n" +
+                        "                        <input type=\"checkbox\" class=\"com-check\">\n" +
+                        "                    </div>\n" +
+                        "                    <div class=\"p-goods cell\">\n" +
+                        "                        <div class=\"goods-item\">\n" +
+                        "                            <div class=\"goods-img\">\n" +
+                        "                                <img src=\""+data[i].commodity.comImg+"\" alt=\"\">\n" +
+                        "                            </div>\n" +
+                        "                            <div class=\"goods-name\">\n" +
+                        "                                <a href=\"view/client/commodity.jsp?comId="+data[i].comId+"\">"+data[i].commodity.comName+"</a>\n" +
+                        "                            </div>\n" +
+                        "                        </div>\n" +
+                        "                    </div>\n" +
+                        "                    <div class=\"cell p-props\">\n" +
+                        "                            <div class=\"prop-text\">标准规格</div>\n" +
+                        "                    </div>\n" +
+                        "                    <div class=\"p-price cell\">\n" +
+                        "                        <p>\n" +
+                        "                            <span class=\"skuPrice\">"+data[i].commodity.comPrice+"</span>\n" +
+                        "                        </p>\n" +
+                        "                    </div>\n" +
+                        "                    <div class=\"p-quantity cell\">\n" +
+                        "                        <div class=\"quantiy-form\">\n" +
+                        "                            <a href=\"javascript:;\"class=\"left\">-</a>\n" +
+                        "                            <input type=\"text\" class=\"itxt skuCount\"\n" +
+                        "                                   onblur=\"setCount($(this),'"+data[i].comId+"',parseInt($(this).siblings('.skuCount').val()))\"\n" +
+                        "                                   value=\""+data[i].comCount+"\">\n" +
+                        "                            <a href=\"javascript:;\"class=\"right\">+</a>\n" +
+                        "                        </div>\n" +
+                        "                        <div class=\"quantity-txt\">\n" +
+                        "                            有货\n" +
+                        "                        </div>\n" +
+                        "                    </div>\n" +
+                        "                    <div class=\"p-sum cell\">\n" +
+                        "                        <strong>¥<span class=\"skuAllPrice\">"+data[i].comPrice+"</span></strong>\n" +
+                        "                    </div>\n" +
+                        "\n" +
+                        "                    <div class=\"p-ops cell\">\n" +
+                        "                        <a href=\"javascript:;\" onclick=\"del('"+data[i].comId+"')\">删除</a>\n" +
+                        "                        <%--<a href=\"javascript:;\">移到我的关注</a>--%>\n" +
+                        "                    </div>\n" +
+                        "                </div>\n" +
+                        "            </div>";
+                }
+                $("#cart-list").after(html);
+            }
+        })
+    }
+    $(document).on("click","#to-buy",function () {
         var arr = [];
         var str = "";
         $(".com-check").each(function () {
@@ -138,14 +146,20 @@
             }
         })
         if(arr.length>0){
-            location.href = "order/confirm.html?skus="+str;
-
+            // location.href = "order/confirm.html?skus="+str;
+            $.post("order/add.do",{payList:str,uaId:"2"},function (result) {
+                if(result.code){
+                    success("成功~");
+                }else {
+                    error("失败~");
+                }
+            });
         }else {
             error("挑选下单商品~");
         }
     });
 
-    $(".all-sel").click(function () {
+    $(document).on("click",".all-sel",function () {
         if($(this).is(':checked')){
             console.log("选中了");
             $(".all-sel").prop('checked',true);
@@ -160,7 +174,7 @@
         setOrderPrice();
     });
 
-    $(".com-check").click(function () {
+    $(document).on("click",".com-check",function () {
         if($(this).is(':checked')){
             console.log("选中了");
             //判断其他是不是选中了
@@ -179,10 +193,11 @@
             $(".all-sel").prop('checked',false);
         }
         setOrderPrice();
-    });
+    })
+
 
     //商品减少按钮
-    $(".quantiy-form .left").click(function () {
+    $(document).on("click",".quantiy-form .left",function () {
         var count = parseInt($(this).siblings(".skuCount").val());
         var sku = $(this).parents(".cart-item").data("sku");
         if(count > 1){
@@ -191,14 +206,14 @@
         }else {
             del(sku);
         }
-    });
-    //商品增加按钮
-    $(".quantiy-form .right").click(function () {
+    })
+
+    $(document).on("click",".quantiy-form .right",function () {
         var count = parseInt($(this).siblings(".skuCount").val());
         count++;
         var sku = $(this).parents(".cart-item").data("sku");
         setCount($(this),sku,count);
-    });
+    })
 
     //请求后端接口，设置购物车商品数量
     function setCount(el,sku,count) {

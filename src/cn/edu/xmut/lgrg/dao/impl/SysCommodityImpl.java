@@ -83,8 +83,7 @@ public class SysCommodityImpl implements SysCommodityDao {
         }
     }
 
-    @Override
-    public SysCommodity selectComm(int comId) throws Exception {
+    public SysCommodity selectComm(String comId) throws Exception {
         SysCommodity comm = null;
         String sql = "Select com_id,com_name,com_price,com_create_time,com_brand_id,com_category_id,detail_info,is_vip," +
                 "com_img,b.name as brand_name,cc.name as category_name,com_op,com_stock" +
@@ -93,7 +92,7 @@ public class SysCommodityImpl implements SysCommodityDao {
         try {
             Connection con = MySqlUtil.getCon();
             PreparedStatement pstm = con.prepareStatement(sql);
-            pstm.setInt(1, comId);
+            pstm.setString(1, comId);
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
                 comm = new SysCommodity();
@@ -119,6 +118,10 @@ public class SysCommodityImpl implements SysCommodityDao {
             throw new Exception("id查询错误！");
         }
         return comm;
+    }
+    @Override
+    public SysCommodity selectComm(int comId) throws Exception {
+        return selectComm(String.valueOf(comId));
     }
 
     public List<SysCommodity> getComList(Integer pageSize) throws Exception {

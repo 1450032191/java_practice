@@ -1,10 +1,9 @@
 package cn.edu.xmut.lgrg.dao;
 
-import cn.edu.xmut.lgrg.entity.SysCommodity;
+import cn.edu.xmut.lgrg.entity.SysCar;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author azx
@@ -12,7 +11,7 @@ import java.util.Map;
  */
 public interface SysCarDAO {
     //获取所有购物车的信息
-   List<Map<String,String>> getAllShoes(HttpServletRequest request) throws Exception;
+   List<SysCar> getAllShoes(HttpServletRequest request) throws Exception;
 
    //清空购物车
     boolean deleteAllCommodity(HttpServletRequest request) throws Exception;

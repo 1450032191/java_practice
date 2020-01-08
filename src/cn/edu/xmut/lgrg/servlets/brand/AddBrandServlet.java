@@ -27,7 +27,7 @@ public class AddBrandServlet extends HttpServlet {
                 throw new Exception("参数不完整~");
             }
             Connection con = MySqlUtil.getCon();
-            String sql = "INSERT INTO brand(`name`,create_time) values(?,now())";
+            String sql = "INSERT INTO brand(`name`,create_time,status) values(?,now(),1)";
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setString(1, name);
             int rs = pstm.executeUpdate();

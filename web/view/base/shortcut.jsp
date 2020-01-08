@@ -114,17 +114,17 @@
             </li>
             <li class="spacer"></li>
             <li class="right-item">
-                <a href="order/list.html">我的订单</a>
+                <a href="view/client/orders.jsp">我的订单</a>
             </li>
             <li class="spacer"></li>
             <li class="right-item">
-                <a href="user/addr/list.html">地址管理</a>
+                <a href="view/client/adress.jsp">地址管理</a>
             </li>
             <li class="spacer"></li>
             <li class="right-item">
-                <a href="admin/index.html">管理后台</a>
+                <a href="view/admin/index.jsp">管理后台</a>
             </li>
-            <c:if test="${not empty userName}">
+            <c:if test="${empty userName}">
                 <li class="spacer"></li>
                 <li class="right-item">
                     <a href="logout.do">退出登陆</a>
