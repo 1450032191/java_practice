@@ -244,7 +244,7 @@
             $.post("order/pay.do",{order_id:orderId},function (result) {
                 if(result.code){
                     success("支付成功~");
-                    location.href='order/'+orderId+".html";
+                    location.reload();
                 }else {
                     error("支付失败~");
                     error(result.errmsg);

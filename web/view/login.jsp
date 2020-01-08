@@ -162,7 +162,7 @@
                 if(result.code){
                     success("登陆成功~");
                     //跳转到根目录
-                    // location.href = ' ';
+                    location.href = '${basePath}';
                 }else {
                     error(result.errmsg);
                 }

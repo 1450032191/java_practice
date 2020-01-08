@@ -291,7 +291,7 @@ public class SysUserImpl implements SysUserDao {
     }
 
     private void saveUserLoginStatus(HttpServletRequest request,SysUser sysUser){
-        request.setAttribute("user",sysUser);
+        request.getSession().setAttribute("user",sysUser);
     }
 
     private SysUser loginByPhoneAndPass(String phone,String pass) throws Exception {

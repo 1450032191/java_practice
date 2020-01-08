@@ -95,6 +95,7 @@
                     </el-form-item>
                     <el-form-item>
                         <el-button type="primary" @click="edit()">修改</el-button>
+                        <el-button type="primary" @click="append({id:0,name:'根节点'})">增加根节点</el-button>
                     </el-form-item>
                 </el-form>
             </td>
@@ -153,7 +154,7 @@
                     } else {
                         that.$message.error(result.errmsg);
                     }
-                    that.dialogFormVisible = true;
+                    that.dialogFormVisible = false;
                 })
             },
             getCategoryList() {

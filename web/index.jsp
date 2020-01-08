@@ -38,10 +38,8 @@
 <div id="band-banner">
     <div class="band-banner-panel w">
         <div class="col1">
-            <ul class="cate-menu">
-                <li>
-                    <a href="">${var.categoryTitle}</a>
-                </li>
+            <ul class="cate-menu" id="cate-menu">
+
             </ul>
         </div>
 
@@ -262,6 +260,16 @@
                         "        </a>";
                 }
                 $("#paiList").html(html);
+
+                html = "";
+                var category = result.data.category;
+                for (let i = 0; i < category.length && i<16; i++) {
+                    html+="<li>\n" +
+                        "                    <a href=\"\">"+category[i].name+"</a>\n" +
+                        "                </li>";
+                }
+                $("#cate-menu").html(html);
+
             }
         });
     })

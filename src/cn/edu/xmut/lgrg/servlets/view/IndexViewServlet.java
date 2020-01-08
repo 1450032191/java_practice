@@ -1,6 +1,8 @@
 package cn.edu.xmut.lgrg.servlets.view;
 
+import cn.edu.xmut.lgrg.dao.impl.CommodityCategoryDaoImpl;
 import cn.edu.xmut.lgrg.dao.impl.SysCommodityImpl;
+import cn.edu.xmut.lgrg.entity.CommodityCategory;
 import cn.edu.xmut.lgrg.entity.PageData;
 import cn.edu.xmut.lgrg.entity.SysCommodity;
 import cn.edu.xmut.lgrg.util.BeanUtil;
@@ -22,16 +24,19 @@ import java.util.List;
 @WebServlet("/index.do")
 public class IndexViewServlet extends HttpServlet {
     SysCommodityImpl commodityService = BeanUtil.getInstance(SysCommodityImpl.class);
+    CommodityCategoryDaoImpl categoryService = BeanUtil.getInstance(CommodityCategoryDaoImpl.class);
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             List<SysCommodity> miaosha = commodityService.getComList(4);
             List<SysCommodity> skuList = commodityService.getComList(20);
             List<SysCommodity> paiList = commodityService.getComList(6);
+            List<CommodityCategory> category = categoryService.formatList();
             PageData res = new PageData();
             res.put("miaosha",miaosha);
             res.put("paiList",paiList);
             res.put("skuList",skuList);
+            res.put("category",category);
             ResultUtil.outSuccess(resp,res);
         }catch (Exception e){
             e.printStackTrace();

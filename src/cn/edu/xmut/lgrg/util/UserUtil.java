@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class UserUtil {
     public static String getUserId(HttpServletRequest request) {
-//        开发环境下直接返回
         SysUser sysUser = getSysUser(request);
         if(sysUser == null){
             return null;
@@ -69,16 +68,15 @@ public class UserUtil {
 
     public static SysUser getSysUser(HttpServletRequest request) {
         //        开发环境下直接返回
-        Object ob = request.getAttribute("user");
+        Object ob = request.getSession().getAttribute("user");
         if (ob != null && ob instanceof SysUser) {
             SysUser sysUser = (SysUser) ob;
             return sysUser;
         }
 
         //本地开发
-        return sysUser;
-
-//        return null;
+//        return sysUser;
+        return null;
     }
 
     /**

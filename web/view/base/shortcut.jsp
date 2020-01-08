@@ -103,8 +103,8 @@
                     </c:when>
 
                     <c:otherwise>
-                        <a href="user/login.html">你好，请登陆！</a>
-                        <a href="user/login.html?re=1" class="styly-red">免费注册</a>
+                        <a href="view/login.jsp">你好，请登陆！</a>
+                        <a href="view/login.jsp?re=1" class="styly-red">免费注册</a>
                     </c:otherwise>
                 </c:choose>
             </li>
@@ -124,7 +124,7 @@
             <li class="right-item">
                 <a href="view/admin/index.jsp">管理后台</a>
             </li>
-            <c:if test="${empty userName}">
+            <c:if test="${not empty userName}">
                 <li class="spacer"></li>
                 <li class="right-item">
                     <a href="logout.do">退出登陆</a>
