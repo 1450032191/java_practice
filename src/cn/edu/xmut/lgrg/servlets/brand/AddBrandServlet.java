@@ -23,6 +23,12 @@ public class AddBrandServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("brandName");
         try {
+
+
+
+
+
+
             if(StringUtil.isNull(name)){
                 throw new Exception("参数不完整~");
             }

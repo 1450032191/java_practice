@@ -147,7 +147,7 @@
         if(count == 1){
             setBuyCount(1,true);
         }else {
-            location.href='cart/list.html';
+            location.href='view/client/car.jsp';
         }
     });
     function setBuyCount(count,item) {
@@ -156,7 +156,7 @@
             if(result.code){
                 $("#buy-count").val(count);
                 if(item == true){
-                    location.href='cart/list.html';
+                    location.href='view/client/car.jsp';
                 }
             }else {
                 error(result.errmsg);

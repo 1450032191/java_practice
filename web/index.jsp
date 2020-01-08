@@ -17,6 +17,13 @@
     <link rel="stylesheet" href="static/css/index.css">
     <script src="static/ui_lib/swiper/js/swiper.min.js"></script>
     <link rel="stylesheet" href="static/ui_lib/swiper/css/swiper.css">
+
+    <style>
+        .focus-item-img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
 

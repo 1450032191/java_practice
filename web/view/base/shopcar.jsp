@@ -189,7 +189,7 @@
                         Integer cartCount = cartService.getCarCount(request);
                     %>
                     <i class="glyphicon glyphicon-shopping-cart"></i>
-                    <a href="cart/list.html" class="styly-red">我的购物车</a>
+                    <a href="view/client/car.jsp" class="styly-red">我的购物车</a>
                     <i class="ci-count" style="<%
                         if(cartCount<=0){
                             out.print("display:none");

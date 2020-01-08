@@ -54,6 +54,18 @@
         </ul>
     </div>
 </li>
+<li class="nav-section">
+    <span class="sidebar-mini-icon">
+        <i class="fa fa-ellipsis-h"></i>
+    </span>
+    <h4 class="text-section">个人管理</h4>
+</li>
+<li class="nav-item">
+    <a href="view/admin/user.jsp">
+        <i class="fas fa-user-alt"></i>
+        <p>修改密码</p>
+    </a>
+</li>
 
 <script>
     $(document).ready(function () {
