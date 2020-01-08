@@ -153,7 +153,6 @@ public class SysCarImpl implements SysCarDAO {
             //更新该商品的数量
             String updatesql="update sys_car set com_quantity="+quantity+
                     " where user_id=" + userId +" and com_id="+comId;
-
             PreparedStatement ps=conn.prepareStatement(updatesql);
 
             result = ps.executeUpdate();
