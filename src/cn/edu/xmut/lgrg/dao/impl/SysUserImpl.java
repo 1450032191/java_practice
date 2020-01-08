@@ -33,10 +33,10 @@ public class SysUserImpl implements SysUserDao {
         //如果是用户手机号
         sysUser = loginByPhoneAndPass(userName,userPass);
         if(sysUser == null){
-            sysUser = loginByUserIdAndPass(userName,userPass);
+            sysUser = loginByEmailAndPass(userName,userPass);
         }
         if(sysUser == null){
-            sysUser = loginByPhoneAndPass(userName,userPass);
+            sysUser = loginByUserNameAndPass(userName,userPass);
         }
         if(sysUser == null){
             throw new Exception("请检查账号密码是否正确~");
@@ -143,7 +143,7 @@ public class SysUserImpl implements SysUserDao {
         //保存到数据库
         try {
             Connection con = MySqlUtil.getCon();
-            String sql = "insert into sys_user (user_name,user_pass,user_email,user_phone,status,user_is_admin) values (?,?,?,?,1,0)";
+            String sql = "insert into sys_user (user_name,user_pass,user_email,user_phone,status,user_is_admin,user_image) values (?,?,?,?,1,0,'images/base/profile.jpg')";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1,newUser.getUserName());
             preparedStatement.setString(2,newUser.getUserPass());
@@ -306,9 +306,9 @@ public class SysUserImpl implements SysUserDao {
         return login(sql,params);
     }
 
-    private SysUser loginByUserIdAndPass(String userId,String pass) throws Exception {
-        String[] params = {userId,pass};
-        String sql = "select * from sys_user where user_id = ? and user_pass = ? limit 1";
+    private SysUser loginByUserNameAndPass(String userName,String pass) throws Exception {
+        String[] params = {userName,pass};
+        String sql = "select * from sys_user where user_name = ? and user_pass = ? limit 1";
         return login(sql,params);
     }
 

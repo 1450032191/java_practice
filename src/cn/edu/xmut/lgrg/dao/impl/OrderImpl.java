@@ -63,6 +63,40 @@ public class OrderImpl implements OrderDao {
         return list;
     }
 
+
+    public PageData getOrderPageList(HttpServletRequest request) throws Exception {
+        SysCommodityImpl commodityService = BeanUtil.getInstance(SysCommodityImpl.class);
+        String userId = UserUtil.getUserId(request);
+        PageData params = new PageData(request);
+        String sql = "select o.order_no,o.order_id,o.create_time,o.user_id,o.order_price,o.order_paymethod,o.order_status,su.user_name,(select COUNT(*) from sys_order_detail sod where sod.order_id = o.order_id) " +
+                "as order_count,su.user_phone from sys_order o left join sys_user su on su.user_id = o.user_id where (1=1)";
+        String key = params.getString("key");
+        String status = params.getString("status");
+        if(!StringUtil.isNull(key)){
+            sql += "and o.order_no LIKE CONCAT(CONCAT('%','"+key+"'),'%')";
+            sql += "and su.user_id LIKE CONCAT(CONCAT('%','"+key+"'),'%')";
+            sql += "and su.user_name LIKE CONCAT(CONCAT('%','"+key+"'),'%')";
+        }
+        if(!StringUtil.isNull(status)){
+            sql += "and o.order_status = '"+status+"' ";
+        }
+
+        sql+="order by o.create_time desc ";
+        MySqlPageUtlil mySqlUtil = new MySqlPageUtlil(sql,params);
+        Map<String,Object> page = new PageData();
+        page.put("total",mySqlUtil.getTotal());
+        page.put("pageSize",mySqlUtil.getPageSize());
+        page.put("pageIndex",mySqlUtil.getPageIndex());
+        PageData res = new PageData();
+        res.put("page",page);
+        List<SysOrder> orderList  = mySqlUtil.getArray(SysOrder.class);
+        for (int i = 0; i < orderList.size(); i++) {
+            orderList.get(i).setOrderStatusText(OrderStatus.getOrderToStatus(orderList.get(i).getOrderStatus()));
+        }
+        res.put("list",orderList);
+        return res;
+    }
+
     public void generateOrder(HttpServletRequest request) throws Exception {
         String userId = UserUtil.getUserId(request);
         PageData params = new PageData(request);
@@ -261,7 +295,6 @@ public class OrderImpl implements OrderDao {
             int orderStatus = getOrderStatus(order_id);
             if (orderStatus==3){
                 String sql="update sys_order set order_status=4 where order_id="+order_id;
-
                 //3.返回执行的结果
                 return updateSql(sql);
             }else{

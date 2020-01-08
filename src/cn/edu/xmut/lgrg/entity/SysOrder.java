@@ -26,12 +26,42 @@ public class SysOrder {
     private String orderPaymethod;
     @ZnSqlField(name = "order_status")
     private String orderStatus;
+    @ZnSqlField(name = "user_name")
+    private String userName;
+    @ZnSqlField(name = "order_count")
+    private String orderCount;
+    @ZnSqlField(name = "user_phone")
+    private String userPhone;
 
     private String orderStatusText;
 
     private Integer comCount;
 
     List<OrderItem> orderItems;
+
+    public String getOrderCount() {
+        return orderCount;
+    }
+
+    public void setOrderCount(String orderCount) {
+        this.orderCount = orderCount;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public String getOrderStatusText() {
         return orderStatusText;

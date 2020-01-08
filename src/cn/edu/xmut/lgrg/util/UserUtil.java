@@ -51,6 +51,14 @@ public class UserUtil {
         return sysUser.getUserImage();
     }
 
+    public static Boolean isAdmin(HttpServletRequest request){
+        SysUser sysUser = getSysUser(request);
+        if (sysUser == null) {
+            return null;
+        }
+        return "1".equals(sysUser.getUserIsAdmin());
+    }
+
     private static String getUserItem(HttpServletRequest request, String itemKey) {
         return "";
     }

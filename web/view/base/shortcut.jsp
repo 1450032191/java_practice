@@ -96,6 +96,10 @@
                     String userName = UserUtil.getUserName(request);
                     HttpServletRequest request1 = request;
                     request1.setAttribute("userName",userName);
+
+                    if(userName != null){
+                        request1.setAttribute("isAdmin",UserUtil.isAdmin(request));
+                    }
                 %>
                 <c:choose>
                     <c:when test="${not empty userName}">
@@ -120,10 +124,12 @@
             <li class="right-item">
                 <a href="view/client/adress.jsp">地址管理</a>
             </li>
-            <li class="spacer"></li>
-            <li class="right-item">
-                <a href="view/admin/index.jsp">管理后台</a>
-            </li>
+            <c:if test="${isAdmin == 'true'}">
+                <li class="spacer"></li>
+                <li class="right-item">
+                    <a href="view/admin/index.jsp">管理后台</a>
+                </li>
+            </c:if>
             <c:if test="${not empty userName}">
                 <li class="spacer"></li>
                 <li class="right-item">

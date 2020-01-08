@@ -14,14 +14,14 @@ import java.io.IOException;
  * @author azx
  * @create 2020-01-06-18:54
  */
-@WebServlet("/order/orderSendoutServlet")
+@WebServlet("/order/deliver.do")
 public class OrderSendoutServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
 
-        // String order_id = request.getParameter("order_id");
-        String order_id="1";//暂定订单号
+         String order_id = request.getParameter("order_id");
+//        String order_id="1";//暂定订单号
 
 
 

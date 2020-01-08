@@ -54,6 +54,12 @@
         </ul>
     </div>
 </li>
+<li class="nav-item">
+    <a href="view/admin/order.jsp">
+        <i class="fas fa-user-alt"></i>
+        <p>订单管理</p>
+    </a>
+</li>
 <li class="nav-section">
     <span class="sidebar-mini-icon">
         <i class="fa fa-ellipsis-h"></i>
@@ -61,12 +67,17 @@
     <h4 class="text-section">个人管理</h4>
 </li>
 <li class="nav-item">
-    <a href="view/admin/user.jsp">
+    <a href="view/admin/changePass.jsp">
         <i class="fas fa-user-alt"></i>
         <p>修改密码</p>
     </a>
 </li>
-
+<li class="nav-item">
+    <a href="logout.do">
+        <i class="fas fa-user-alt"></i>
+        <p>退出登陆</p>
+    </a>
+</li>
 <script>
     $(document).ready(function () {
         //获取当前地址
