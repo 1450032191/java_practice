@@ -144,7 +144,7 @@
     });
     $("#buy-btn").click(function () {
         var count = $("#buy-count").val();
-        if(count == 1){
+        if(count <= 1){
             setBuyCount(1,true);
         }else {
             location.href='view/client/car.jsp';
@@ -180,7 +180,7 @@
                 $("#sku-op").text(data.comOp);
                 $("#brand_name").text(data.brandName);
                 $("#category_name").text(data.categoryName);
-                $("#buy-count").val(data.carCouont);
+                $("#buy-count").val(data.carCouont == 0 ? 1 : data.carCouont);
                 $("#com-img").attr("src",data.comImg);
                 $("#detail-content").html(data.detailInfo);
                 if(data.isVip){
