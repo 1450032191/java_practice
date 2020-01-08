@@ -128,9 +128,9 @@
 <div class="dt">
     <table class="tb1">
         <%
-            int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+            int brand = Integer.parseInt(request.getParameter("brand"));
             Connection con = MySqlUtil.getCon();
-            String sql3 = "select * from sys_commodity where com_category_id=" + categoryId;
+            String sql3 = "select * from sys_commodity where com_brand_id=" + brand;
             PreparedStatement pstm = con.prepareStatement(sql3);
             ResultSet comrs = pstm.executeQuery(sql3);
             while (comrs.next()) {
