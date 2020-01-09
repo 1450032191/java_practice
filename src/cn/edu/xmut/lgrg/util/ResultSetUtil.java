@@ -26,13 +26,16 @@ public class ResultSetUtil {
                 ZnSqlField znSqlField = field.getAnnotation(ZnSqlField.class);
                 if(znSqlField != null){
                     String sqlFieldName = znSqlField.name();
-                    String sqlFieldValue = resultSet.getString(sqlFieldName);
-                    if (!StringUtil.isNull(sqlFieldValue)) {
-                        if(ResultSetUtil.isDouble(field)){
-                            field.set(ob, Double.valueOf(sqlFieldValue));
-                        }else {
-                            field.set(ob, sqlFieldValue);
+                    try {
+                        String sqlFieldValue = resultSet.getString(sqlFieldName);
+                        if (!StringUtil.isNull(sqlFieldValue)) {
+                            if (ResultSetUtil.isDouble(field)) {
+                                field.set(ob, Double.valueOf(sqlFieldValue));
+                            } else {
+                                field.set(ob, sqlFieldValue);
+                            }
                         }
+                    } catch (Exception e) {
                     }
                 }
             }

@@ -137,16 +137,11 @@ public class SysCarImpl implements SysCarDAO {
     public boolean changeQuantity(HttpServletRequest request ,int comId, int quantity) throws Exception {
         //获取用户
         String userId = UserUtil.getUserId(request);
-
         conn = MySqlUtil.getCon();
-
-
         int result=0;
-
         if (quantity==0){
             //删除该用户某样商品
             String delsql = "delete  from sys_car where user_id=" + userId +" and com_id="+comId;
-
             PreparedStatement ps = conn.prepareStatement(delsql);
             result = ps.executeUpdate();
         }else{
@@ -154,10 +149,8 @@ public class SysCarImpl implements SysCarDAO {
             String updatesql="update sys_car set com_quantity="+quantity+
                     " where user_id=" + userId +" and com_id="+comId;
             PreparedStatement ps=conn.prepareStatement(updatesql);
-
             result = ps.executeUpdate();
         }
-
         if (result!=0){
             return true;
         }else{
@@ -183,7 +176,7 @@ public class SysCarImpl implements SysCarDAO {
                     return true;
                 }
             }catch (Exception e){
-                e.printStackTrace();
+
                 throw new Exception(e.getMessage());
             }
         }
