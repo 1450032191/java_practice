@@ -173,7 +173,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-head-row">
-                    <div class="card-title">User Statistics</div>
+                    <div class="card-title">近七日的订单数量</div>
                     <div class="card-tools">
                         <a href="#" class="btn btn-info btn-border btn-round btn-sm mr-2">
 												<span class="btn-label">
