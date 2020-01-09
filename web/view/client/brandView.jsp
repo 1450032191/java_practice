@@ -80,10 +80,11 @@
         }
 
         .tb2 img {
-            width: 220px;
-            height: 290px;
+            width: 280px;
+            height: 240px;
             margin-left: 20px;
-            border: 1px brown solid;
+            margin-right: 10px;
+            /*border: 1px brown solid;*/
         }
 
         .neir {
@@ -92,7 +93,7 @@
         }
 
         .tl {
-            font-family: 华文中宋;
+            font-family: 宋体;
             font-weight: bold;
             margin: auto;
         }
@@ -116,6 +117,7 @@
             height: 40px;
             background: #53a4d4;
             border: 1px #53a4d4 solid;
+            margin-bottom: 5px;
         }
 
         #btn_atc {
