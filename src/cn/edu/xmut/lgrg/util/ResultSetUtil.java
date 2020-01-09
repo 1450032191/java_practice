@@ -29,6 +29,7 @@ public class ResultSetUtil {
                     try {
                         String sqlFieldValue = resultSet.getString(sqlFieldName);
                         if (!StringUtil.isNull(sqlFieldValue)) {
+<<<<<<< HEAD
                             if(ResultSetUtil.isDouble(field)){
                                 field.set(ob, Double.valueOf(sqlFieldValue));
                             }else {
@@ -37,6 +38,16 @@ public class ResultSetUtil {
                         }
                     }catch (Exception e){}
 
+=======
+                            if (ResultSetUtil.isDouble(field)) {
+                                field.set(ob, Double.valueOf(sqlFieldValue));
+                            } else {
+                                field.set(ob, sqlFieldValue);
+                            }
+                        }
+                    } catch (Exception e) {
+                    }
+>>>>>>> e5b10f4853fac572aae3f3bf8a300c2285e666d2
                 }
             }
             list.add((T) ob);
