@@ -143,7 +143,8 @@ public class SysUserImpl implements SysUserDao {
         //保存到数据库
         try {
             Connection con = MySqlUtil.getCon();
-            String sql = "insert into sys_user (user_name,user_pass,user_email,user_phone,status,user_is_admin,user_image) values (?,?,?,?,1,0,'images/base/profile.jpg')";
+            String sql = "insert into sys_user (user_name,user_pass,user_email,user_phone,status,user_is_admin,user_image,create_time)" +
+                    " values (?,?,?,?,1,0,'images/base/profile.jpg',now())";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1,newUser.getUserName());
             preparedStatement.setString(2,newUser.getUserPass());

@@ -124,8 +124,8 @@
         <!-- Navbar Header -->
         <nav class="navbar navbar-header navbar-expand-lg">
 
-            <div class="container-fluid">
-                <div class="collapse" id="search-nav">
+            <div class="container-fluid" >
+                <div class="collapse" id="search-nav" style="display:none !important;">
                     <form class="navbar-left navbar-form nav-search mr-md-3">
                         <div class="input-group">
                             <div class="input-group-prepend">

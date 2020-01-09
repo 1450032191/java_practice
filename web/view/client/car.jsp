@@ -152,6 +152,7 @@
             $.post("order/add.do", {payList: str, uaId: "2"}, function (result) {
                 if (result.code) {
                     success("即将跳转订单页面，请支付！");
+                    location.href = 'view/client/orders.jsp';
                 } else {
                     error("失败~");
                 }

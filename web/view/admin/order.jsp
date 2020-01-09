@@ -109,6 +109,10 @@
     </div>
 </div>
 
+<script type="text/javascript" src="static/ui_lib/excel/external/jszip.min.js"></script>
+<script type="text/javascript" src="static/ui_lib/excel/external/FileSaver.js"></script>
+<script type="text/javascript" src="static/ui_lib/excel/scripts/excel-gen.js"></script>
+
 <script>
     var vue = new Vue({
         el: '#user-list',
@@ -136,7 +140,12 @@
                 });
             },
             exportToExcel() {
-
+                $("#user-list").find("table").attr("id","user-table");
+                var excel = new ExcelGen({
+                    "src_id": "user-table",
+                    "show_header": true
+                });
+                excel.generate();
             },
             serach(){
                 var that = this;

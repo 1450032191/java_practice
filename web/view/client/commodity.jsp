@@ -1,4 +1,4 @@
-<%--
+<%@ page import="cn.edu.xmut.lgrg.config.SysConfig" %><%--
   Created by IntelliJ IDEA.
   User: ZiNan
   Date: 2019/11/18
@@ -179,6 +179,7 @@
                 $("#sku-name").text(data.comName);
                 $("#sku-op").text(data.comOp);
                 $("#brand_name").text(data.brandName);
+                document.title = "[<%=SysConfig.sysName%>] --- " + data.comName;
                 $("#category_name").text(data.categoryName);
                 $("#buy-count").val(data.carCouont == 0 ? 1 : data.carCouont);
                 $("#com-img").attr("src",data.comImg);

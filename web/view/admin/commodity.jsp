@@ -70,6 +70,7 @@
             <el-button style="margin-left: 10px;" type="primary" icon="el-icon-search" @click="serach(0)">搜索</el-button>
             <el-button style="margin-left: 10px;" type="danger" @click="serach(1)">库存预警</el-button>
             <el-button type="primary" @click="exportToExcel()">导出Excel</el-button>
+            <el-button type="primary" @click="add()()">增加商品</el-button>
         </div>
         <el-table
                 :data="commodityList"
@@ -115,7 +116,7 @@
                 <template slot-scope="scope">
                     <el-button
                             size="mini"
-                            @click="del(scope.row.comId)">编辑</el-button>
+                            @click="edit(scope.row)">编辑</el-button>
                     <el-button
                             size="mini"
                             @click="del(scope.row.comId)" type="danger">删除</el-button>
@@ -143,7 +144,7 @@
                 <input type="file" style="display: none" id="img-file">
             </div>
             <el-form-item label="商品名称">
-                <el-input v-model="commodityForm.name" autocomplete="off"></el-input>
+                <el-input v-model="commodityForm.comName" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item label="品牌">
                 <el-select v-model="commodityForm.comBrandId" placeholder="请选择活动区域">
@@ -185,7 +186,7 @@
         </el-form>
         <div slot="footer" class="dialog-footer">
             <el-button @click="dialogFormVisible = false">取 消</el-button>
-            <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+            <el-button type="primary" @click="ok()">确 定</el-button>
         </div>
     </el-dialog>
 </div>
@@ -208,7 +209,7 @@
                     pageSize:10,
                     total:400,
                 },
-                dialogFormVisible: true,
+                dialogFormVisible: false,
                 commodityForm: {
                     comImg: 'https://img20.360buyimg.com/jdcms/s150x150_jfs/t1/102716/5/9530/313425/5e10912fE995fddec/1d4c821fdee7d59e.jpg.webp'
                 },
@@ -312,9 +313,22 @@
                     }
                 });
             },
-            edit(){
+            edit(data){
                 var that = this;
-                var data = that.commodityForm;
+                that.commodityForm = data;
+                that.dialogFormVisible = true;
+            },
+            add(){
+                var that = this;
+                that.commodityForm = {
+                    comImg: 'https://img20.360buyimg.com/jdcms/s150x150_jfs/t1/102716/5/9530/313425/5e10912fE995fddec/1d4c821fdee7d59e.jpg.webp'
+                };
+                that.dialogFormVisible = true;
+            },
+            ok(){
+                var that = this;
+                that.dialogFormVisible = true;
+                that.$message.success("成功~");
             }
         },
         created() {
