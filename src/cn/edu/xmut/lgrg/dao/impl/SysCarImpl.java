@@ -72,7 +72,7 @@ public class SysCarImpl implements SysCarDAO {
         conn = MySqlUtil.getCon();
 
 
-        String sql = "select * from sys_car where user_id=" + userId;
+        String sql = "select * from sys_car where user_id= " + userId;
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
@@ -137,12 +137,12 @@ public class SysCarImpl implements SysCarDAO {
     public boolean changeQuantity(HttpServletRequest request ,int comId, int quantity) throws Exception {
         //获取用户
         String userId = UserUtil.getUserId(request);
+        if(StringUtil.isNull(userId)){
+            throw new Exception("请登陆~");
+        }
 
         conn = MySqlUtil.getCon();
-
-
         int result=0;
-
         if (quantity==0){
             //删除该用户某样商品
             String delsql = "delete  from sys_car where user_id=" + userId +" and com_id="+comId;

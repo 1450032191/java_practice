@@ -1,6 +1,7 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="cn.edu.xmut.lgrg.util.MySqlUtil" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="cn.edu.xmut.lgrg.config.SysConfig" %>
 <%--
   Created by IntelliJ IDEA.
   User: 60181
@@ -11,7 +12,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>品牌商品详情</title>
+    <title> [<%=SysConfig.sysName%>] 品牌商品详情</title>
+    <jsp:include page="/view/base/base.jsp"></jsp:include>
     <style>
         .sort {
             width: 1200px;
@@ -125,6 +127,8 @@
     </style>
 </head>
 <body>
+<jsp:include page="/view/base/shortcut.jsp"></jsp:include>
+<jsp:include page="/view/base/shopcar.jsp"></jsp:include>
 <div class="dt">
     <table class="tb1">
         <%
@@ -172,7 +176,7 @@
                     </tr>
                     <tr>
                         <td class="neir">
-                            <a href="commodity.jsp?comId=<%=comrs.getInt("com_id")%>">
+                            <a href="view/client/commodity.jsp?comId=<%=comrs.getInt("com_id")%>">
                                 <input type="button" name="detail" id="btn_dt" value="查看详情">
                             </a>
                             <%-- <input type="submit" name="atc" id="btn_atc" value="添加至购物车">--%>
@@ -186,5 +190,7 @@
         %>
     </table>
 </div>
+
+<jsp:include page="/view/base/footer.jsp"></jsp:include>
 </body>
 </html>

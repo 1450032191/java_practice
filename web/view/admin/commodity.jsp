@@ -71,11 +71,10 @@
             <el-button style="margin-left: 10px;" type="danger" @click="serach(1)">库存预警</el-button>
             <el-button type="primary" @click="exportToExcel()">导出Excel</el-button>
         </div>
-
         <el-table
                 :data="commodityList"
                 border
-                style="width: 100%" id="user-table">
+                style="width: 100%" id="">
             <el-table-column
                     prop="date"
                     label="#"
@@ -191,6 +190,11 @@
     </el-dialog>
 </div>
 
+<script type="text/javascript" src="static/ui_lib/excel/external/jszip.min.js"></script>
+<script type="text/javascript" src="static/ui_lib/excel/external/FileSaver.js"></script>
+<script type="text/javascript" src="static/ui_lib/excel/scripts/excel-gen.js"></script>
+<script type="text/javascript" src="static/ui_lib/excel/scripts/demo.page.js"></script>
+
 <script>
     var vue = new Vue({
         el: '#commodity-list',
@@ -254,15 +258,12 @@
                 });
             },
             exportToExcel() {
-                // 使用outerHTML属性获取整个table元素的HTML代码（包括<table>标签），然后包装成一个完整的HTML文档，设置charset为urf-8以防止中文乱码
-                var html = "<html><head><meta charset='utf-8' /></head><body>" + document.getElementById("user-table").outerHTML + "</body></html>";
-                // 实例化一个Blob对象，其构造函数的第一个参数是包含文件内容的数组，第二个参数是包含文件类型属性的对象
-                var blob = new Blob([html], {type: "application/vnd.ms-excel"});
-                var a = document.getElementsByTagName("a")[0];
-                // 利用URL.createObjectURL()方法为a元素生成blob URL
-                a.href = URL.createObjectURL(blob);
-                // 设置文件名，目前只有Chrome和FireFox支持此属性
-                a.download = "用户信息表.xls";
+                $("#user-list").find("table").attr("id","user-table");
+                var excel = new ExcelGen({
+                    "src_id": "user-table",
+                    "show_header": true
+                });
+                excel.generate();
             },
             serach(data){
                 var that = this;

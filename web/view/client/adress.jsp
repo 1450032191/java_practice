@@ -1,3 +1,4 @@
+<%@ page import="cn.edu.xmut.lgrg.config.SysConfig" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -9,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title> [一点商城] 地址管理</title>
+    <title> [<%=SysConfig.sysName%>] 地址管理</title>
     <jsp:include page="/view/base/base.jsp"></jsp:include>
     <link rel="stylesheet" href="static/css/client/adress.css">
     <%--地区选择插件--%>

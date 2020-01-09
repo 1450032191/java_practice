@@ -60,6 +60,12 @@
         <p>订单管理</p>
     </a>
 </li>
+<li class="nav-item">
+    <a href="view/admin/notic.jsp">
+        <i class="fas fa-user-alt"></i>
+        <p>发送公告</p>
+    </a>
+</li>
 <li class="nav-section">
     <span class="sidebar-mini-icon">
         <i class="fa fa-ellipsis-h"></i>
