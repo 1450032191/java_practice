@@ -73,6 +73,12 @@
     <h4 class="text-section">个人管理</h4>
 </li>
 <li class="nav-item">
+    <a href="<%=basePath%>">
+        <i class="fas fa-user-alt"></i>
+        <p>商城首页</p>
+    </a>
+</li>
+<li class="nav-item">
     <a href="view/admin/changePass.jsp">
         <i class="fas fa-user-alt"></i>
         <p>修改密码</p>

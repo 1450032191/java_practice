@@ -6,6 +6,7 @@ import cn.edu.xmut.lgrg.dao.impl.sysenum.OrderStatus;
 import cn.edu.xmut.lgrg.entity.*;
 import cn.edu.xmut.lgrg.util.*;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,7 +23,6 @@ public class OrderImpl implements OrderDao {
 
     private Connection conn = null;
 
-
     /**
      * 获取该用户的下单信息
      * @param request
@@ -37,7 +37,7 @@ public class OrderImpl implements OrderDao {
 
         //数据库查询
         conn = MySqlUtil.getCon();
-        String sql="select * from sys_order  where user_id="+userId;
+        String sql="select * from sys_order  where user_id="+userId + " order by create_time desc";
         PreparedStatement ps = conn.prepareStatement(sql);
 
         ResultSet rs = ps.executeQuery();
@@ -62,7 +62,6 @@ public class OrderImpl implements OrderDao {
         }
         return list;
     }
-
 
     public PageData getOrderPageList(HttpServletRequest request) throws Exception {
         SysCommodityImpl commodityService = BeanUtil.getInstance(SysCommodityImpl.class);
@@ -416,6 +415,42 @@ public class OrderImpl implements OrderDao {
         }
 
         return time;
+    }
+
+
+
+    public SysOrder getOrderDetail(HttpServletRequest request) throws Exception {
+        PageData params = new PageData(request);
+        String orderId = params.getString("orderId");
+        if(StringUtil.isNull(orderId)){
+            throw new Exception("数据异常~");
+        }
+        String sql = "select * from sys_order  where order_id = ? and user_id = ? limit 1";
+        Connection con = MySqlUtil.getCon();
+        PreparedStatement pre = con.prepareStatement(sql);
+        pre.setString(1,orderId);
+        pre.setString(2,UserUtil.getUserId(request));
+        ResultSet rs = pre.executeQuery();
+        List<SysOrder> orders = ResultSetUtil.getArray(rs,SysOrder.class);
+        if(orders.size()<=0){
+            throw new Exception("订单不存在~");
+        }else {
+            SysOrder order = orders.get(0);
+            //查询订单详情
+            sql = "select * from sys_order_detail where order_no = ? and order_id = ?";
+            pre = con.prepareStatement(sql);
+            pre.setString(1,order.getOrderNo());
+            pre.setString(2,order.getOrderId());
+            rs = pre.executeQuery();
+            List<OrderItem> orderItems = ResultSetUtil.getArray(rs,OrderItem.class);
+            SysCommodityImpl commodityService = BeanUtil.getInstance(SysCommodityImpl.class);
+            for (int j = 0; j < orderItems.size(); j++) {
+                orderItems.get(j).setCommodity(commodityService.selectComm(orderItems.get(j).getComId()));
+            }
+            order.setOrderItems(orderItems);
+            order.setOrderStatusText(OrderStatus.getOrderToStatus(order.getOrderStatus()));
+            return order;
+        }
     }
 
 }

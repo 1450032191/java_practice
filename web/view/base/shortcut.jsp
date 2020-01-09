@@ -103,7 +103,7 @@
                 %>
                 <c:choose>
                     <c:when test="${not empty userName}">
-                        <a href="javascript:void(0);">${userName}</a>
+                        <a href="view/client/notic.jsp">${userName}</a>
                     </c:when>
 
                     <c:otherwise>

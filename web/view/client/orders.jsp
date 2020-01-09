@@ -79,76 +79,6 @@
                     <tr class="sep-row" id="order-ll">
                         <td colspan="5"></td>
                     </tr>
-
-                    <c:forEach var="var" items="${orderList}" varStatus="vs">
-                        <tr class="tr-th">
-                            <td colspan="5">
-                                <span class="gap"></span>
-                                <span class="dealtime">${var.createTime}</span>
-                                <span class="number">
-                                订单号：
-                                <a href="order/${var.orderNo}.html">${var.orderNo}</a>
-                            </span>
-                                <span class="delete">
-                                <i class="glyphicon glyphicon-trash"></i>
-                            </span>
-                            </td>
-                        </tr>
-
-                        <c:forEach var="sku" varStatus="skuItem" items="${var.skuList}">
-                            <tr class="tr-bd">
-                                <td>
-                                    <div class="goods-item">
-                                        <div class="p-img">
-                                            <img src="http://img10.360buyimg.com/N6/s60x60_${sku.commodityMainImg}" alt="">
-                                        </div>
-                                        <div class="p-msg">
-                                            <div class="p-name">
-                                                <a href="item/${sku.sku}.html">${sku.skuTitle}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="goods-number">
-                                        X${sku.skuCount}
-                                    </div>
-                                    <div class="goods-repair">
-                                            <%--<a href="">申请退货</a>--%>
-                                    </div>
-                                </td>
-                                <c:if test="${skuItem.index == 0}">
-                                    <td rowspan="${var.skuSize}">
-                                        <div class="tooltip">
-                                            <span class="txt">${var.uaName}</span>
-                                            <i class="glyphicon glyphicon-user"></i>
-                                        </div>
-                                    </td>
-
-                                    <td rowspan="${var.skuSize}">
-                                        <div class="amount">
-                                            <span>总额 ¥${var.price}</span>
-                                            <br>
-                                            <span class="ftx-13">在线支付</span>
-                                        </div>
-                                    </td>
-
-                                    <td rowspan="${var.skuSize}">
-                                        <div class="status">
-                                            <span class="txt">${var.orderStatusText}</span>
-                                        </div>
-                                    </td>
-
-                                    <td rowspan="${var.skuSize}">
-                                        <div class="operate">
-                                            <a href="order/${var.orderId}.html" class="btn-again btn-again-show" target="_blank"><b></b>
-                                                订单详情
-                                            </a><br>
-                                        </div>
-                                    </td>
-                                </c:if>
-
-                            </tr>
-                        </c:forEach>
-                    </c:forEach>
                 </tbody>
             </table>
         </div>
@@ -220,17 +150,19 @@
                                         "                                        </div>\n" +
                                         "                                    </td>\n" +
                                         "\n" +
-                                        "                                    <td rowspan=\""+data[i].comCount+"“”\">\n";
+                                        "                                    <td rowspan=\""+data[i].comCount+"“”\">\n"+"<div class=\"operate\">\n";
 
                                         if(data[i].orderStatus== 1){
-                                            html += "                                        <div class=\"operate\">\n" +
-                                                "                                            <a href=\"javascript:void(0);\" onclick=\"pay('"+data[i].orderId+"')\" class=\"btn-again btn-again-show\"><b></b>\n" +
+                                                html+="                                            <a href=\"javascript:void(0);\" onclick=\"pay('"+data[i].orderId+"')\" class=\"btn-again btn-again-show\"><b></b>\n" +
                                                 "                                                支付\n" +
-                                                "                                            </a><br>\n" +
-                                                "                                        </div>\n" ;
+                                                "                                            </a><br>\n" +""
+                                                "                                        " ;
                                         }
+                                        html += "<a href=\"view/client/orderDetail.jsp?orderId="+data[i].orderId+"\" class=\"btn-again btn-again-show\" target=\"_blank\"><b></b>\n" +
+                                            "                                                订单详情\n" +
+                                            "                                            </a><br>";
 
-                                        html += "                                    </td>";
+                                        html += "</div>\n </td>";
                                 }
                                 html+="</tr>";
                         }
