@@ -206,7 +206,7 @@
             </div>
             <div class="card-body pb-0">
                 <div class="mb-4 mt-2">
-                    <h1>$ <span id="year_order_price"></span></h1>
+                    <h1>￥ <span id="year_order_price"></span></h1>
                 </div>
                 <div class="pull-in">
                     <canvas id="dailySalesChart"></canvas>
